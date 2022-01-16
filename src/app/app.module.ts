@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,9 @@ import { NavbarComponent } from './components/utils/navbar/navbar.component';
 import { FooterComponent } from './components/utils/footer/footer.component';
 import { ButtonComponent } from './components/libs/button/button.component';
 import { HomeComponent } from './components/proy/main/home/home.component';
+import { VolunterComponent } from './components/proy/main/volunter/volunter.component';
+import { SidebarComponent } from './components/utils/sidebar/sidebar.component';
+import { ActivitiesComponent } from './components/proy/main/activities/activities.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { HomeComponent } from './components/proy/main/home/home.component';
     NavbarComponent,
     FooterComponent,
     ButtonComponent,
-    HomeComponent
+    HomeComponent,
+    VolunterComponent,
+    SidebarComponent,
+    ActivitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,8 @@ import { HomeComponent } from './components/proy/main/home/home.component';
     MatInputModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

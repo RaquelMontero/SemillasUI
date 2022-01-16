@@ -2,22 +2,39 @@
   display: flex;
   background-color: #00A846;
   color: white;
-  position: relative;
+  position: fixed;
+  right:0;
+  left: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index:100
+
 }
 .collapse{
   justify-content: right;
 }
+.navbar-nav{
 
+   vertical-align: middle;
+   padding: 8px 16px 0px 0px;
+}
 .nav-item{
   color: white;
   font-weight: 600;
   font-size: 20px;
   letter-spacing: 0.1em;
-  margin: 0px 5px 0px 5px;
 }
 .navbar-brand img{
   max-height: 55px;
   max-width: 200px;
-  padding: 0;
+}
+
+mat-icon{
+  color: aliceblue;
+}
+.leftmenu{
+    justify-content: left;
+    margin: 0;
+    padding: 0;
 
 }
