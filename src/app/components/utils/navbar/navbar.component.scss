@@ -1,0 +1,23 @@
+.navbar{
+  display: flex;
+  background-color: #00A846;
+  color: white;
+  position: relative;
+}
+.collapse{
+  justify-content: right;
+}
+
+.nav-item{
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  margin: 0px 5px 0px 5px;
+}
+.navbar-brand img{
+  max-height: 55px;
+  max-width: 200px;
+  padding: 0;
+
+}
