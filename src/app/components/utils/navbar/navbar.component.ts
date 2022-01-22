@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
   panelOpenState = false;
+  snav: MatSidenav
 
   constructor() { }
 

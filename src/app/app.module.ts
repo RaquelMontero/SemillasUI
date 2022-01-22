@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 /**MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,6 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -69,9 +72,12 @@ import { ActivitiesComponent } from './components/proy/main/activities/activitie
     MatListModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    MatTreeModule
+    MatTreeModule,
+    MatToolbarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:
+    [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

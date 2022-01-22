@@ -5,28 +5,12 @@
   overflow: auto;
   border: 1px solid #555;
 }
-mat-tree{
-  margin-left: 16px;
+
+.mat-nav-list .mat-list-item{
+  color: #343A40;
+  font-size: 13px;
 }
-
-
-.example-tree-invisible {
-  display: none;
-}
-
-.example-tree ul,
-.example-tree li {
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: none;
-}
-
-
-.example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 40px;
-}
-
-
-.example-tree div[role=group] > .mat-tree-node {
-  padding-left: 40px;
+.mat-nav-list .mat-expansion-panel-header{
+color: #343A40;
+  font-size: 13px;
 }

@@ -1,28 +1,108 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-
+import { Observable } from 'rxjs';
+//import * as menuData from '../../../../assets/menu.json';
+import { MenuService } from 'src/app/services/menu.service';
+interface IMenu {
+  text: string;
+  icon: string;
+  routerLink?: string
+  children?: IMenu[]
+}
+const menu: IMenu[] = [
+  {
+    text: 'Aportadores',
+    icon: 'people',
+    routerLink: '/customer/manage'
+  },
+  {
+    text: 'Aportadores del día',
+    icon: 'supervised_user_circle',
+    routerLink: '/supplier/manage'
+  },
+  {
+    text: 'Aspirantes',
+    icon: 'inventory_2',
+    children: [{
+      text: 'Ver Aspirantes',
+      icon: 'category',
+      routerLink: '/product/category'
+    },
+    {
+      text: 'Ver aspirantes Rechazados',
+      icon: 'layers',
+      routerLink: '/product/sub-category'
+    }
+    ]
+  },
+  {
+    text: 'Responsables',
+    icon: 'inventory_2',
+    children: [{
+      text: 'Registrar Responsable',
+      icon: 'category',
+      routerLink: '/product/category'
+    },
+    {
+      text: 'Ver Responsables',
+      icon: 'layers',
+      routerLink: '/product/sub-category'
+    },
+    {
+      text: 'Responsables Inactivos',
+      icon: 'all_inbox',
+      routerLink: '/product/manage'
+    }
+    ]
+  },
+  {
+    text: 'Asignar Responsables',
+    icon: 'supervised_user_circle',
+    routerLink: '/supplier/manage'
+  },
+  {
+    text: 'Seguimiento',
+    icon: 'inventory_2',
+    children: [{
+      text: 'Crear Mes',
+      icon: 'category',
+      routerLink: '/product/category'
+    },
+    {
+      text: 'Seguimiento diarío',
+      icon: 'layers',
+      routerLink: '/product/sub-category'
+    }
+    ]
+  },
+  {
+    text: 'Envío Souvenirs',
+    icon: 'inventory_2',
+    children: [{
+      text: 'Seleccionar beneficiados',
+      icon: 'category',
+      routerLink: '/product/category'
+    },
+    {
+      text: 'Ver beneficiados',
+      icon: 'layers',
+      routerLink: '/product/sub-category'
+    }
+    ]
+  },
+  {
+    text: 'Registrar Aportadores',
+    icon: 'supervised_user_circle',
+    routerLink: '/supplier/manage'
+  },
+]
 
 interface FoodNode {
   name: string;
   children?: FoodNode[];
 }
-const TREE_DATA: FoodNode[] = [
 
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
-      },
-      {
-        name: 'Orange',
-        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
-      },
-    ],
-  },
-];
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -32,22 +112,14 @@ export class SidebarComponent implements OnInit {
   @Input() open
   events: string[] = [];
   opened: boolean;
+  menuList: IMenu[];
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
   constructor() {
-    this.dataSource.data = TREE_DATA;
-
   }
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
-
-
-
-
-
-
-
 
   ngOnInit(): void {
+    this.menuList = menu
+    console.log(this.menuList)
   }
-
 }
