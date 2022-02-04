@@ -1,5 +1,42 @@
-<nav class="navbar navbar-expand-sm navbar-dark">
-  <a class="navbar-brand" href="#"><img class="img-fluid" alt="Semillas logo"
+<div class="nav1">
+  <div class="ui top fixed menu">
+    <a class="right item"></a>
+  </div>
+</div>
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="leftmenu">
+    <button mat-icon-button (click)="inputSideNav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a class="navbar-brand me-2" routerLink="/"><img src="../../../../assets/nav_logo.png" /></a>
+  </div>
+  <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample"
+    aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarButtonsExample">
+    <ul class="navbar-nav me-auto mb-3 justify-content-start">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="quiero-aportar">Quiero Aportar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="soy-voluntaria">Soy Voluntario</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" routerLink="actividades-organizacion">Actividades</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--<nav class="navbar navbar-expand-sm navbar-dark">
+  <button mat-button (click)="inputSideNav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+
+  <a class="navbar-brand me-2" href="#"><img class="img-fluid" alt="Semillas logo"
       src="../../../../assets/nav_logo.png" /></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -21,3 +58,4 @@
 
   </div>
 </nav>
+-->

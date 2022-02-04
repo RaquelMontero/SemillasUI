@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-/**MATERIAL */
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+/*MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -21,7 +23,32 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+/*
+import {
 
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatCheckboxModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatRippleModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSortModule,
+  MatTooltipModule,
+} from '@angular/material';
+
+*/
+import {
+  GoogleLoginProvider,
+} from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +57,11 @@ import { NavbarComponent } from './components/utils/navbar/navbar.component';
 import { FooterComponent } from './components/utils/footer/footer.component';
 import { ButtonComponent } from './components/libs/button/button.component';
 import { HomeComponent } from './components/proy/main/home/home.component';
+import { VolunterComponent } from './components/proy/main/volunter/volunter.component';
+import { SidebarComponent } from './components/utils/sidebar/sidebar.component';
+import { ActivitiesComponent } from './components/proy/main/activities/activities.component';
+import { CaruselComponent } from './components/libs/carusel/carusel.component';
+import { WantCollaborateComponent } from './components/proy/main/want-collaborate/want-collaborate.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +69,12 @@ import { HomeComponent } from './components/proy/main/home/home.component';
     NavbarComponent,
     FooterComponent,
     ButtonComponent,
-    HomeComponent
+    HomeComponent,
+    VolunterComponent,
+    SidebarComponent,
+    ActivitiesComponent,
+    CaruselComponent,
+    WantCollaborateComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +98,29 @@ import { HomeComponent } from './components/proy/main/home/home.component';
     MatInputModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTreeModule,
+    MatToolbarModule,
+    MatCarouselModule.forRoot(),
+    SocialLoginModule,
+    CdkAccordionModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            'clientId'
+          )
+        }
+      ]
+    } as SocialAuthServiceConfig,
+  }],
+  bootstrap: [AppComponent],
+  schemas:
+    [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
