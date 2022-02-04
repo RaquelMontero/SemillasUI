@@ -2,14 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { Observable } from 'rxjs';
-//import * as menuData from '../../../../assets/menu.json';
-import { MenuService } from 'src/app/services/menu.service';
+
 interface IMenu {
   text: string;
   icon: string;
   routerLink?: string
   children?: IMenu[]
 }
+/*
 const menu: IMenu[] = [
   {
     text: 'Aportadores',
@@ -97,12 +97,12 @@ const menu: IMenu[] = [
     routerLink: '/supplier/manage'
   },
 ]
-
+*/
 interface FoodNode {
   name: string;
   children?: FoodNode[];
 }
-
+const content = require('../../../../assets/menu.json');
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -119,7 +119,11 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.menuList = menu
-    console.log(this.menuList)
+    //this.menuList = menu
+    this.menuList = content
+    console.log(content)
+
+
+
   }
 }

@@ -8,7 +8,7 @@
     <button mat-icon-button (click)="inputSideNav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <a class="navbar-brand me-2" href="#"><img src="../../../../assets/nav_logo.png" /></a>
+    <a class="navbar-brand me-2" routerLink="/"><img src="../../../../assets/nav_logo.png" /></a>
   </div>
   <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample"
     aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,13 +17,13 @@
   <div class="collapse navbar-collapse" id="navbarButtonsExample">
     <ul class="navbar-nav me-auto mb-3 justify-content-start">
       <li class="nav-item">
-        <a class="nav-link" href="quiero-aportar">Quiero Aportar</a>
+        <a class="nav-link" routerLink="quiero-aportar">Quiero Aportar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="soy-voluntaria">Soy Voluntario</a>
+        <a class="nav-link" routerLink="soy-voluntaria">Soy Voluntario</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" href="actividades-organizacion">Actividades</a>
+        <a class="nav-link" routerLink="actividades-organizacion">Actividades</a>
       </li>
     </ul>
   </div>

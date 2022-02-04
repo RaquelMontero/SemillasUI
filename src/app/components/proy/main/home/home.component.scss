@@ -6,7 +6,10 @@
   height: 674px;
   max-height: 100%;
 }
+.carr{
+    margin-top: 80px;
 
+}
 .box-pasos{
   display: flex;
   flex-flow: row wrap;
@@ -15,7 +18,7 @@
   margin-top: 30px;
 }
 .gutters{
-  margin-top: 100px;
+
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
