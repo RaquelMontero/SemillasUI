@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 /*MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -62,6 +63,8 @@ import { SidebarComponent } from './components/utils/sidebar/sidebar.component';
 import { ActivitiesComponent } from './components/proy/main/activities/activities.component';
 import { CaruselComponent } from './components/libs/carusel/carusel.component';
 import { WantCollaborateComponent } from './components/proy/main/want-collaborate/want-collaborate.component';
+import { ListVoluntersComponent } from './components/admin/list-volunters/list-volunters.component';
+import { ListPendingApplicantsComponent } from './components/applicants/list-pending-applicants/list-pending-applicants.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,9 @@ import { WantCollaborateComponent } from './components/proy/main/want-collaborat
     SidebarComponent,
     ActivitiesComponent,
     CaruselComponent,
-    WantCollaborateComponent
+    WantCollaborateComponent,
+    ListVoluntersComponent,
+    ListPendingApplicantsComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +108,8 @@ import { WantCollaborateComponent } from './components/proy/main/want-collaborat
     MatToolbarModule,
     MatCarouselModule.forRoot(),
     SocialLoginModule,
-    CdkAccordionModule
+    CdkAccordionModule,
+    HttpClientModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
@@ -113,7 +119,7 @@ import { WantCollaborateComponent } from './components/proy/main/want-collaborat
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            'clientId'
+            '460291057573-9dhoui1sslarqe6c911duli469fvbhii.apps.googleusercontent.com'
           )
         }
       ]

@@ -4,6 +4,7 @@ import { ActivitiesComponent } from './components/proy/main/activities/activitie
 import { HomeComponent } from './components/proy/main/home/home.component';
 import { VolunterComponent } from './components/proy/main/volunter/volunter.component';
 import { WantCollaborateComponent } from './components/proy/main/want-collaborate/want-collaborate.component';
+import {ListVoluntersComponent} from './components/admin/list-volunters/list-volunters.component';
 
 const routes: Routes = [
   {
@@ -16,10 +17,10 @@ const routes: Routes = [
     path: 'soy-voluntaria', component: VolunterComponent
   },
   {
-    path: 'soy-voluntaria', component: VolunterComponent
+    path: 'quiero-aportar', component: WantCollaborateComponent
   },
   {
-    path: 'quiero-aportar', component: WantCollaborateComponent
+    path: 'admin/ver-voluntarios', component: ListVoluntersComponent
   }
 ];
 

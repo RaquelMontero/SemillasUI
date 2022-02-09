@@ -1,20 +1,76 @@
 <div class="container">
-  <cdk-accordion class="example-accordion">
-    <cdk-accordion-item *ngFor="let item of items; let index = index;" #accordionItem="cdkAccordionItem"
-      class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
-      [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index">
-      <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-        {{ item }}
-        <span class="example-accordion-item-description">
-          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
-        </span>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        INFORMACION PERSONAL
+      </mat-expansion-panel-header>
+      PARA PODER SER PARTE DEL PROGRAMA SEMILLAS, INGRESA Y ENVÍA TUS DATOS
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        TIPOS DE APORTE
+      </mat-expansion-panel-header>
+      <ng-template>TIPOS DE APORTE</ng-template>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-card class="example-card">
+            <mat-card-title>
+              <button mat-button class="positive">APORTE UNICO</button>
+            </mat-card-title>
+            <mat-card-content>
+              <p>Consiste en realizar un aporte
+                de más de 25$ o su equivalente de 175 Bs.
+                Podrá elegir el método de pago de su elección y el día del mes actual en el que realizará su aporte.
+                Así mismo, si desea
+                recibir noticias de los últimos logros del Programa Semillas gracias a los aportes obtenidos.
+              </p>
+            </mat-card-content>
+            <div class="float-bottom">
+              <div class="row">
+                <mat-icon matSuffix>check_circle</mat-icon> Opcion 1
+              </div>
+            </div>
+
+          </mat-card>
+        </div>
+        <div class="col-sm-6">
+          <mat-card class="example-card">
+            <mat-card-title>
+              <button mat-button  class="positive ui button">APORTE
+                CONSTANTE</button>
+            </mat-card-title>
+            <mat-card-content>
+              <p>Consiste en realizar un aporte mensual de más
+                de 5 $ por la alimentación de un niño o su equivalente de 35 Bs. Podrá elegir el mes en el
+                que desea empezar el proceso de aporte (Solo Podrá elegir los 3 meses a partir del mes actual). Podrá
+                elegir el método
+                de pago de su elección la fecha de cobro en la que se esperara su aporte,
+                el medio por el cual desea recibir su recordatorio de aporte mensual. Así mismo, si desea recibir
+                noticias de los
+                últimos logros del Programa Semillas gracias a los aportes obtenidos.
+              </p>
+            </mat-card-content>
+            <div class="float-bottom">
+              <div class="row">
+                <mat-icon matSuffix>check_circle</mat-icon> Opcion 2
+              </div>
+            </div>
+          </mat-card>
+        </div>
       </div>
-      <div class="example-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
-        [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-        excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-        veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
-      </div>
-    </cdk-accordion-item>
-  </cdk-accordion>
+
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        DETALLES DEL APORTE
+      </mat-expansion-panel-header>
+      PARA PODER SER PARTE DEL PROGRAMA SEMILLAS, INGRESA Y ENVÍA TUS DATOS
+
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
+<!--
+<hr>
+-->

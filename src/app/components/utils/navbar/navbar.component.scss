@@ -6,7 +6,13 @@
   right:0;
   left: 0;
   z-index:80;
- padding-top: 20px;
+ padding-top: 10px;
+  padding-bottom: 0px;
+  /*height: 80px;*/
+}
+
+ul{
+  margin-bottom: 0;
 }
 .collapse{
   justify-content: right;
@@ -22,16 +28,17 @@
 .navbar-brand img{
   max-height: 55px;
   max-width: 200px;
+  padding: 0;
+  margin: 0;
 }
 
 mat-icon{
   color: aliceblue;
 }
-.leftmenu{
+.leftmenu, .navbar-toggler {
     justify-content: left;
-    margin: 0;
-    padding: 0;
-
+    /*padding: 4px 0px 0px 0px;*/
+  margin-top: 8px;
 }
 
 .nav1{
