@@ -1,0 +1,49 @@
+<div class="container">
+    <form [formGroup]="donationForm" class="row">
+    <div class="col-md-6">
+      <div>
+        <span>Monto de Aporte</span>
+        <mat-form-field appearance="outline">
+          <input required matInput formControlName="donationAmount" >
+          <mat-error *ngIf="donationAmount.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <span>Metodo de Pago</span>
+        <mat-form-field appearance="outline">
+          <input required matInput formControlName="paymentMethod" >
+          <mat-error *ngIf="paymentMethod.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+      <span>Dia del Mes</span>
+      <mat-form-field appearance="outline">
+        <input required matInput formControlName="monthDay" >
+        <mat-error *ngIf="monthDay.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </div>
+    </div>
+    <div class="col-md-6">
+      <div>
+        <span>Noticias</span>
+          <mat-radio-group color="warn" formControlName="getNews">
+            <mat-radio-button value="1">Option 1</mat-radio-button>
+            <mat-radio-button value="2">Option 2</mat-radio-button>
+          </mat-radio-group>
+      </div>
+      <div>
+        <span>Envío de noticias</span>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="newsMethod">
+            <mat-option *ngFor="let method of paymentMethods" [value]="method.value">
+              {{method.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    </form>
+</div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,27 +25,22 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-/*
-import {
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatMenuModule } from '@angular/material/menu';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
 
-  MatBadgeModule,
-  MatBottomSheetModule,
-  MatCheckboxModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatRippleModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSortModule,
-  MatTooltipModule,
-} from '@angular/material';
-
-*/
 import {
   GoogleLoginProvider,
 } from 'angularx-social-login';
@@ -65,6 +59,19 @@ import { CaruselComponent } from './components/libs/carusel/carusel.component';
 import { WantCollaborateComponent } from './components/proy/main/want-collaborate/want-collaborate.component';
 import { ListVoluntersComponent } from './components/admin/list-volunters/list-volunters.component';
 import { ListPendingApplicantsComponent } from './components/applicants/list-pending-applicants/list-pending-applicants.component';
+import { ListApprovedApplicantsComponent } from './components/applicants/list-approved-applicants/list-approved-applicants.component';
+import { ListRejectedApplicantsComponent } from './components/applicants/list-rejected-applicants/list-rejected-applicants.component';
+import { ListContributorsOfMomentComponent } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
+import { ViewVolunterDetailsComponent } from './components/admin/view-volunter-details/view-volunter-details.component';
+import { VolunterDialogComponent } from './components/admin/volunter-dialog/volunter-dialog.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { PersonalInformationComponent } from './components/proy/main/want-collaborate/personal-information/personal-information.component';
+import { DonationsTypesComponent } from './components/proy/main/want-collaborate/donations-types/donations-types.component';
+import { DonationsDetailsComponent } from './components/proy/main/want-collaborate/donations-details/donations-details.component';
+import { LogInComponent } from './components/admin/log-in/log-in.component';
+import { ConstantDonationComponent } from './components/proy/main/want-collaborate/donations-details/constant-donation/constant-donation.component';
+import { UniqueDonationComponent } from './components/proy/main/want-collaborate/donations-details/unique-donation/unique-donation.component';
+import { GenericTableComponent } from './components/libs/generic-table/generic-table.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +86,19 @@ import { ListPendingApplicantsComponent } from './components/applicants/list-pen
     CaruselComponent,
     WantCollaborateComponent,
     ListVoluntersComponent,
-    ListPendingApplicantsComponent
+    ListPendingApplicantsComponent,
+    ListApprovedApplicantsComponent,
+    ListRejectedApplicantsComponent,
+    ListContributorsOfMomentComponent,
+    ViewVolunterDetailsComponent,
+    VolunterDialogComponent,
+    PersonalInformationComponent,
+    DonationsTypesComponent,
+    DonationsDetailsComponent,
+    LogInComponent,
+    ConstantDonationComponent,
+    UniqueDonationComponent,
+    GenericTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +128,21 @@ import { ListPendingApplicantsComponent } from './components/applicants/list-pen
     MatCarouselModule.forRoot(),
     SocialLoginModule,
     CdkAccordionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule,
+    CdkStepperModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatBottomSheetModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatTooltipModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

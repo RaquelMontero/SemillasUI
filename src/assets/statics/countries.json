@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "value": "bolivia",
+      "name": "Bolivia"
+    },
+    {
+      "value": "argentina",
+      "name": "Argentina"
+    },
+    {
+      "value": "chile",
+      "name": "Chile"
+    },
+    {
+      "value": "brasil",
+      "name": "Brasil"
+    },
+    {
+      "value": "eeuu",
+      "name": "EEUU"
+    }
+  ]
+
+}

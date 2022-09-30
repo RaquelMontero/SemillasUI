@@ -15,25 +15,25 @@ export class VolunterService {
   private _listeners = new Subject<any>();
 
   listvolunters(): Observable<Volunter[]> {
-    return this.http.get<Volunter[]>(environment.backend);
+    return this.http.get<Volunter[]>(environment.backend + '/volunters');
   }
   getvolunter(volunterId: any): Observable<Volunter> {
-    return this.http.get<Volunter>(environment.backend + volunterId);
+    return this.http.get<Volunter>(environment.backend + '/volunters/' + volunterId);
   }
 
   addvolunter(volunter: Volunter): Observable<any> {
-    return this.http.post<any>(environment.backend, volunter);
+    return this.http.post<any>(environment.backend + '/volunters/', volunter);
   }
   updatevolunter(volunter: Volunter): Observable<any> {
-    return this.http.put<any>(environment.backend + '/' + volunter.volunter_id, volunter);
+    return this.http.put<any>(environment.backend + '/volunters/' + volunter.volunter_id, volunter);
   }
 
   exitvolunter(volunterId: any): Observable<any>{
     console.log(environment.backend + '/exit/' + volunterId);
-    return this.http.put<any>(environment.backend + '/exit/', volunterId);
+    return this.http.put<any>(environment.backend + '/volunters/exit/', volunterId);
   }
   listexitvolunter(): Observable<Volunter[]> {
-    return this.http.get<Volunter[]>(environment.backend + '/exitvolunters');
+    return this.http.get<Volunter[]>(environment.backend + '/volunters/exitvolunters');
   }
   listen(): Observable<any> {
     return this._listeners.asObservable();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-want-collaborate',
@@ -6,16 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./want-collaborate.component.scss']
 })
 export class WantCollaborateComponent implements OnInit {
-  avengers = [{ id: 1, naming: 'Captain America', city: 'US' },
-    { id: 2, naming: 'Thor' , city: 'Asgard'},
-    { id: 3, naming: 'Iron Man' , city: 'New York'},
-    ];
+  index = 0;
+  donationType;
+  showDonationTypes = false;
+  showDonationDetails = false;
 
+  applicantForm = this.fb.group({
+    name: ['', Validators.required],
+    lastname: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', Validators.required],
+    dni: ['', Validators.required],
+    birthdate: ['', Validators.required],
 
-  constructor() { }
-  items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-  expandedIndex = 0;
+  });
+  constructor(private fb: FormBuilder,
+  ) { }
   ngOnInit(): void {
   }
 
+
+  onSubmit(): void{
+    console.log('asdas', this.applicantForm.value);
+  }
+  move_tab(event): void{
+    console.log('event', event.tabAction);
+    this.index = event.tabAction.number;
+    this.donationType = event.tabAction.action;
+  }
 }

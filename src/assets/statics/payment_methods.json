@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "value": "codigoqr",
+      "name": "Código QR"
+    },
+    {
+      "value": "deposito",
+      "name": "Deposito Bancario"
+    },
+    {
+      "value": "transferencia",
+      "name": "Transferencia"
+    },
+    {
+      "value": "efectivo",
+      "name": "Efectivo"
+    }
+  ]
+
+}

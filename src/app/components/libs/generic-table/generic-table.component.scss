@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+}
+th{
+  background-color: #102027;
+  color: #FFFFFF;
+  letter-spacing: 0.05rem;
+  height: 1.875rem;
+  font-size: 14px;
+}
+td{
+  color: #333333;
+  font-size: 13px;
+  justify-content: center;
+  width: 25%;
+  letter-spacing: 0.06rem;
+}
+
+.on-view{
+  color: #4285F499;
+  width: 35px;
+  height: 35px;
+}
+.on-accept{
+  color: #A5D6A7;
+  width: 35px;
+  height: 35px;
+}
+.on-cancel{
+  color: #C01823B2;
+  width: 35px;
+  height: 35px;
+}

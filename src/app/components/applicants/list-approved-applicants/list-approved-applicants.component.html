@@ -1,0 +1,63 @@
+<div class="container">
+  <h2 class="header">APORTADORES</h2>
+  <hr>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: ana" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+         class="mat-elevation-z8 demo-table">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo Electronico </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="celular">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="send_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Envío </th>
+      <td mat-cell *matCellDef="let element">{{element.send_date | date:'mediumDate'}}</td>
+    </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="acepted_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de aceptado </th>
+      <td mat-cell *matCellDef="let element">{{element.acepted_date | date:'mediumDate'}}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="contributionType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Aporte </th>
+      <td mat-cell *matCellDef="let element"> {{element.contributionType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element" class="acciones_aspirantes">
+        <button mat-icon-button (click)="viewDetails(element)"  class="on-view">
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Nadie coincide con tu busqueda "{{input.value}}"</td>
+    </tr>
+  </table>
+</div>
