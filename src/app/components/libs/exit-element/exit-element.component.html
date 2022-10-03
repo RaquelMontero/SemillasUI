@@ -1,0 +1,13 @@
+<div mat-dialog-title class="header">{{data.title}}
+  <button class="close-buton" mat-icon-button
+          (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <div class="content">{{data.question}}</div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button (click)="close()" mat-flat-button>NO</button>
+  <button (click)="onSure()"  mat-flat-button color="primary">SÍ</button>
+</mat-dialog-actions>

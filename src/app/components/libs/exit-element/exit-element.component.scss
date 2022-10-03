@@ -1,0 +1,21 @@
+.header{
+  font-size: 14px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #2e7d32;
+  padding-bottom: 16px;
+}
+.content{
+  color: #333333;
+  font-size: 13px;
+  letter-spacing: 0.06rem;
+}
+.close-buton{
+  position: relative;
+  float: right;
+  top: -4px;
+  mat-icon{
+    color: #000000;
+  }
+}
