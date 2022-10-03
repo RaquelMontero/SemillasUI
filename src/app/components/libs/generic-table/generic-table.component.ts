@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Sort, SortDirection} from '@angular/material/sort';
 import {ColumnModel, TableModel} from '../../../models/column.model';
 import {cloneDeep, orderBy, sortBy} from 'lodash';
 import {tableSymbol} from '../../../models/decorator/column';
+import {Cell, TableRow} from '../../../models/DTO/Table.model.';
 
 @Component({
   selector: 'app-generic-table',
@@ -10,8 +11,9 @@ import {tableSymbol} from '../../../models/decorator/column';
   styleUrls: ['./generic-table.component.scss']
 })
 export class GenericTableComponent implements OnInit {
-  @Input() instance: any;
+  @Output() actionOutput = new EventEmitter<any>();
   @Input() inputData: any;
+  @Input() inputTable: TableRow[];
   data = [];
   originalData: any[] = [];
   tableModel: TableModel;
@@ -19,31 +21,24 @@ export class GenericTableComponent implements OnInit {
   displayedColumns: string[];
   constructor() { }
   ngOnInit(): void {
-    if (this.inputData && this.inputData.length > 0) {
-      this.data = cloneDeep(this.inputData);
+    if (this.inputTable && this.inputTable.length > 0) {
+      this.data = cloneDeep(this.inputTable);
       console.log('sdasdas', this.data[0]);
-      // this.tableModel = this.data[0][tableSymbol]
       this.parseFormat();
       this.buildColumns();
       if (!this.originalData.length) {
-        // Keep original order of data
         this.originalData = cloneDeep(this.data);
       }
     }
   }
 
   parseFormat(): void{
-    this.tableModel = { columns:
-        [ { key: 'maker', order: 0, propertyType: 'String', canSort: false },
-          { key: 'model', order: 1, propertyType: 'String', canSort: true },
-          { key: 'year', order: 0, propertyType: 'Number', canSort: true } ] };
+    const cols: any[] = [];
+    this.inputTable[0].cells.map((col: Cell) => {
+      cols.push(col.cellHeader);
+    });
+    this.tableModel = {columns: cols};
   }
-  /*
-  { "columns":
-  [ { "key": "maker", "order": 0, "propertyType": "String", "canSort": false },
-   { "key": "model", "order": 1, "propertyType": "String", "canSort": true },
-    { "key": "year", "order": 0, "propertyType": "Number", "canSort": true } ] }
-   */
   sortData(params: Sort): void {
     const direction: SortDirection = params.direction;
     this.data = direction
@@ -59,5 +54,9 @@ export class GenericTableComponent implements OnInit {
 
   private sortColumns(): void {
     this.columns = sortBy(this.columns, ['order']);
+  }
+
+  onclickevent(event): void {
+    this.actionOutput.emit(event);
   }
 }
