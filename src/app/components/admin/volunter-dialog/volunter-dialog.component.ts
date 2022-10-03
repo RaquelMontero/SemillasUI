@@ -1,8 +1,14 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {VolunterService} from '../../../services/volunter.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Volunter} from '../../../models/volunter.model';
+import {Role, Volunter} from '../../../models/volunter.model';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {DomainhelperService} from '../../../services/domainhelper.service';
 
 export interface DialogData {
   volunterId: string;
@@ -22,19 +28,23 @@ export class VolunterDialogComponent implements OnInit {
     phone: ['', Validators.required],
     dni: ['', Validators.required],
     birthdate: ['', Validators.required],
-
+    roles: null
   });
-
+  roles: Role[] = [];
+  allRoles: Role[] = [];
   volunter: Volunter = null;
   title: string;
+  filteredRoles: Role[] = [];
+
   constructor(public dialogRef: MatDialogRef<VolunterDialogComponent>,
               private volunterService: VolunterService,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private fb: FormBuilder,
+              private domainhelperService: DomainhelperService
   ) { }
 
   ngOnInit(): void {
-
+    this.getRoles();
     if (this.data.edit){
       this.getVolunter();
     }
@@ -44,7 +54,6 @@ export class VolunterDialogComponent implements OnInit {
     this.volunterService.getvolunter(this.data.volunterId).pipe()
       .subscribe((response) => {
       this.volunter = response;
-      console.log('voluner', this.volunter);
       this.volunterform.patchValue({
         name: this.volunter.name,
         lastname: this.volunter.lastname,
@@ -53,26 +62,27 @@ export class VolunterDialogComponent implements OnInit {
         dni: this.volunter.dni ? this.volunter.dni : '',
         birthdate: new Date(this.volunter.birthdate)
       });
-      console.log( ' volunterform ', this.volunterform.value);
+      this.roles = this.volunter.roles;
+      this.filterRoles();
     });
-    console.log('data', this.data);
   }
   close(): void {
     this.dialogRef.close();
   }
   getTitle(): void{
-    this.title = this.data.edit ? 'EDITAR VOLUNTARIO' : 'REGISTRAR VOLUNTARIO';
+    this.title = this.data.edit ? 'EDITAR RESPONSABLE' : 'REGISTRAR RESPONSABLE';
   }
 
   onSubmit(): void{
    if ( !this.data.edit ) {
      const data = {
-       person: this.volunterform.value,
-       entry_date: new Date()
+       user: this.volunterform.value,
+       entry_date: new Date(),
+       roles: this.roles
      };
      this.volunterService.addvolunter(data)
-       .subscribe((data) => {
-         console.log('sucess', this.volunterform.value);
+       .subscribe(( data ) => {
+         this.dialogRef.close('saved');
        }, (error) => {
          console.log('error', this.volunterform.value);
        });
@@ -82,7 +92,6 @@ export class VolunterDialogComponent implements OnInit {
     if (this.volunterform.get('name').hasError('required')) {
       return 'Debes Ingresar el nombre';
     }
-    // return this.volunterform.get('name').hasError('email') ? 'Not a valid email' : '';
   }
   getErrorMessageLastname(): any {
     if (this.volunterform.get('lastname').hasError('required')){
@@ -94,9 +103,6 @@ export class VolunterDialogComponent implements OnInit {
       return 'Debes Ingresar el Correo';
     }
     return this.email.hasError('email') ? 'Debes Ingresar un Correo valido' : '';
-    /*if (this.volunterform.get('email').hasError('email')){
-      return 'Debes Ingresar un Correo valido';
-    }*/
   }
 
   getErrorMessagePhone(): any {
@@ -123,5 +129,31 @@ export class VolunterDialogComponent implements OnInit {
   }
   get dni(): any {
     return this.volunterform.get('dni');
+  }
+  get confirmButton(): string{
+    return this.data.edit ? 'GUARDAR EDICIÓN' : 'GUARDAR RESPONSABLE';
+  }
+  getRoles(): void{
+    this.domainhelperService.getAllRoles()
+      .subscribe((value) => {
+        this.allRoles = value;
+        this.filteredRoles = value;
+      });
+  }
+  remove(role): void{
+    this.roles = this.roles.filter(r => r.roleId !== role.roleId);
+    this.filteredRoles.push(role);
+    console.log('r', role, this.roles);
+  }
+
+  selected(event): void {
+    this.roles.push(event.option.value);
+    const roleId = event.option.value.roleId;
+    this.filteredRoles = this.filteredRoles.filter(r => r.roleId !== roleId);
+  }
+  filterRoles(): void{
+    this.roles.map((role)=>{
+      this.filteredRoles = this.filteredRoles.filter(r => r.roleId !== role.roleId);
+    });
   }
 }

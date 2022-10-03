@@ -1,57 +1,18 @@
 mat-form-field{
-  width: 90%;
+  width: 100%;
   letter-spacing: 0.05rem;
 }
 .accept-bt{
- // background-color: #C02126E5;
   color: white;
   letter-spacing: 0.05rem;
 }
-.col-md-6{
+.col-md-6, .col-md-12{
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
 .row{
   margin-bottom: 10px;
-}
-.text-left{
-  font-size: 12px;
-  font-family: 'Arial', sans-serif;
-  letter-spacing: 0.05rem;
-}
-
-.ui.button{
-  background-color: #C02126E5;
-  opacity: 60%;
-  color: white;
-  margin-left: 5px;
-}
-
-.center-button{
-  margin-top: 100px;
-  text-align: center;
-}
-
-.ui.form .field>label{
-  color: #62757F;
-  font-family: 'Arial', sans-serif;
-  letter-spacing: 0.05rem;
-}
-
-h4.ui.header{
-  letter-spacing: 0.1rem;
-  font-family: 'Cinzel', serif;
-  font-size: 16px;
-  padding-bottom: 10px;
-}
-
-
-.center{
-  text-align: center;
-  letter-spacing: 0.1rem;
-  font-size: 18px;
-  font-weight: 500;
 }
 
 .close-buton{
@@ -62,13 +23,37 @@ h4.ui.header{
     color: #000000;
   }
 }
-mat-dialog-content{
-  padding: 16px 28px;
-}
-.mat-divider.mat-divider-inset{
-  margin: 0 auto;
-  width: 95%;
-}
+
 .mat-dialog-actions{
   padding: 20px;
+}
+
+.header{
+  font-size: 14px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #2e7d32;
+  width: 95%;
+  padding-bottom: 16px;
+  margin: 0 auto;
+}
+.content{
+  color: #333333;
+  font-size: 13px;
+  letter-spacing: 0.06rem;
+}
+.close-buton{
+  position: relative;
+  float: right;
+  top: -4px;
+  mat-icon{
+    color: #000000;
+  }
+}
+
+mat-dialog-content{
+  padding-top: 24px;
+  padding-left: 38px;
+  padding-right: 38px;
 }
