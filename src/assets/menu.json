@@ -2,12 +2,12 @@
   {
     "text": "Aportadores",
     "icon": "people",
-    "routerLink": "/customer/manage"
+    "routerLink": "admin/aportadores"
   },
   {
     "text": "Aportadores del día",
     "icon": "supervised_user_circle",
-    "routerLink": "/supplier/manage"
+    "routerLink": "admin/aportadores/aportadoresDelDia"
   },
   {
     "text": "Aspirantes",
@@ -16,12 +16,12 @@
       {
         "text": "Ver Aspirantes",
         "icon": "category",
-        "routerLink": "/product/category"
+        "routerLink": "admin/aspirantes"
       },
       {
         "text": "Ver aspirantes Rechazados",
         "icon": "layers",
-        "routerLink": "/product/sub-category"
+        "routerLink": "admin/aspirantes/rechazados"
       }
     ]
   },
@@ -37,7 +37,7 @@
       {
         "text": "Ver Responsables",
         "icon": "layers",
-        "routerLink": "/product/sub-category"
+        "routerLink": "admin/ver-voluntarios"
       },
       {
         "text": "Responsables Inactivos",

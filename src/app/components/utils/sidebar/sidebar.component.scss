@@ -6,6 +6,10 @@
   border: 1px solid #555;
 }
 
+.active, .active:hover{
+  background-color: #049B2D;
+
+}
 .mat-nav-list .mat-list-item{
   color: #343A40;
   font-size: 13px;

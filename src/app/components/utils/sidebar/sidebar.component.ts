@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 interface IMenu {
   text: string;
   icon: string;
-  routerLink?: string
-  children?: IMenu[]
+  routerLink?: string;
+  children?: IMenu[];
 }
 /*
 const menu: IMenu[] = [
@@ -109,7 +109,7 @@ const content = require('../../../../assets/menu.json');
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  @Input() open
+  @Input() open: any;
   events: string[] = [];
   opened: boolean;
   menuList: IMenu[];
@@ -119,11 +119,8 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.menuList = menu
-    this.menuList = content
-    console.log(content)
-
-
-
+    // this.menuList = menu
+    this.menuList = content;
+    console.log(content);
   }
 }

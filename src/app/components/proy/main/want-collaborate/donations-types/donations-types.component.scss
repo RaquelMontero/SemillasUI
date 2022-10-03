@@ -1,0 +1,54 @@
+.positive{
+  background-color: #21ba45;
+  color: #fff;
+  width: 100%;
+}
+
+.positive:hover{
+  color: white;
+  background-color: #1b7549;
+}
+
+.donations{
+  padding: 18px;
+  width: 100%;
+}
+.col-md-6{
+  display: flex;
+  justify-content: center;
+}
+mat-card{
+    justify-content: center;
+    width: 85%;
+    height: 400px;
+}
+
+.float-bottom{
+  display: flex;
+  position: absolute;
+  width: 80%;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+.float-bottom mat-icon{
+  color: #00A846;
+  letter-spacing: 0.1rem;
+}
+
+.next-button{
+  padding-top: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button{
+    width: 200px;
+  }
+}
+
+p{
+  color: #333333;
+  font-size: 13px;
+  justify-content: center;
+  letter-spacing: 0.06rem;
+}

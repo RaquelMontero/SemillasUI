@@ -1,0 +1,8 @@
+<div class="details">
+  <div *ngIf="donationType==='CONSTANT'">
+    <app-constant-donation></app-constant-donation>
+  </div>
+  <div *ngIf="donationType==='UNIQUE'">
+    <app-unique-donation></app-unique-donation>
+  </div>
+</div>

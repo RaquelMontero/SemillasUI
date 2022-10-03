@@ -1,0 +1,67 @@
+.container{
+  margin-top: 100px;
+  max-width: 70%;
+}
+
+.header {
+  letter-spacing: 0.1rem;
+  /*  font-family: 'Cinzel', serif;*/
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th{
+  background-color: #102027;
+  color: #FFFFFF;
+  letter-spacing: 0.05rem;
+  height: 1.875rem;
+  font-size: 14px;
+}
+td{
+  color: #333333;
+  font-size: 13px;
+  justify-content: center;
+  width: 25%;
+  letter-spacing: 0.06rem;
+}
+
+
+.fas.fa-check-circle{
+  color: #A5D6A7;
+}
+
+.far.fa-times-circle{
+  color: #C01823B2;
+}
+
+.far.fa-eye{
+  color: #4285F499;
+}
+
+.mat-column-email{
+  width: 15%;
+}
+.mat-column-name{
+  width: 25%;
+}
+
+.mat-column-acciones{
+  width: 3%;
+  text-align: center}
+
+.mat-column-contributionType,
+.mat-column-celular,
+.mat-column-acepted_date,
+.mat-column-send_date {
+  width: 10%;
+  /*border-right: 1px solid currentColor;*/
+}
+
+.on-view{
+  color: #A5D6A7;
+}

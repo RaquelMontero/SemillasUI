@@ -1,0 +1,54 @@
+<div class="donations">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <mat-card>
+          <mat-card-title>
+            <button (click)="goDetails('UNIQUE')"
+                    mat-button class="positive">APORTE ÚNICO</button>
+          </mat-card-title>
+          <mat-card-content>
+            <p>Consiste en realizar un aporte
+              de más de 25$ o su equivalente de 175 Bs.
+              Podrá elegir el método de pago de su elección y el día del mes actual en el que realizará su aporte.
+              Así mismo, si desea
+              recibir noticias de los últimos logros del Programa Semillas gracias a los aportes obtenidos.
+            </p>
+          </mat-card-content>
+          <div class="float-bottom">
+            <div>
+              <mat-icon matSuffix>check_circle</mat-icon>
+            </div>
+            <div> Opcion 1</div>
+          </div>
+        </mat-card>
+    </div>
+    <div class="col-md-6">
+       <mat-card>
+         <mat-card-title>
+           <button (click)="goDetails('CONSTANT')" mat-button  class="positive">APORTE
+             CONSTANTE</button>
+         </mat-card-title>
+         <mat-card-content>
+           <p>Consiste en realizar un aporte mensual de más
+             de 5 $ por la alimentación de un niño o su equivalente de 35 Bs. Podrá elegir el mes en el
+             que desea empezar el proceso de aporte (Solo Podrá elegir los 3 meses a partir del mes actual). Podrá
+             elegir el método
+             de pago de su elección la fecha de cobro en la que se esperara su aporte,
+             el medio por el cual desea recibir su recordatorio de aporte mensual. Así mismo, si desea recibir
+             noticias de los
+             últimos logros del Programa Semillas gracias a los aportes obtenidos.
+           </p>
+         </mat-card-content>
+         <div class="float-bottom">
+           <div>
+             <mat-icon matSuffix>check_circle</mat-icon>
+           </div>
+           <div>Opcion 2</div>
+         </div>
+       </mat-card>
+    </div>
+  </div>
+</div>
+<div class="next-button">
+  <button mat-raised-button color="primary" (click)="next()">VOLVER</button>
+</div>
