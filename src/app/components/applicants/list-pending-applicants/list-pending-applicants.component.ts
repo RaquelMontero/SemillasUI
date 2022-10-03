@@ -10,8 +10,8 @@ import {Car} from '../../../models/Car';
 
 const applicants: Applicant[] = [];
 
-const list = [{id: 1,
-  maker: 'Chevrolet', model: 'Sportvan G20', year: 1993},
+const list = [
+  {id: 1, maker: 'Chevrolet', model: 'Sportvan G20', year: 1993},
   {id: 2, maker: 'Jeep', model: 'Patriot', year: 2007},
   {id: 3, maker: 'Ferrari', model: '612 Scaglietti', year: 2008},
   {id: 4, maker: 'Ford', model: 'Thunderbird', year: 1995},

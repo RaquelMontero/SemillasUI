@@ -8,7 +8,22 @@
 <div class="container">
   <h2 class="header">RESPONSABLES</h2>
   <hr>
-  <table class="ui striped table">
+  <ng-container *ngIf="!loadingVolunteers else isloading">
+    <app-generic-table
+      *ngIf="volunteers"
+      [inputTable]="volunteers.rows"
+      (actionOutput)="outputEvent($event)">
+    </app-generic-table>
+  </ng-container>
+  <ng-template #isloading>
+    <mat-spinner class="loading">
+    </mat-spinner>
+
+  </ng-template>
+</div>
+
+<!--
+ <table class="ui striped table">
     <thead>
     <tr>
       <th>Responsable</th>
@@ -44,4 +59,4 @@
     </tr>
     </tbody>
   </table>
-</div>
+ -->

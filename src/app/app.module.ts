@@ -72,6 +72,8 @@ import { LogInComponent } from './components/admin/log-in/log-in.component';
 import { ConstantDonationComponent } from './components/proy/main/want-collaborate/donations-details/constant-donation/constant-donation.component';
 import { UniqueDonationComponent } from './components/proy/main/want-collaborate/donations-details/unique-donation/unique-donation.component';
 import { GenericTableComponent } from './components/libs/generic-table/generic-table.component';
+import { ExitElementComponent } from './components/libs/exit-element/exit-element.component';
+import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +101,8 @@ import { GenericTableComponent } from './components/libs/generic-table/generic-t
     ConstantDonationComponent,
     UniqueDonationComponent,
     GenericTableComponent,
+    ExitElementComponent,
+    MessageSnackBarComponent,
   ],
   imports: [
     BrowserModule,
