@@ -1,0 +1,59 @@
+mat-form-field{
+  width: 100%;
+  letter-spacing: 0.05rem;
+}
+.accept-bt{
+  color: white;
+  letter-spacing: 0.05rem;
+}
+.col-md-6, .col-md-12{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.row{
+  margin-bottom: 10px;
+}
+
+.close-buton{
+  position: relative;
+  float: right;
+  top: -4px;
+  mat-icon{
+    color: #000000;
+  }
+}
+
+.mat-dialog-actions{
+  padding: 20px;
+}
+
+.header{
+  font-size: 14px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #2e7d32;
+  width: 95%;
+  padding-bottom: 16px;
+  margin: 0 auto;
+}
+.content{
+  color: #333333;
+  font-size: 13px;
+  letter-spacing: 0.06rem;
+}
+.close-buton{
+  position: relative;
+  float: right;
+  top: -4px;
+  mat-icon{
+    color: #000000;
+  }
+}
+
+mat-dialog-content{
+  padding-top: 24px;
+  padding-left: 38px;
+  padding-right: 38px;
+}

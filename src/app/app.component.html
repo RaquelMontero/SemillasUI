@@ -1,2 +1,8 @@
-<sml-navbar></sml-navbar>
+<sml-navbar [inputSideNav]="sidenav"></sml-navbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" closed>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+</mat-sidenav-container>
 <router-outlet></router-outlet>

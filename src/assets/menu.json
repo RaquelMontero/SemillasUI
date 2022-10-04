@@ -1,0 +1,91 @@
+[
+  {
+    "text": "Aportadores",
+    "icon": "people",
+    "routerLink": "admin/aportadores"
+  },
+  {
+    "text": "Aportadores del día",
+    "icon": "supervised_user_circle",
+    "routerLink": "admin/aportadores/aportadoresDelDia"
+  },
+  {
+    "text": "Aspirantes",
+    "icon": "inventory_2",
+    "children": [
+      {
+        "text": "Ver Aspirantes",
+        "icon": "category",
+        "routerLink": "admin/aspirantes"
+      },
+      {
+        "text": "Ver aspirantes Rechazados",
+        "icon": "layers",
+        "routerLink": "admin/aspirantes/rechazados"
+      }
+    ]
+  },
+  {
+    "text": "Responsables",
+    "icon": "inventory_2",
+    "children": [
+      {
+        "text": "Registrar Responsable",
+        "icon": "category",
+        "routerLink": "/product/category"
+      },
+      {
+        "text": "Ver Responsables",
+        "icon": "layers",
+        "routerLink": "admin/ver-voluntarios"
+      },
+      {
+        "text": "Responsables Inactivos",
+        "icon": "layers",
+        "routerLink": "/product/sub-category"
+      }
+    ]
+  },
+  {
+    "text": "Asignar Responsables",
+    "icon": "layers",
+    "routerLink": "/product/sub-category"
+  },
+  {
+    "text": "Seguimiento",
+    "icon": "inventory_2",
+    "children": [
+      {
+        "text": "Crear Mes",
+        "icon": "category",
+        "routerLink": "/product/category"
+      },
+      {
+        "text": "Seguimiento diarío",
+        "icon": "layers",
+        "routerLink": "/product/sub-category"
+      }
+    ]
+  },
+  {
+    "text": "Envío Souvenirs",
+    "icon": "inventory_2",
+    "children": [
+      {
+        "text": "Seleccionar beneficiados",
+        "icon": "category",
+        "routerLink": "/product/category"
+      },
+      {
+        "text": "Ver beneficiados",
+        "icon": "layers",
+        "routerLink": "/product/sub-category"
+      }
+    ]
+  },
+  {
+    "text": "Registrar Aportadores",
+    "icon": "layers",
+    "routerLink": "/product/sub-category"
+  }
+]
