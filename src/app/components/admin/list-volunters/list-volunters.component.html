@@ -4,8 +4,11 @@
           matTooltip="REGISTRAR NUEVO VOLUNTARIO">
     <mat-icon>person_add</mat-icon>
   </button>
+  <button mat-raised-button color="warn" (click)="openPDF()">Download PDF</button>
+  <button mat-raised-button color="accent" (click)="openPDF()">Download PDF</button>
+
 </div>
-<div class="container">
+<div class="container" id="htmlData">
   <h2 class="header">RESPONSABLES</h2>
   <hr>
   <ng-container *ngIf="!loadingVolunteers else isloading">
@@ -21,42 +24,3 @@
 
   </ng-template>
 </div>
-
-<!--
- <table class="ui striped table">
-    <thead>
-    <tr>
-      <th>Responsable</th>
-      <th>Correo</th>
-      <th>Responsabilidades</th>
-      <th>Ingreso</th>
-      <th>Acciones</th>
-
-    </tr>
-    </thead>
-    <tbody *ngFor="let volunter of volunters">
-    <tr>
-      <td>{{volunter.name}} {{volunter.lastname}}</td>
-      <td>{{volunter.email}}</td>
-      <td>
-        <mat-chip-list aria-label="Fish selection">
-          <div *ngFor="let role of volunter.roles">
-            <mat-chip color="accent" selected>{{role.role_name}}</mat-chip>
-          </div>
-        </mat-chip-list>
-      </td>
-      <td>{{volunter.entry_date | date:'mediumDate'}}</td>
-      <td>
-        <button  mat-icon-button class="on-edit" (click)="onedit(volunter)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button  mat-icon-button class="on-delete" (click)="ondelete(volunter)"><mat-icon>delete</mat-icon>
-        </button>
-        <button  mat-icon-button class="on-view" (click)="onview(volunter)">
-          <mat-icon>remove_red_eye</mat-icon>
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
- -->

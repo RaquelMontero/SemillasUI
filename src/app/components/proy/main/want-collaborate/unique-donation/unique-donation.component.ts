@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {ApplicantService} from '../../../../../../services/applicant.service';
+import {ApplicantService} from '../../../../../services/applicant.service';
 
 @Component({
   selector: 'app-unique-donation',
@@ -8,6 +8,8 @@ import {ApplicantService} from '../../../../../../services/applicant.service';
   styleUrls: ['./unique-donation.component.scss']
 })
 export class UniqueDonationComponent implements OnInit {
+  @Output() emitter: EventEmitter<{tabAction}> = new EventEmitter();
+
   donationForm = this.formBuilder.group({
     donationAmount: ['', Validators.required],
     paymentMethod: ['', Validators.required],
@@ -49,5 +51,8 @@ export class UniqueDonationComponent implements OnInit {
       .subscribe((data) => {
         this.paymentMethods = data.data;
       });
+  }
+  next(): void {
+    this.emitter.emit({tabAction: {number: 1}}) ;
   }
 }

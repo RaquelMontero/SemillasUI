@@ -14,10 +14,12 @@
         ></app-donations-types>
       </mat-tab>
       <mat-tab label="DETALLES DEL APORTE">
-        <app-donations-details
-          [donationType]="donationType"
-          (emitter)="move_tab($event)"
-        ></app-donations-details>
+        <ng-container *ngIf="donationType==='CONSTANT'">
+          <app-constant-donation></app-constant-donation>
+        </ng-container>
+        <ng-container *ngIf="donationType==='UNIQUE'">
+          <app-unique-donation></app-unique-donation>
+        </ng-container>
       </mat-tab>
     </mat-tab-group>
   </mat-card>

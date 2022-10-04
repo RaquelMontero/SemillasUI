@@ -67,10 +67,9 @@ import { VolunterDialogComponent } from './components/admin/volunter-dialog/volu
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PersonalInformationComponent } from './components/proy/main/want-collaborate/personal-information/personal-information.component';
 import { DonationsTypesComponent } from './components/proy/main/want-collaborate/donations-types/donations-types.component';
-import { DonationsDetailsComponent } from './components/proy/main/want-collaborate/donations-details/donations-details.component';
 import { LogInComponent } from './components/admin/log-in/log-in.component';
-import { ConstantDonationComponent } from './components/proy/main/want-collaborate/donations-details/constant-donation/constant-donation.component';
-import { UniqueDonationComponent } from './components/proy/main/want-collaborate/donations-details/unique-donation/unique-donation.component';
+import { ConstantDonationComponent } from './components/proy/main/want-collaborate/constant-donation/constant-donation.component';
+import { UniqueDonationComponent } from './components/proy/main/want-collaborate/unique-donation/unique-donation.component';
 import { GenericTableComponent } from './components/libs/generic-table/generic-table.component';
 import { ExitElementComponent } from './components/libs/exit-element/exit-element.component';
 import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
@@ -96,7 +95,6 @@ import { MessageSnackBarComponent } from './components/libs/message-snack-bar/me
     VolunterDialogComponent,
     PersonalInformationComponent,
     DonationsTypesComponent,
-    DonationsDetailsComponent,
     LogInComponent,
     ConstantDonationComponent,
     UniqueDonationComponent,

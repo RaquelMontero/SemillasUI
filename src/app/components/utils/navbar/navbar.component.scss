@@ -1,13 +1,13 @@
 .navbar{
   display: flex;
-  background-color: #00A846;
+  background-color: /*#00A846*/#2e7d32;
   color: white;
   position: fixed;
   right:0;
   left: 0;
   z-index:80;
- padding-top: 10px;
-  padding-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 5px;
   /*height: 80px;*/
 }
 
@@ -42,7 +42,7 @@ mat-icon{
 }
 
 .nav1{
-    background-color: #343A40;
+    background-color: #212121;
     max-height: 20px;
     height: 20px;
     border: none;
