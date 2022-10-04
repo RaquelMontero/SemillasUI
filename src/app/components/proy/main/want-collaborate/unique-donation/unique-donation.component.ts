@@ -18,8 +18,14 @@ export class UniqueDonationComponent implements OnInit {
     newsMethod: ['', Validators.required],
   });
   paymentMethods: [];
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
   constructor(private formBuilder: FormBuilder,
-              private applicantService: ApplicantService) { }
+              private applicantService: ApplicantService) {
+  }
 
   ngOnInit(): void {
     this.getPaymentMethods();

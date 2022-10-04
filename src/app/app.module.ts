@@ -73,6 +73,7 @@ import { UniqueDonationComponent } from './components/proy/main/want-collaborate
 import { GenericTableComponent } from './components/libs/generic-table/generic-table.component';
 import { ExitElementComponent } from './components/libs/exit-element/exit-element.component';
 import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
+import { TrackingManagementComponent } from './components/admin/tracking-management/tracking-management.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { MessageSnackBarComponent } from './components/libs/message-snack-bar/me
     GenericTableComponent,
     ExitElementComponent,
     MessageSnackBarComponent,
+    TrackingManagementComponent,
   ],
   imports: [
     BrowserModule,
