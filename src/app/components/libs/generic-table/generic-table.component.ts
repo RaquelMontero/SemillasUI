@@ -41,6 +41,7 @@ export class GenericTableComponent implements OnInit {
   }
   sortData(params: Sort): void {
     const direction: SortDirection = params.direction;
+    console.log(direction, 'direction');
     this.data = direction
       ? orderBy(this.data, [params.active], [direction])
       : this.originalData;

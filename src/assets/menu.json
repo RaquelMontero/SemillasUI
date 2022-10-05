@@ -1,17 +1,7 @@
 [
   {
-    "text": "Aportadores",
-    "icon": "people",
-    "routerLink": "admin/aportadores"
-  },
-  {
-    "text": "Aportadores del día",
+    "text": "Semillas",
     "icon": "supervised_user_circle",
-    "routerLink": "admin/aportadores/aportadoresDelDia"
-  },
-  {
-    "text": "Aspirantes",
-    "icon": "inventory_2",
     "children": [
       {
         "text": "Ver Aspirantes",
@@ -22,6 +12,16 @@
         "text": "Ver aspirantes Rechazados",
         "icon": "layers",
         "routerLink": "admin/aspirantes/rechazados"
+      },
+      {
+        "text": "Semillas Oficiales",
+        "icon": "layers",
+        "routerLink": "admin/aportadores"
+      },
+      {
+        "text": "Registrar Semilla",
+        "icon": "layers",
+        "routerLink": "/admin/new-seed"
       }
     ]
   },
@@ -47,18 +47,13 @@
     ]
   },
   {
-    "text": "Asignar Responsables",
-    "icon": "layers",
-    "routerLink": "/product/sub-category"
-  },
-  {
     "text": "Seguimiento",
     "icon": "inventory_2",
     "children": [
       {
-        "text": "Crear Mes",
-        "icon": "category",
-        "routerLink": "/product/category"
+        "text": "Asignar Responsables",
+        "icon": "layers",
+        "routerLink": "/product/sub-category"
       },
       {
         "text": "Seguimiento diarío",
@@ -82,10 +77,5 @@
         "routerLink": "/product/sub-category"
       }
     ]
-  },
-  {
-    "text": "Registrar Aportadores",
-    "icon": "layers",
-    "routerLink": "/product/sub-category"
   }
 ]

@@ -31,14 +31,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import {MatSortModule} from '@angular/material/sort';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
 
 import {
@@ -64,7 +64,7 @@ import { ListRejectedApplicantsComponent } from './components/applicants/list-re
 import { ListContributorsOfMomentComponent } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
 import { ViewVolunterDetailsComponent } from './components/admin/view-volunter-details/view-volunter-details.component';
 import { VolunterDialogComponent } from './components/admin/volunter-dialog/volunter-dialog.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalInformationComponent } from './components/proy/main/want-collaborate/personal-information/personal-information.component';
 import { DonationsTypesComponent } from './components/proy/main/want-collaborate/donations-types/donations-types.component';
 import { LogInComponent } from './components/admin/log-in/log-in.component';
@@ -74,6 +74,7 @@ import { GenericTableComponent } from './components/libs/generic-table/generic-t
 import { ExitElementComponent } from './components/libs/exit-element/exit-element.component';
 import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
 import { TrackingManagementComponent } from './components/admin/tracking-management/tracking-management.component';
+import { CreateSeedComponent } from './components/admin/create-seed/create-seed.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { TrackingManagementComponent } from './components/admin/tracking-managem
     ExitElementComponent,
     MessageSnackBarComponent,
     TrackingManagementComponent,
+    CreateSeedComponent,
   ],
   imports: [
     BrowserModule,

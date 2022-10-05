@@ -11,6 +11,7 @@ import {ListRejectedApplicantsComponent} from './components/applicants/list-reje
 import {
   ListContributorsOfMomentComponent
 } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
+import {CreateSeedComponent} from './components/admin/create-seed/create-seed.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,9 @@ const routes: Routes = [
   },
   {
     path: 'admin/aportadores/aportadoresDelDia', component: ListContributorsOfMomentComponent
+  },
+  {
+    path: 'admin/new-seed', component: CreateSeedComponent
   }
 ];
 
