@@ -26,13 +26,13 @@ export class ApplicantService {
   }
 
 
-  createApplicant(applicant: Applicant): Observable<PostMessage> {
+  createUniqueApplicant(applicant: Applicant): Observable<PostMessage> {
     return this.http.post<PostMessage>(environment.backend + '/seeds/applicants/unique', applicant
     );
   }
 
   addconstantapplicant(applicant: Applicant): Observable<any>  {
-    return this.http.post<any>(environment.backend + '/applicants/constant', applicant);
+    return this.http.post<any>(environment.backend + '/seeds/applicants/constant', applicant);
   }
 
   rejectapplicant(reason: any, applicantId: number): Observable<any> {
@@ -49,17 +49,6 @@ export class ApplicantService {
 
   listaportadores(): Observable<any> {
     return this.http.get<any[]>(environment.backend + '/applicants/acepted');
-  }
-
-  getCountries(): Observable<ComboResponse> {
-   return this.http.get<ComboResponse>('./assets/statics/countries.json');
-  }
-
-  getPaymentMethods(): Observable<ComboResponse> {
-    return this.http.get<ComboResponse>('./assets/statics/payment_methods.json');
-  }
-  getNewTypes(): Observable<ComboResponse> {
-    return this.http.get<ComboResponse>('./assets/statics/news_methods.json');
   }
   // tslint:disable-next-line:typedef
   filter(filterBy: string) {

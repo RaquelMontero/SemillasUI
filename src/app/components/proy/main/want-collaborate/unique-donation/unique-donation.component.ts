@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {FormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../../services/applicant.service';
 import {ComboElement} from '../../../../../models/DTO/Utils.model';
+import {UtilService} from '../../../../../services/util.service';
 
 @Component({
   selector: 'app-unique-donation',
@@ -29,19 +30,19 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
   };
 
   constructor(private formBuilder: FormBuilder,
-              private applicantService: ApplicantService) {
+              private applicantService: ApplicantService,
+              private utilsService: UtilService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('response', this.personalInformation);
-
+    /*console.log('response', this.personalInformation);
     const {country, city, address, ...user} = this.personalInformation;
     this.contributor = {
       country,
       city,
       address,
       user
-    };
+    };*/
   }
 
   ngOnInit(): void {
@@ -79,13 +80,13 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
     }
   }
   getPaymentMethods(): void{
-    this.applicantService.getPaymentMethods()
+    this.utilsService.getPaymentMethods()
       .subscribe((data) => {
         this.paymentMethods = data.data;
       });
   }
   getNewsTypes(): void{
-    this.applicantService.getNewTypes()
+    this.utilsService.getNewTypes()
       .subscribe((data) => {
         this.newsTypes = data.data;
       });
@@ -110,7 +111,7 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
     const payload = this.donationForm.value;
     payload.contributor = this.contributor;
     console.log('response', payload, this.personalInformation);
-    this.applicantService.createApplicant(payload)
+    this.applicantService.createUniqueApplicant(payload)
       .subscribe((response) => {
         console.log('response', response);
         this.sendingData = false;

@@ -3,12 +3,12 @@
     {
       "value": "CORREO_ELECTRONICO",
       "selected": true,
-      "name": "Correo electronico"
+      "name": "CORREO ELECTRONICO"
     },
     {
       "value": "MENSAJE_WHATSSAP",
       "selected": false,
-      "name": "Mensaje Whatssap"
+      "name": "MENSAJE DE WHATSAPP"
     }
   ]
 

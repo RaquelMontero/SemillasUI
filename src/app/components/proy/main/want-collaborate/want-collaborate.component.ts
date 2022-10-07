@@ -8,7 +8,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class WantCollaborateComponent implements OnInit {
   index = 0;
-  donationType;
+  donationType = null;
   showDonationTypes = false;
   showDonationDetails = false;
 
@@ -38,5 +38,10 @@ export class WantCollaborateComponent implements OnInit {
 
   getPersonalInfo(event){
     this.applicantForm = event;
+  }
+
+  onTabChanged(evento): void{
+    console.log('changes');
+    this.index = evento.index;
   }
 }

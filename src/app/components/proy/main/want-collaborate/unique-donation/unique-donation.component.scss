@@ -9,7 +9,8 @@
 }
 mat-form-field{
   width: 100%;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
+  letter-spacing: 0.5px;
 }
 .donations{
    padding: 8px;
@@ -33,11 +34,11 @@ input.example-right-align {
 }
 
 .views-fields{
-  padding-top: 24px;
-  padding-left: 24px;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 .mat-radio-button{
-  width: 100%;
+  width: 20%;
   padding-top: 12px;
 }
 .back{
@@ -47,4 +48,9 @@ input.example-right-align {
 .subtittle{
   font-weight: 500;
   letter-spacing: 0.5px;
+  width: 100%;
+}
+
+mat-error{
+  color: 	#ad2831;
 }

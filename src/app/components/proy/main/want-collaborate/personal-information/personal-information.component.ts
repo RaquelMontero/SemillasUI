@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../../services/applicant.service';
 import {ComboElement} from '../../../../../models/DTO/Utils.model';
+import {UtilService} from '../../../../../services/util.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -25,7 +26,8 @@ export class PersonalInformationComponent implements OnInit {
 
   });
   constructor(private formBuilder: FormBuilder,
-              private applicantService: ApplicantService) { }
+              private applicantService: ApplicantService,
+              private utilsService: UtilService) { }
 
   ngOnInit(): void {
     this.getCountries();
@@ -88,7 +90,7 @@ export class PersonalInformationComponent implements OnInit {
     this.emitter.emit({tabAction: {number: 1}}) ;
   }
   getCountries(): void{
-   this.applicantService.getCountries()
+   this.utilsService.getCountries()
      .subscribe((data) => {
        this.countries = data.data;
      });
