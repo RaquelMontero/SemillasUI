@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../../services/applicant.service';
+import {ComboElement} from '../../../../../models/DTO/Utils.model';
 
 @Component({
   selector: 'app-personal-information',
@@ -9,16 +10,17 @@ import {ApplicantService} from '../../../../../services/applicant.service';
 })
 export class PersonalInformationComponent implements OnInit {
   @Output() emitter: EventEmitter<{tabAction}> = new EventEmitter();
-  countries: [];
+  @Output() personalInfo: EventEmitter<any> = new EventEmitter();
+  countries: ComboElement[];
   applicantForm = this.formBuilder.group({
     name: [null, Validators.required],
     lastname: [null, Validators.required],
     email: [null, [Validators.required, Validators.email]],
     phone: [null, Validators.required],
     dni: [null, Validators.required],
+    birthdate: [null, Validators.required],
     country: [null, Validators.required],
     city: [null, Validators.required],
-    birthdate: [null, Validators.required],
     address: [null, Validators.required],
 
   });
@@ -82,6 +84,7 @@ export class PersonalInformationComponent implements OnInit {
     return this.applicantForm.get('dni');
   }
   next(): void {
+    this.personalInfo.emit(this.applicantForm.value);
     this.emitter.emit({tabAction: {number: 1}}) ;
   }
   getCountries(): void{

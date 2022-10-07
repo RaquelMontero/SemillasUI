@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "value": "CORREO_ELECTRONICO",
+      "selected": true,
+      "name": "Correo electronico"
+    },
+    {
+      "value": "MENSAJE_WHATSSAP",
+      "selected": false,
+      "name": "Mensaje Whatssap"
+    }
+  ]
+
+}

@@ -12,7 +12,7 @@ export class WantCollaborateComponent implements OnInit {
   showDonationTypes = false;
   showDonationDetails = false;
 
-  applicantForm = this.fb.group({
+  applicantForm; /*= this.fb.group({
     name: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -20,7 +20,7 @@ export class WantCollaborateComponent implements OnInit {
     dni: ['', Validators.required],
     birthdate: ['', Validators.required],
 
-  });
+  });*/
   constructor(private fb: FormBuilder,
   ) { }
   ngOnInit(): void {
@@ -34,5 +34,9 @@ export class WantCollaborateComponent implements OnInit {
     console.log('event', event.tabAction);
     this.index = event.tabAction.number;
     this.donationType = event.tabAction.action;
+  }
+
+  getPersonalInfo(event){
+    this.applicantForm = event;
   }
 }

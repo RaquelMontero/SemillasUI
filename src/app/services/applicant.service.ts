@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Applicant} from '../models/applicant.model';
 import {Observable, Subject} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {ComboElement, ComboResponse} from '../models/DTO/Utils.model';
+import {PostMessage} from '../models/DTO/Message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,8 @@ export class ApplicantService {
   }
 
 
-  addapplicant(applicant: Applicant): Observable<any> {
-    return this.http.post<any>(environment.backend + '/applicants/unique', applicant
+  createApplicant(applicant: Applicant): Observable<PostMessage> {
+    return this.http.post<PostMessage>(environment.backend + '/seeds/applicants/unique', applicant
     );
   }
 
@@ -49,14 +51,16 @@ export class ApplicantService {
     return this.http.get<any[]>(environment.backend + '/applicants/acepted');
   }
 
-  getCountries(): Observable<any> {
-   return this.http.get<any[]>('./assets/statics/countries.json');
+  getCountries(): Observable<ComboResponse> {
+   return this.http.get<ComboResponse>('./assets/statics/countries.json');
   }
 
-  getPaymentMethods(): Observable<any> {
-    return this.http.get<any[]>('./assets/statics/payment_methods.json');
+  getPaymentMethods(): Observable<ComboResponse> {
+    return this.http.get<ComboResponse>('./assets/statics/payment_methods.json');
   }
-
+  getNewTypes(): Observable<ComboResponse> {
+    return this.http.get<ComboResponse>('./assets/statics/news_methods.json');
+  }
   // tslint:disable-next-line:typedef
   filter(filterBy: string) {
     this._listeners.next(filterBy);

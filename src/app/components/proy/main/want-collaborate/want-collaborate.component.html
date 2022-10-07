@@ -6,6 +6,7 @@
       <mat-tab label="INFORMACIÒN PERSONAL">
         <app-personal-information
         (emitter)="move_tab($event)"
+        (personalInfo)="getPersonalInfo($event)"
         ></app-personal-information>
       </mat-tab>
       <mat-tab label="TIPOS DE APORTE">
@@ -18,7 +19,9 @@
           <app-constant-donation></app-constant-donation>
         </ng-container>
         <ng-container *ngIf="donationType==='UNIQUE'">
-          <app-unique-donation></app-unique-donation>
+          <app-unique-donation
+            [personalInformation]="applicantForm"
+          ></app-unique-donation>
         </ng-container>
       </mat-tab>
     </mat-tab-group>
