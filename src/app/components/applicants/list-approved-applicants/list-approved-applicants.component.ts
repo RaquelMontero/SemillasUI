@@ -22,9 +22,9 @@ export class ListApprovedApplicantsComponent implements AfterViewInit {
               // tslint:disable-next-line:variable-name
               private _liveAnnouncer: LiveAnnouncer,
               private applicantService: ApplicantService) { }
-  displayedColumns: string[] = ['name', 'email', 'celular', 'send_date',
+  /*displayedColumns: string[] = ['name', 'email', 'celular', 'send_date',
     'acepted_date', 'contributionType', 'acciones'];
-
+*/
   dataSource = new MatTableDataSource(applicants);
   @ViewChild(MatSort) sort: MatSort;
 
@@ -34,12 +34,12 @@ export class ListApprovedApplicantsComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.applicantService.listaportadores()
+    /*this.dataSource.sort = this.sort;
+    this.applicantService.listAllseeds()
       .subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
-      });
+      });*/
   }
 
   announceSortChange(sortState: Sort): void {

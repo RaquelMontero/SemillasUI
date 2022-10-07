@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'admin/ver-voluntarios', component: ListVoluntersComponent
   },
   {
-    path: 'admin/aspirantes', component: ListPendingApplicantsComponent
+    path: 'admin/semillas', component: ListPendingApplicantsComponent
   },
   {
     path: 'admin/aspirantes/rechazados', component: ListRejectedApplicantsComponent

@@ -5,6 +5,7 @@ import {Observable, Subject} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {ComboElement, ComboResponse} from '../models/DTO/Utils.model';
 import {PostMessage} from '../models/DTO/Message.model';
+import {Table} from '../models/DTO/Table.model.';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,6 @@ export class ApplicantService {
   listApplicants(): Observable<Applicant[]> {
     return this.http.get<Applicant[]>(environment.backend + '/seeds/applicants');
   }
-
-  listen(): Observable<any> {
-    return this._listeners.asObservable();
-  }
-
 
   createUniqueApplicant(applicant: Applicant): Observable<PostMessage> {
     return this.http.post<PostMessage>(environment.backend + '/seeds/applicants/unique', applicant
@@ -47,9 +43,15 @@ export class ApplicantService {
     return this.http.put<any>(environment.backend + '/applicants/acept/' + applicantId, applicantId);
   }
 
-  listaportadores(): Observable<any> {
-    return this.http.get<any[]>(environment.backend + '/applicants/acepted');
+  listAllseeds(): Observable<Table> {
+    //return this.http.get<any[]>(environment.backend + '/applicants/acepted');
+    return this.http.get<Table>('./assets/fakedata/applicants.json');
   }
+
+  listen(): Observable<any> {
+    return this._listeners.asObservable();
+  }
+
   // tslint:disable-next-line:typedef
   filter(filterBy: string) {
     this._listeners.next(filterBy);
