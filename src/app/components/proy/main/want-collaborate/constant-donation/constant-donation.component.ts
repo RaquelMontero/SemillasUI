@@ -17,7 +17,7 @@ export class ConstantDonationComponent implements OnInit, OnChanges {
     paymentMethod: ['', Validators.required],
     beginMonth: ['', Validators.required],
     paymentDay: ['', Validators.required],
-    send_news: ['', Validators.required],
+    send_news: [true, Validators.required],
     reminderMethod: ['', Validators.required],
     sendNewsType: ['', Validators.required],
   });

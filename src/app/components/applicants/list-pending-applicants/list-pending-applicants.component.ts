@@ -26,7 +26,7 @@ export class ListPendingApplicantsComponent implements OnInit {
 
   getAllSeeds(): void{
     this.loadingtable = true;
-    this.applicantService.listAllseeds().subscribe(
+    this.applicantService.listPendingSeeds().subscribe(
       (data) => {
         this.data = data;
         this.loadingtable = false;

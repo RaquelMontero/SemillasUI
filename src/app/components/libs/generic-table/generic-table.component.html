@@ -25,6 +25,7 @@
                </ng-container>
                <ng-container *ngIf="cont['contentType'] === 'iconAccion'">
                  <button
+                   [matTooltip]="cont['contentTooltip']"
                    mat-icon-button
                    (click)="onclickevent(cont)">
                    <mat-icon [ngStyle]="{'color': cont.color}">{{cont.iconName}}</mat-icon>

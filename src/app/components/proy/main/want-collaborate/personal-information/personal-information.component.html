@@ -62,7 +62,7 @@
           <mat-label>País</mat-label>
           <mat-select formControlName="country">
             <mat-option *ngFor="let c of countries" [value]="c.value">
-              {{c.name |uppercase}}
+              {{c.name | uppercase}}
             </mat-option>
           </mat-select>
         </mat-form-field>

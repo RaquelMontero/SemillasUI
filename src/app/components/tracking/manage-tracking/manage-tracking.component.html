@@ -1,0 +1,31 @@
+<div class="container">
+
+  <mat-tab-group [selectedIndex]="index" mat-align-tabs="center"
+                 (selectedTabChange)="onTabChanged($event);"
+                 mat-align-tabs="center">
+    <mat-tab label="First">
+      <div class="main">
+        <h2 class="header">VOLUNTARIOS DE SEGUIMIENTO</h2>
+        <hr>
+        <ng-container *ngIf="!loadingtable else loading">
+          <app-generic-table
+            *ngIf="data"
+            [inputTable]="data.rows"
+            (actionOutput)="actionOutput($event)"
+          >
+          </app-generic-table>
+        </ng-container>
+        <ng-template #loading>
+          <mat-spinner class="loading">
+          </mat-spinner>
+        </ng-template>
+      </div>
+    </mat-tab>
+    <mat-tab label="Second">
+      <app-list-tracking-volunter-seeds
+      [volunterId]="idSelectedVolunter">
+      </app-list-tracking-volunter-seeds>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

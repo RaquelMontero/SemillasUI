@@ -66,12 +66,12 @@
     <div class="col-md-6 views-fields">
       <div class="subtittle">¿ Desea recibir noticias ?</div>
       <mat-radio-group color="accent" formControlName="send_news">
-        <mat-radio-button value="1">SÍ</mat-radio-button>
-        <mat-radio-button value="2">NÓ</mat-radio-button>
+        <mat-radio-button [value]="true">SÍ</mat-radio-button>
+        <mat-radio-button [value]="false"> NÓ</mat-radio-button>
       </mat-radio-group>
     </div>
     <div class="col-md-6">
-      <mat-form-field appearance="standard" *ngIf="donationForm.get('send_news').value === '1'">
+      <mat-form-field appearance="standard" *ngIf="donationForm.get('send_news').value === true">
         <mat-label>Metodo envío de noticias</mat-label>
         <mat-select formControlName="sendNewsType">
           <mat-option *ngFor="let method of newsTypes" [value]="method.value">

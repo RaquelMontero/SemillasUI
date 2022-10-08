@@ -75,6 +75,13 @@ import { ExitElementComponent } from './components/libs/exit-element/exit-elemen
 import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
 import { TrackingManagementComponent } from './components/admin/tracking-management/tracking-management.component';
 import { CreateSeedComponent } from './components/admin/create-seed/create-seed.component';
+import { ModalViewSeedComponent } from './components/applicants/modal-view-seed/modal-view-seed.component';
+import { ModalProcessSeedComponent } from './components/applicants/modal-process-seed/modal-process-seed.component';
+import { EditSeedInfoComponent } from './components/applicants/edit-seed-info/edit-seed-info.component';
+import { ModalDeactiveSeedComponent } from './components/applicants/modal-deactive-seed/modal-deactive-seed.component';
+import { ManageTrackingComponent } from './components/tracking/manage-tracking/manage-tracking.component';
+import { ListTrackingVoluntersComponent } from './components/tracking/manage-tracking/list-tracking-volunters/list-tracking-volunters.component';
+import { ListTrackingVolunterSeedsComponent } from './components/tracking/manage-tracking/list-tracking-volunter-seeds/list-tracking-volunter-seeds.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +112,13 @@ import { CreateSeedComponent } from './components/admin/create-seed/create-seed.
     MessageSnackBarComponent,
     TrackingManagementComponent,
     CreateSeedComponent,
+    ModalViewSeedComponent,
+    ModalProcessSeedComponent,
+    EditSeedInfoComponent,
+    ModalDeactiveSeedComponent,
+    ManageTrackingComponent,
+    ListTrackingVoluntersComponent,
+    ListTrackingVolunterSeedsComponent,
   ],
   imports: [
     BrowserModule,

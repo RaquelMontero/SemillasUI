@@ -18,6 +18,10 @@ export class VolunterService {
   listvolunters(): Observable<Table> {
     return this.http.get<Table>(environment.backend + '/seeds/volunters/all/');
   }
+
+  listTrackingvolunters(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunters/');
+  }
   getvolunter(volunterId: any): Observable<Volunter> {
     return this.http.get<Volunter>(environment.backend + '/seeds/volunters/' + volunterId);
   }

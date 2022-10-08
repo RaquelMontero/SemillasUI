@@ -12,6 +12,7 @@ import {
   ListContributorsOfMomentComponent
 } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
 import {CreateSeedComponent} from './components/admin/create-seed/create-seed.component';
+import {ManageTrackingComponent} from './components/tracking/manage-tracking/manage-tracking.component';
 
 const routes: Routes = [
   {
@@ -30,16 +31,19 @@ const routes: Routes = [
     path: 'admin/ver-voluntarios', component: ListVoluntersComponent
   },
   {
-    path: 'admin/semillas', component: ListPendingApplicantsComponent
+    path: 'admin/semillas/pendientes', component: ListPendingApplicantsComponent
   },
   {
-    path: 'admin/aspirantes/rechazados', component: ListRejectedApplicantsComponent
+    path: 'admin/semillas/rechazadas', component: ListRejectedApplicantsComponent
   },
   {
-    path: 'admin/aportadores', component: ListApprovedApplicantsComponent
+    path: 'admin/semillas', component: ListApprovedApplicantsComponent
   },
   {
     path: 'admin/aportadores/aportadoresDelDia', component: ListContributorsOfMomentComponent
+  },
+  {
+    path: 'admin/seguimientos', component: ManageTrackingComponent
   },
   {
     path: 'admin/new-seed', component: CreateSeedComponent

@@ -15,7 +15,7 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
   donationForm = this.formBuilder.group({
     contribution_amount: ['', Validators.required],
     paymentMethod: ['', Validators.required],
-    send_news: ['', Validators.required],
+    send_news: [true, Validators.required],
     date_contribution: ['', Validators.required],
     sendNewsType: ['', Validators.required],
   });
@@ -35,14 +35,14 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    /*console.log('response', this.personalInformation);
+    console.log('response', this.personalInformation);
     const {country, city, address, ...user} = this.personalInformation;
     this.contributor = {
       country,
       city,
       address,
       user
-    };*/
+    };
   }
 
   ngOnInit(): void {

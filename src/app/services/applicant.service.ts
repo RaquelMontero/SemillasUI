@@ -17,11 +17,6 @@ export class ApplicantService {
   formData: any;
   // tslint:disable-next-line:variable-name
   private _listeners = new Subject<any>();
-
-  listApplicants(): Observable<Applicant[]> {
-    return this.http.get<Applicant[]>(environment.backend + '/seeds/applicants');
-  }
-
   createUniqueApplicant(applicant: Applicant): Observable<PostMessage> {
     return this.http.post<PostMessage>(environment.backend + '/seeds/applicants/unique', applicant
     );
@@ -43,11 +38,16 @@ export class ApplicantService {
     return this.http.put<any>(environment.backend + '/applicants/acept/' + applicantId, applicantId);
   }
 
-  listAllseeds(): Observable<Table> {
-    //return this.http.get<any[]>(environment.backend + '/applicants/acepted');
-    return this.http.get<Table>('./assets/fakedata/applicants.json');
+  listPendingSeeds(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/applicants/pending');
+  }
+  listRejectedSeeds(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/applicants/rejected');
   }
 
+  listOficialSeeds(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/applicants/acepted');
+  }
   listen(): Observable<any> {
     return this._listeners.asObservable();
   }
