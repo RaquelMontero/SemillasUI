@@ -35,20 +35,19 @@ export class ConstantDonationComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('alojangonchanges');
     this.getPaymentMethods();
     this.getNewsTypes();
     this.getReminderMethods();
     this.getBeginMonths();
     this.getPaymentNumberDays();
-    /*console.log('response', this.personalInformation);
+    console.log('ngOnChanges', this.personalInformation);
     const {country, city, address, ...user} = this.personalInformation;
     this.contributor = {
       country,
       city,
       address,
       user
-    };*/
+    };
   }
   getPaymentMethods(): void{
     console.log('viene');
@@ -161,7 +160,7 @@ export class ConstantDonationComponent implements OnInit, OnChanges {
     const payload = this.donationForm.value;
     payload.contributor = this.contributor;
     console.log('response', payload, this.personalInformation);
-    this.applicantService.createUniqueApplicant(payload)
+    this.applicantService.createConstantapplicant(payload)
       .subscribe((response) => {
         console.log('response', response);
         this.sendingData = false;

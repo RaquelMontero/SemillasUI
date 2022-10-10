@@ -7,7 +7,6 @@
 .container{
   margin-top: 20px;
   width: 70%;
-  z-index: -1;
 }
 .main{
   padding-top: 40px;
@@ -16,6 +15,7 @@
   margin: 0 auto;
   z-index: 100;
 }
-.mat-tab{
-  z-index: 1;
+
+::ng-deep mat-tab-body {
+  z-index: -1 /*!important*/;
 }

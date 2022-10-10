@@ -1,12 +1,12 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Applicant} from '../../../models/applicant.model';
-import {MatTableDataSource} from '@angular/material/table';
 import {Router} from '@angular/router';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {MatDialog} from '@angular/material/dialog';
 import {ApplicantService} from '../../../services/applicant.service';
-import {MatSort, Sort} from '@angular/material/sort';
-import {CellContent, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, CellParam, Table} from '../../../models/DTO/Table.model.';
+import {ModalProcessSeedComponent} from '../modal-process-seed/modal-process-seed.component';
+import {ModalViewSeedComponent} from '../modal-view-seed/modal-view-seed.component';
+import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-pending-applicants',
@@ -18,10 +18,11 @@ export class ListPendingApplicantsComponent implements OnInit {
   data: Table;
   constructor(private router: Router,
               private dialog: MatDialog,
+              private matSnackBar: MatSnackBar,
               private applicantService: ApplicantService) { }
 
   ngOnInit(): void {
-      this.getAllSeeds();
+    this.getAllSeeds();
   }
 
   getAllSeeds(): void{
@@ -33,43 +34,73 @@ export class ListPendingApplicantsComponent implements OnInit {
       }
     );
   }
-  onReject(/*applicant: Applicant*/): void {
-    console.log('onReject');
-    // this.applicantService.formData = applicant;
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '30%';
-    dialogConfig.maxHeight = '35%';
-    // this.dialog.open(RejectaspirantesComponent, dialogConfig);
-    // localStorage.setItem("volunter_id", applicant.applicant_id.toString());
-
+  onReject(applicantId: string): void {
+    const dialogConfig =  this.dialog.open(ModalProcessSeedComponent, {
+      disableClose: false,
+      autoFocus: true,
+      width: '800px',
+      data: {
+        contributorId: applicantId,
+        isReject: true
+      }
+    });
+    dialogConfig.afterClosed().subscribe(result => {
+      if (result){
+        this.getAllSeeds();
+      }
+    });
   }
 
-  onAcept(): void {
-    console.log('onAcept');
-    // this.applicantService.formData = applicant;
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '30%';
-    dialogConfig.maxHeight = '35%';
-    // this.dialog.open(AceptaraspiranteComponent, dialogConfig);
-    // localStorage.setItem("volunter_id", applicant.applicant_id.toString());
-
+  onAcept(applicantId): void {
+    const dialogConfig =  this.dialog.open(ModalProcessSeedComponent, {
+      disableClose: false,
+      autoFocus: true,
+      width: '800px',
+      data: {
+        contributorId: applicantId,
+        isReject: false
+      }
+    });
+    dialogConfig.afterClosed().subscribe(result => {
+      if (result){
+        this.getAllSeeds();
+      }
+    });
   }
 
-  onView(): void{
-    console.log('onview');
+  onView(id): void{
+    const dialogConfig =  this.dialog.open(ModalViewSeedComponent, {
+      disableClose: false,
+      autoFocus: true,
+      width: '800px',
+      data: {
+        contributorId: id,
+      }
+    });
   }
   actionOutput(event: CellContent): void{
     console.log('event', event);
+    const id = this.getSeedId(event.params);
     if (event.clickedAction === 'AceptSeed'){
-      this.onAcept();
+      this.onAcept(id);
     }else if (event.clickedAction === 'RejectSeed'){
-      this.onReject();
+      this.onReject(id);
     } else if (event.clickedAction === 'SeedInfo'){
-      this.onView();
+      this.onView(id);
     }
+  }
+
+  getSeedId(params: CellParam[]): string{
+    return params.find(p => p.paramName === 'contributorId')?.paramContent;
+  }
+
+  showMessage(messages: any[]): void{
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: messages,
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
   }
 }

@@ -16,9 +16,11 @@
       <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>{{menu.text}}
     </mat-expansion-panel-header>
     <mat-nav-list>
-      <mat-list-item [routerLink]="submenu.routerLink" *ngFor="let submenu of menu.children"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact:true}">
+      <mat-list-item
+        routerLinkActive="active2"
+        [routerLink]="submenu.routerLink"
+        *ngFor="let submenu of menu.children"
+        [routerLinkActiveOptions]="{exact:true}">
         <mat-icon>{{submenu.icon}}</mat-icon> {{submenu.text}}
       </mat-list-item>
     </mat-nav-list>

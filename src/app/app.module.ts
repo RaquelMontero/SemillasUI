@@ -82,6 +82,7 @@ import { ModalDeactiveSeedComponent } from './components/applicants/modal-deacti
 import { ManageTrackingComponent } from './components/tracking/manage-tracking/manage-tracking.component';
 import { ListTrackingVoluntersComponent } from './components/tracking/manage-tracking/list-tracking-volunters/list-tracking-volunters.component';
 import { ListTrackingVolunterSeedsComponent } from './components/tracking/manage-tracking/list-tracking-volunter-seeds/list-tracking-volunter-seeds.component';
+import { ListSeedDonationsComponent } from './components/tracking/manage-tracking/list-seed-donations/list-seed-donations.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { ListTrackingVolunterSeedsComponent } from './components/tracking/manage
     ManageTrackingComponent,
     ListTrackingVoluntersComponent,
     ListTrackingVolunterSeedsComponent,
+    ListSeedDonationsComponent,
   ],
   imports: [
     BrowserModule,

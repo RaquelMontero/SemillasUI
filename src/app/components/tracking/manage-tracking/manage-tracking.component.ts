@@ -41,4 +41,8 @@ export class ManageTrackingComponent implements OnInit {
   openAssinDialog(){
 
   }
+
+  back(evento){
+    this.index = 0;
+  }
 }

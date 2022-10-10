@@ -35,7 +35,7 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('response', this.personalInformation);
+    console.log('ngOnChanges', this.personalInformation);
     const {country, city, address, ...user} = this.personalInformation;
     this.contributor = {
       country,

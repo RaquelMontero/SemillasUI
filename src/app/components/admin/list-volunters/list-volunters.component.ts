@@ -109,7 +109,6 @@ export class ListVoluntersComponent implements OnInit {
   }
 
   outputEvent(event: CellContent): void{
-    console.log('evento', event);
     const id = this.getVolunteerId(event.params);
     if (event.clickedAction === 'editVolunter'){
       this.onedit(id);

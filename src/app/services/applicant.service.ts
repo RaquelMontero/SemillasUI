@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Applicant} from '../models/applicant.model';
 import {Observable, Subject} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {ComboElement, ComboResponse} from '../models/DTO/Utils.model';
 import {PostMessage} from '../models/DTO/Message.model';
 import {Table} from '../models/DTO/Table.model.';
+import {ProcessSeedPayload, Seed} from '../models/DTO/SeeDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +22,19 @@ export class ApplicantService {
     );
   }
 
-  addconstantapplicant(applicant: Applicant): Observable<any>  {
+  createConstantapplicant(applicant: Applicant): Observable<any>  {
     return this.http.post<any>(environment.backend + '/seeds/applicants/constant', applicant);
   }
 
-  rejectapplicant(reason: any, applicantId: number): Observable<any> {
-    return this.http.put<any>(environment.backend + '/applicants/reject/' + applicantId, reason);
+  processSeed(payload: ProcessSeedPayload): Observable<any> {
+    return this.http.post<any>(environment.backend + '/seeds/applicants/processSeed' , payload);
   }
 
+  getSeedById(id): Observable<Seed> {
+    const p = new HttpParams().set('id', id);
+    return this.http.get<Seed>(environment.backend + '/seeds/applicants/getSeedById'
+      , { params: p });
+  }
   listRejectedAplicants(): Observable<any> {
     return this.http.get<any[]>(environment.backend + '/applicants/rejected');
   }

@@ -40,7 +40,7 @@ const routes: Routes = [
     path: 'admin/semillas', component: ListApprovedApplicantsComponent
   },
   {
-    path: 'admin/aportadores/aportadoresDelDia', component: ListContributorsOfMomentComponent
+    path: 'admin/semillas/semillas-pendientes', component: ListContributorsOfMomentComponent
   },
   {
     path: 'admin/seguimientos', component: ManageTrackingComponent

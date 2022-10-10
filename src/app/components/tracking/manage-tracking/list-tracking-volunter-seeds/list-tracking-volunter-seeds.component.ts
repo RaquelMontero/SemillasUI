@@ -1,6 +1,6 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TrackingService} from '../../../../services/tracking.service';
-import {Table} from '../../../../models/DTO/Table.model.';
+import {CellContent, Table} from '../../../../models/DTO/Table.model.';
 
 @Component({
   selector: 'app-list-tracking-volunter-seeds',
@@ -8,6 +8,7 @@ import {Table} from '../../../../models/DTO/Table.model.';
   styleUrls: ['./list-tracking-volunter-seeds.component.scss']
 })
 export class ListTrackingVolunterSeedsComponent implements OnChanges {
+  @Output() emitter: EventEmitter<{ tabAction }> = new EventEmitter();
   @Input() volunterId: string;
   loadingtable = true;
   data: Table;
@@ -27,7 +28,18 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
     );
   }
 
-  actionOutput(evento){
+  actionOutput(evento: CellContent): void{
+    console.log('event', evento);
+    if (evento.clickedAction === 'Donations'){
+      this.donations();
+    }
+  }
+
+  back(): void{
+    this.emitter.emit({tabAction: {number: 0}}) ;
+  }
+
+  donations(): void{
 
   }
 }
