@@ -1,5 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
-import {CellContent, Table} from '../../../../models/DTO/Table.model.';
+import {CellContent, Table} from '../../../../models/Table.model.';
 import {ApplicantService} from '../../../../services/applicant.service';
 import {VolunterService} from '../../../../services/volunter.service';
 

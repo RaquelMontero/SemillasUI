@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../../services/applicant.service';
-import {ComboElement} from '../../../../../models/DTO/Utils.model';
+import {ComboElement} from '../../../../../models/Utils.model';
 import {UtilService} from '../../../../../services/util.service';
 
 @Component({

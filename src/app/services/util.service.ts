@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ComboResponse} from '../models/DTO/Utils.model';
+import {ComboResponse} from '../models/Utils.model';
 
 @Injectable({
   providedIn: 'root'

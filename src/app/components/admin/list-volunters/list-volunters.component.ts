@@ -5,7 +5,7 @@ import {VolunterService} from '../../../services/volunter.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ViewVolunterDetailsComponent} from '../view-volunter-details/view-volunter-details.component';
 import {VolunterDialogComponent} from '../volunter-dialog/volunter-dialog.component';
-import {CellContent, CellParam, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, CellParam, Table} from '../../../models/Table.model.';
 import {ExitElementComponent} from '../../libs/exit-element/exit-element.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';

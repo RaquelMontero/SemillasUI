@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from '@angular/material/snack-bar';
-import {SnackMessage} from '../../../models/DTO/Message.model';
+import {SnackMessage} from '../../../models/Message.model';
 
 interface MessageData{
   messages: SnackMessage[];

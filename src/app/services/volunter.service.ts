@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Volunter} from '../models/volunter.model';
 import {environment} from '../../environments/environment';
 import {Observable, Subject} from 'rxjs';
-import {Table} from '../models/DTO/Table.model.';
+import {Table} from '../models/Table.model.';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,8 @@ export class VolunterService {
   }
 
   listTrackingvolunters(): Observable<Table> {
-    return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunters/');
+    return this.http.get<Table>('./assets/statics/trackingvolunters.json');
+    //return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunters/');
   }
   getvolunter(volunterId: any): Observable<Volunter> {
     return this.http.get<Volunter>(environment.backend + '/seeds/volunters/' + volunterId);

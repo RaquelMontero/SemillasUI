@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {CellContent, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, Table} from '../../../models/Table.model.';
 import {VolunterService} from '../../../services/volunter.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ModalProcessSeedComponent} from '../../applicants/modal-process-seed/modal-process-seed.component';
+import {AsignSeedToVolunterComponent} from '../asign-seed-to-volunter/asign-seed-to-volunter.component';
 
 @Component({
   selector: 'app-manage-tracking',
@@ -12,7 +15,8 @@ export class ManageTrackingComponent implements OnInit {
   loadingtable = true;
   data: Table;
   idSelectedVolunter: string;
-  constructor(private volunterService: VolunterService) { }
+  constructor(private volunterService: VolunterService,
+              private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.getTrackingVolunters();
@@ -33,13 +37,27 @@ export class ManageTrackingComponent implements OnInit {
     if (event.clickedAction === 'ViewAssignedSeeds'){
       this.index = 1;
     }else if (event.clickedAction === 'AssignSeed'){
-      this.openAssinDialog();
+      this.openAssinDialog(this.idSelectedVolunter);
     }
   }
   onTabChanged(evento){}
 
-  openAssinDialog(){
-
+  openAssinDialog(id){
+    const dialogConfig =  this.dialog.open(AsignSeedToVolunterComponent, {
+      disableClose: false,
+      panelClass: 'icon-outside',
+      autoFocus: true,
+      width: '800px',
+      data: {
+        contributorId: id,
+        isReject: false
+      }
+    });
+    dialogConfig.afterClosed().subscribe(result => {
+      if (result){
+        this.getTrackingVolunters();
+      }
+    });
   }
 
   back(evento){

@@ -2,7 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {ApplicantService} from '../../../services/applicant.service';
-import {CellContent, CellParam, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, CellParam, Table} from '../../../models/Table.model.';
 import {ModalProcessSeedComponent} from '../modal-process-seed/modal-process-seed.component';
 import {ModalViewSeedComponent} from '../modal-view-seed/modal-view-seed.component';
 import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';

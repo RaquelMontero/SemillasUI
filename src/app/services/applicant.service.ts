@@ -3,9 +3,9 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Applicant} from '../models/applicant.model';
 import {Observable, Subject} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {PostMessage} from '../models/DTO/Message.model';
-import {Table} from '../models/DTO/Table.model.';
-import {ProcessSeedPayload, Seed} from '../models/DTO/SeeDTO.model';
+import {PostMessage} from '../models/Message.model';
+import {Table} from '../models/Table.model.';
+import {ProcessSeedPayload, Seed} from '../models/Seed.model';
 
 @Injectable({
   providedIn: 'root'

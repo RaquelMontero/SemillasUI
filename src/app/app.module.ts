@@ -83,6 +83,7 @@ import { ManageTrackingComponent } from './components/tracking/manage-tracking/m
 import { ListTrackingVoluntersComponent } from './components/tracking/manage-tracking/list-tracking-volunters/list-tracking-volunters.component';
 import { ListTrackingVolunterSeedsComponent } from './components/tracking/manage-tracking/list-tracking-volunter-seeds/list-tracking-volunter-seeds.component';
 import { ListSeedDonationsComponent } from './components/tracking/manage-tracking/list-seed-donations/list-seed-donations.component';
+import { AsignSeedToVolunterComponent } from './components/tracking/asign-seed-to-volunter/asign-seed-to-volunter.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { ListSeedDonationsComponent } from './components/tracking/manage-trackin
     ListTrackingVoluntersComponent,
     ListTrackingVolunterSeedsComponent,
     ListSeedDonationsComponent,
+    AsignSeedToVolunterComponent,
   ],
   imports: [
     BrowserModule,

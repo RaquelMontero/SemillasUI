@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Seed} from '../../../models/DTO/SeeDTO.model';
+import {Seed} from '../../../models/Seed.model';
 import {ApplicantService} from '../../../services/applicant.service';
 
 

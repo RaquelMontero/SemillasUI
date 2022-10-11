@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CellContent, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, Table} from '../../../models/Table.model.';
 import {MatDialog} from '@angular/material/dialog';
 import {ApplicantService} from '../../../services/applicant.service';
 

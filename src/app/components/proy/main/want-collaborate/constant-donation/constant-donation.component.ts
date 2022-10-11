@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {FormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../../services/applicant.service';
 import {UtilService} from '../../../../../services/util.service';
-import {ComboElement} from '../../../../../models/DTO/Utils.model';
+import {ComboElement} from '../../../../../models/Utils.model';
 
 @Component({
   selector: 'app-constant-donation',

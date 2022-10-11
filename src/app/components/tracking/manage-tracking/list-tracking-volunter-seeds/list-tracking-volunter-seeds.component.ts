@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TrackingService} from '../../../../services/tracking.service';
-import {CellContent, Table} from '../../../../models/DTO/Table.model.';
+import {CellContent, Table} from '../../../../models/Table.model.';
 
 @Component({
   selector: 'app-list-tracking-volunter-seeds',

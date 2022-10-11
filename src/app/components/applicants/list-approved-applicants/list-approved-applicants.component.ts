@@ -6,7 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {ApplicantService} from '../../../services/applicant.service';
 import {MatSort, Sort} from '@angular/material/sort';
-import {CellContent, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, Table} from '../../../models/Table.model.';
 
 const applicants = [];
 
