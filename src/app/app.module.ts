@@ -73,7 +73,6 @@ import { UniqueDonationComponent } from './components/proy/main/want-collaborate
 import { GenericTableComponent } from './components/libs/generic-table/generic-table.component';
 import { ExitElementComponent } from './components/libs/exit-element/exit-element.component';
 import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
-import { TrackingManagementComponent } from './components/admin/tracking-management/tracking-management.component';
 import { CreateSeedComponent } from './components/admin/create-seed/create-seed.component';
 import { ModalViewSeedComponent } from './components/applicants/modal-view-seed/modal-view-seed.component';
 import { ModalProcessSeedComponent } from './components/applicants/modal-process-seed/modal-process-seed.component';
@@ -112,7 +111,6 @@ import { AsignSeedToVolunterComponent } from './components/tracking/asign-seed-t
     GenericTableComponent,
     ExitElementComponent,
     MessageSnackBarComponent,
-    TrackingManagementComponent,
     CreateSeedComponent,
     ModalViewSeedComponent,
     ModalProcessSeedComponent,

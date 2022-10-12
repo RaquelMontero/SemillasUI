@@ -38,3 +38,13 @@
 ::ng-deep .icon-outside .mat-dialog-container {
   overflow: unset
 }
+
+.mat-dialog-content{
+  padding: 36px;
+  letter-spacing: 1px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.label{
+  font-weight: 500;
+  margin-bottom: 16px;
+}

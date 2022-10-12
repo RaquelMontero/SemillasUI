@@ -1,5 +1,3 @@
-import {Validators} from '@angular/forms';
-
 export interface User{
   userId: string;
   name: string;
@@ -12,11 +10,11 @@ export interface User{
 export interface Seed{
   contributor_id: string;
   address: string;
-  country: string;
-  city: string;
-  send_date: string;
-  registerVolunter: string;
-  contributorState: string;
+  country?: string;
+  city?: string;
+  send_date?: string;
+  registerVolunter?: string;
+  contributorState?: string;
   user: User;
   contributionConfig: SeedConfig;
   processInfo?: ProcessedSeed;
@@ -39,4 +37,12 @@ export interface ProcessSeedPayload{
   processReason: string;
   processVolunterId: string;
   state: string;
+}
+
+export interface BoxSeed{
+  contributor_id: string;
+  largename: string;
+  email: string;
+  phone: string;
+  dni: string;
 }

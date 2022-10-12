@@ -3,10 +3,60 @@
 </button>
 
 <div mat-dialog-title class="header">
-  <img class="img" src="../../../../assets/logo.png" />
   <span class="title">ASIGNAR SEMILLA A RESPONSABLE</span>
+  <img class="img" src="../../../../assets/logo.png" />
+
 </div>
 <mat-dialog-content>
+  <form [formGroup]="assignForm" class="row">
+    <div class="col-md-12">
+      <mat-icon>person</mat-icon>
 
+      <p>Luciana Gardezazabal</p>
+    </div>
+    <mat-form-field appearance="standard"
+                    [floatLabel]="'always'"
+                    class="col-md-12">
+      <mat-label>Seleccionar la semilla</mat-label>
+      <input type="text"
+             placeholder="Lucia...."
+             aria-label="Number"
+             matInput
+             required
+             formControlName="searchValue"
+             [matAutocomplete]="auto">
+      <mat-autocomplete
+        (optionSelected)="selected($event)"
+        autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredSeeds | async" [value]="option.largename">
+          {{option.largename}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field
+      class="col-md-6"
+      appearance="standard">
+      <mat-label>Inicio de asignación</mat-label>
+      <input formControlName="beginDate"
+             matInput
+             required
+             [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field
+      class="col-md-6"
+      appearance="standard">
+      <mat-label>Fin de asignación</mat-label>
+      <input formControlName="endDate"
+             matInput
+             required
+             [matDatepicker]="picker2">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 startView="year" [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="center"></mat-dialog-actions>
