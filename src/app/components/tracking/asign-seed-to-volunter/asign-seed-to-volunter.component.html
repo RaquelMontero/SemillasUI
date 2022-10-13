@@ -10,9 +10,10 @@
 <mat-dialog-content>
   <form [formGroup]="assignForm" class="row">
     <div class="col-md-12">
-      <mat-icon>person</mat-icon>
-
-      <p>Luciana Gardezazabal</p>
+     <div class="volunter-cont">
+       <mat-icon>person</mat-icon>
+       <span>Luciana Gardezazabal</span>
+     </div>
     </div>
     <mat-form-field appearance="standard"
                     [floatLabel]="'always'"
@@ -59,4 +60,6 @@
     </mat-form-field>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="center"></mat-dialog-actions>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="primary">ASIGNAR</button>
+</mat-dialog-actions>

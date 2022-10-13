@@ -1,12 +1,7 @@
 .header{
-  //display: flex;
-  //justify-content: space-between;
   border-bottom: 1px solid #2e7d32;
   width: 96%;
   padding-bottom: 8px;
-  /*padding-top: -80px;
-  margin-left: 24px;
-  margin-right: -20px !important;*/
   margin: 0 auto;
 }
 
@@ -44,7 +39,17 @@
   letter-spacing: 1px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.label{
-  font-weight: 500;
+
+.volunter-cont{
+  border-bottom: 1px solid rgba(76, 175, 80, 0.6);
+  border-radius: 10px;
+  padding: 12px;
   margin-bottom: 16px;
+  background: rgba(76, 175, 80, 0.1);
+  display: flex;
+  span{
+    padding-top: 2px;
+    margin-left: 8px;
+    font-size: 0.9em;
+  }
 }

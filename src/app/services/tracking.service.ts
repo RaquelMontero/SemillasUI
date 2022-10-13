@@ -18,6 +18,7 @@ export class TrackingService {
     , { params: p });
   }
   getActiveSeeds(): Observable<BoxSeed[]>{
-    return this.http.get<BoxSeed[]>(/*environment.backend + */'./assets/statics/activeseeds.json');
+    //return this.http.get<BoxSeed[]>(/*environment.backend + */'./assets/statics/activeseeds.json');
+    return this.http.get<BoxSeed[]>(environment.backend + '/seeds/applicants/activeseeds');
   }
 }
