@@ -29,7 +29,8 @@
       <mat-autocomplete
         (optionSelected)="selected($event)"
         autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredSeeds | async" [value]="option.largename">
+        <mat-option  (onSelectionChange)="updateMySelection($event)"
+                     *ngFor="let option of filteredSeeds | async" [value]="option">
           {{option.largename}}
         </mat-option>
       </mat-autocomplete>
@@ -38,7 +39,7 @@
       class="col-md-6"
       appearance="standard">
       <mat-label>Inicio de asignación</mat-label>
-      <input formControlName="beginDate"
+      <input formControlName="start_date"
              matInput
              required
              [matDatepicker]="picker">
@@ -50,7 +51,7 @@
       class="col-md-6"
       appearance="standard">
       <mat-label>Fin de asignación</mat-label>
-      <input formControlName="endDate"
+      <input formControlName="end_date"
              matInput
              required
              [matDatepicker]="picker2">
@@ -61,5 +62,5 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button mat-raised-button color="primary">ASIGNAR</button>
+  <button (click)="confirm()" mat-raised-button color="primary">ASIGNAR</button>
 </mat-dialog-actions>

@@ -42,7 +42,7 @@ export class ManageTrackingComponent implements OnInit {
   }
   onTabChanged(evento){}
 
-  openAssinDialog(id){
+  openAssinDialog(id): void{
     const dialogConfig =  this.dialog.open(AsignSeedToVolunterComponent, {
       disableClose: false,
       panelClass: 'icon-outside',
@@ -50,7 +50,7 @@ export class ManageTrackingComponent implements OnInit {
       width: '800px',
       data: {
         contributorId: id,
-        isReject: false
+        //isReject: false
       }
     });
     dialogConfig.afterClosed().subscribe(result => {

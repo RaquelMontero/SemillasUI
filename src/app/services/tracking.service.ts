@@ -21,4 +21,15 @@ export class TrackingService {
     //return this.http.get<BoxSeed[]>(/*environment.backend + */'./assets/statics/activeseeds.json');
     return this.http.get<BoxSeed[]>(environment.backend + '/seeds/applicants/activeseeds');
   }
+
+  saveTrackingAssign(payload): Observable<any> {
+    return this.http.post<any>(environment.backend + '/seeds/trackingassignment/createAssinment', payload);
+  }
+
+  getIncomeContributions(beginDate?): Observable<Table> {
+    const p = new HttpParams().set('id', beginDate);
+    return this.http.get<Table>(environment.backend +
+      '/seeds/trackingassignment/trackingSeeds'
+      , { params: p });
+  }
 }

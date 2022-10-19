@@ -3,11 +3,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {VolunterService} from '../../../services/volunter.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Role, Volunter} from '../../../models/volunter.model';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {DomainhelperService} from '../../../services/domainhelper.service';
 
 export interface DialogData {

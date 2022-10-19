@@ -13,6 +13,7 @@ import {
 } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
 import {CreateSeedComponent} from './components/admin/create-seed/create-seed.component';
 import {ManageTrackingComponent} from './components/tracking/manage-tracking/manage-tracking.component';
+import {ListAllTrackingSeedsComponent} from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,9 @@ const routes: Routes = [
   },
   {
     path: 'admin/seguimientos', component: ManageTrackingComponent
+  },
+  {
+    path: 'admin/tracking/all-seeds', component: ListAllTrackingSeedsComponent
   },
   {
     path: 'admin/new-seed', component: CreateSeedComponent

@@ -54,6 +54,11 @@
         "text": "Seguimiento diarío",
         "icon": "layers",
         "routerLink": "/admin/semillas/semillas-pendientes"
+      },
+      {
+        "text": "Semillas",
+        "icon": "layers",
+        "routerLink": "/admin/tracking/all-seeds"
       }
     ]
   },

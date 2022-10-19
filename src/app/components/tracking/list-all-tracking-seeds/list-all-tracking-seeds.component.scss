@@ -1,0 +1,43 @@
+.container{
+  margin-top: 100px;
+  width: 70%;
+}
+.date-filter{
+  border-radius: 15px;
+  background-color: rgba(76, 175, 80, 0.2);
+  margin-right: 8px;
+}
+.img{
+  width: 200px;
+  max-height: 50px;
+}
+mat-chip{
+  font-size: 10px;
+}
+
+.add-buton{
+  position: absolute;
+  margin-top: 100px;
+  right: 10px;
+}
+.loading{
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.img{
+  width: 200px;
+  max-height: 50px;
+}
+.title{
+  float: left;
+  font-size: 24px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 12px 0;
+}
