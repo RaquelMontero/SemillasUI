@@ -1,23 +1,34 @@
-<div class="add-button">
-  <button (click)="back()"
-          mat-fab
-          color="accent">
-    <mat-icon>backspace</mat-icon>
-  </button>
-</div>
-<div class="main">
-  <h2 class="header">SEMILLAS ASIGNADAS</h2>
-  <hr>
-  <ng-container *ngIf="!loadingtable else loading">
-    <app-generic-table
-      *ngIf="data"
-      [inputTable]="data.rows"
-      (actionOutput)="actionOutput($event)"
-    >
-    </app-generic-table>
-  </ng-container>
-  <ng-template #loading>
-    <mat-spinner class="loading">
-    </mat-spinner>
-  </ng-template>
-</div>
+<mat-tab-group  [selectedIndex]="index" mat-align-tabs="center"
+                (selectedTabChange)="onTabChanged($event);"
+                mat-align-tabs="center">
+ <mat-tab>
+   <div class="add-button">
+     <button (click)="back()"
+             mat-fab
+             color="accent">
+       <mat-icon>backspace</mat-icon>
+     </button>
+   </div>
+   <div class="main">
+     <h2 class="header">SEMILLAS ASIGNADAS</h2>
+     <hr>
+     <ng-container *ngIf="!loadingtable else loading">
+       <app-generic-table
+         *ngIf="data"
+         [inputTable]="data.rows"
+         (actionOutput)="actionOutput($event)"
+       >
+       </app-generic-table>
+     </ng-container>
+     <ng-template #loading>
+       <mat-spinner class="loading">
+       </mat-spinner>
+     </ng-template>
+   </div>
+ </mat-tab>
+  <mat-tab *ngIf="index===1">
+    <app-list-seed-donations>
+
+    </app-list-seed-donations>
+  </mat-tab>
+</mat-tab-group>

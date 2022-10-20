@@ -12,6 +12,7 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
   @Input() volunterId: string;
   loadingtable = true;
   data: Table;
+  index = 0;
   constructor(private trackingService: TrackingService) {
   }
 
@@ -40,6 +41,10 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
   }
 
   donations(): void{
+    this.index = 1;
+  }
+  onTabChanged(evento){
+    console.log('event', evento);
 
   }
 }

@@ -10,9 +10,9 @@
 <mat-dialog-content>
   <form [formGroup]="assignForm" class="row">
     <div class="col-md-12">
-     <div class="volunter-cont">
+     <div class="volunter-cont" *ngIf="volunter">
        <mat-icon>person</mat-icon>
-       <span>Luciana Gardezazabal</span>
+       <span>{{volunter.name}} {{volunter.lastname}}</span>
      </div>
     </div>
     <mat-form-field appearance="standard"
@@ -62,5 +62,8 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button (click)="confirm()" mat-raised-button color="primary">ASIGNAR</button>
+  <button
+    (click)="confirm()"
+    [disabled]="!assignForm.valid"
+    mat-raised-button color="primary">ASIGNAR</button>
 </mat-dialog-actions>

@@ -7,9 +7,10 @@ import {map, startWith} from 'rxjs/operators';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatOptionSelectionChange} from '@angular/material/core';
+import {Volunter} from '../../../models/volunter.model';
+import {VolunterService} from '../../../services/volunter.service';
 export interface DialogData {
-  contributorId: string;
-  //isReject: boolean;
+  volunterId: string;
 }
 @Component({
   selector: 'app-asign-seed-to-volunter',
@@ -18,13 +19,14 @@ export interface DialogData {
 })
 export class AsignSeedToVolunterComponent implements OnInit {
   filteredSeeds: Observable<BoxSeed[]>;
+  volunter: Volunter = null;
   allSeeds: BoxSeed[] = [];
   loadingAll = true;
-  startDate = new Date(1990, 0, 1);
+  startDate = new Date();
   assignForm = this.form.group({
     searchValue: [],
-    idContributor: [null, Validators.required],
-    idVolunter: [null, Validators.required],
+    contributor_id: [null, Validators.required],
+    volunter_id: [null, Validators.required],
     start_date: [null, Validators.required],
     end_date: [null, Validators.required]
   });
@@ -32,10 +34,12 @@ export class AsignSeedToVolunterComponent implements OnInit {
     public dialogRef: MatDialogRef<AsignSeedToVolunterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private trackingService: TrackingService,
+    private volunteerService: VolunterService,
     private form: FormBuilder) { }
 
   ngOnInit(): void {
     this.getActiveSeeds();
+    this.getVolunterById();
   }
   getActiveSeeds(): void{
     this.trackingService.getActiveSeeds()
@@ -51,6 +55,8 @@ export class AsignSeedToVolunterComponent implements OnInit {
       });
   }
   selected(evento: MatAutocompleteSelectedEvent){
+    this.assignForm.get('contributor_id').setValue(evento.option.value.contributor_id);
+
     console.log('selected', evento);
   }
   updateMySelection(evento: MatOptionSelectionChange): void{
@@ -73,9 +79,17 @@ export class AsignSeedToVolunterComponent implements OnInit {
   confirm(){
     const form = this.assignForm.value;
     this.trackingService.saveTrackingAssign(form)
-      .subscribe((data)=>{
+      .subscribe((data) => {
+        this.dialogRef.close();
         console.log('data');
-      })
+      });
+  }
 
+  getVolunterById(): void{
+    this.volunteerService.getvolunter(this.data.volunterId)
+      .subscribe((data) => {
+        this.volunter = data ;
+        this.assignForm.get('volunter_id').setValue(this.data.volunterId);
+      });
   }
 }

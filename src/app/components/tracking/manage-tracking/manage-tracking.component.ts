@@ -49,7 +49,7 @@ export class ManageTrackingComponent implements OnInit {
       autoFocus: true,
       width: '800px',
       data: {
-        contributorId: id,
+        volunterId: id,
         //isReject: false
       }
     });
