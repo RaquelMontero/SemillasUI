@@ -4,6 +4,7 @@ import {CellContent, Table} from '../../../../models/Table.model.';
 import {MatDialog} from '@angular/material/dialog';
 import {AsignSeedToVolunterComponent} from '../../asign-seed-to-volunter/asign-seed-to-volunter.component';
 import {ModalNewDonationComponent} from '../../modal-new-donation/modal-new-donation.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-seed-donations',
@@ -26,6 +27,7 @@ export class ListSeedDonationsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getDonations();
+    this.getDonationsRecord();
   }
 
   actionOutput(evento: CellContent): void{
@@ -35,6 +37,7 @@ export class ListSeedDonationsComponent implements OnChanges {
       // this.donations();
     }
   }
+  onAdding(): void{}
 
   getDonations(): void{
     this.trackingService.getSeedsDonations(this.seedId)
@@ -69,4 +72,13 @@ export class ListSeedDonationsComponent implements OnChanges {
       }
     });
   }
+  getDonationsRecord(): void{
+    this.loadingtable = true;
+    this.trackingService.listSeedTrackingRecords('d')
+      .subscribe((table) => {
+        this.data = table;
+        this.loadingtable = false;
+      });
+  }
+  outputEvent(evento): void{}
 }
