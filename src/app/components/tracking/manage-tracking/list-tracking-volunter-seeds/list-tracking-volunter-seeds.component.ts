@@ -9,6 +9,7 @@ import {CellContent, Table} from '../../../../models/Table.model.';
 })
 export class ListTrackingVolunterSeedsComponent implements OnChanges {
   @Output() emitter: EventEmitter<{ tabAction }> = new EventEmitter();
+  @Output() selectedSeed: EventEmitter<{ seedId }> = new EventEmitter();
   @Input() volunterId: string;
   loadingtable = true;
   data: Table;
@@ -32,7 +33,8 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
   actionOutput(evento: CellContent): void{
     console.log('event', evento);
     if (evento.clickedAction === 'Donations'){
-      this.donations();
+      this.selectedSeed.emit({seedId: evento.params[0].paramContent})
+      // this.donations();
     }
   }
 

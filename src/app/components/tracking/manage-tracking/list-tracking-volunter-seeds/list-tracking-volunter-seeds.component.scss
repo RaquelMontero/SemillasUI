@@ -4,11 +4,7 @@
   font-weight: 400;
 }
 /************/
-.container{
-  margin-top: 20px;
-  width: 70%;
-  z-index: -1;
-}
+
 .main{
   padding-top: 40px;
 }
@@ -24,4 +20,7 @@
   position: absolute;
   margin-top: 20px;
   right: 10px;
+}
+mat-tab-group{
+  padding-top: -50px;
 }

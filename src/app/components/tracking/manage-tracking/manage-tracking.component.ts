@@ -15,6 +15,7 @@ export class ManageTrackingComponent implements OnInit {
   loadingtable = true;
   data: Table;
   idSelectedVolunter: string;
+  idSelectedSeeds: string;
   constructor(private volunterService: VolunterService,
               private dialog: MatDialog,) { }
 
@@ -60,6 +61,10 @@ export class ManageTrackingComponent implements OnInit {
     });
   }
 
+  selectedSeed(evento): void{
+    this.idSelectedSeeds = evento;
+    this.index = 2;
+  }
   back(evento){
     this.index = 0;
   }
