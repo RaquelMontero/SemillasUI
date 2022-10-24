@@ -3,8 +3,8 @@ import {TrackingService} from '../../../../services/tracking.service';
 import {CellContent, Table} from '../../../../models/Table.model.';
 import {MatDialog} from '@angular/material/dialog';
 import {AsignSeedToVolunterComponent} from '../../asign-seed-to-volunter/asign-seed-to-volunter.component';
-import {ModalNewDonationComponent} from '../../modal-new-donation/modal-new-donation.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ModalNewDonationComponent} from '../../modal-new-donation/modal-new-donation.component';
 
 @Component({
   selector: 'app-list-seed-donations',
