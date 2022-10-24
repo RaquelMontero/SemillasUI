@@ -162,7 +162,15 @@
               "content": null,
               "params": [
                 {
-                  "paramName": "volunterId",
+                  "paramName": "seedId",
+                  "paramContent": "1"
+                },
+                {
+                  "paramName": "trackingAssignmentId",
+                  "paramContent": "1"
+                },
+                {
+                  "paramName": "contributionConfigId",
                   "paramContent": "1"
                 }
               ]
@@ -333,8 +341,16 @@
               "content": null,
               "params": [
                 {
-                  "paramName": "volunterId",
-                  "paramContent": "8"
+                  "paramName": "seedId",
+                  "paramContent": "1"
+                },
+                {
+                  "paramName": "trackingAssignmentId",
+                  "paramContent": "1"
+                },
+                {
+                  "paramName": "contributionConfigId",
+                  "paramContent": "1"
                 }
               ]
             }

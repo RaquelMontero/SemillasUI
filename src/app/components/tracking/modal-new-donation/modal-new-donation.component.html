@@ -8,5 +8,48 @@
 
 </div>
 <mat-dialog-content>
-
+  <form [formGroup]="donation" class="row">
+    <mat-form-field class="col-md-6" appearance="standard">
+      <mat-label>Método de pago</mat-label>
+      <mat-select formControlName="paymentMethod" required>
+        <mat-option *ngFor="let pm of paymentMethods" [value]="pm.value">
+          {{pm.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-md-6" appearance="standard">
+      <mat-label>Monto de Aporte</mat-label>
+      <input class="example-right-align"
+             required matInput type="number"
+             formControlName="contribution_ammount" placeholder="0">
+      <mat-error *ngIf="donationAmount.invalid">{{getDonationAmountError()}}</mat-error>
+      <!--<span matPrefix>{{dolarsamount}}&nbsp;</span> -->
+      <span matSuffix>.00 BOB</span>
+      <mat-hint>{{childscount}}</mat-hint>
+    </mat-form-field>
+    <mat-form-field
+      class="col-md-6"
+      appearance="standard">
+      <mat-label>Fecha de Pago Prevista</mat-label>
+      <input formControlName="expected_payment_date"
+             matInput
+             required
+             [matDatepicker]="picker2">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 startView="year"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field
+      class="col-md-6"
+      appearance="standard">
+      <mat-label>Fecha de Realizado</mat-label>
+      <input formControlName="payment_date"
+             matInput
+             required
+             [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year"></mat-datepicker>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
