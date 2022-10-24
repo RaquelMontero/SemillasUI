@@ -1,4 +1,30 @@
-<div>
-  <p>list-seed-donations works!</p>
+<mat-toolbar class="toolbar">
+  <button (click)="back()" color="primary" mat-fab>
+    <mat-icon>backspace</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+  <mat-card>
+    <h2 class="header">APORTES</h2>
+    <hr>
+    <mat-card-actions align="end">
+      <button (click)="newDonation()"
+              color="accent" mat-raised-button>
+        REGISTRAR APORTE</button>
+    </mat-card-actions>
+    <ng-container *ngIf="!loadingtable else loading">
+      <app-generic-table
+        *ngIf="data"
+        [inputTable]="data.rows"
+        (actionOutput)="actionOutput($event)"
+      >
+      </app-generic-table>
+    </ng-container>
+  </mat-card>
+
+  <ng-template #loading>
+    <mat-spinner class="loading">
+    </mat-spinner>
+  </ng-template>
 
 </div>

@@ -1,9 +1,11 @@
+.container{
+  width: 70%;
+}
 .header {
   letter-spacing: 0.1rem;
   font-size: 16px;
   font-weight: 400;
 }
-/************/
 
 .main{
   padding-top: 40px;
@@ -24,3 +26,11 @@
 mat-tab-group{
   padding-top: -50px;
 }
+
+.toolbar{
+  width: 90%;
+  margin-top: 40px;
+  background-color: #A5D6A700;
+  color: #1b7549;
+}
+

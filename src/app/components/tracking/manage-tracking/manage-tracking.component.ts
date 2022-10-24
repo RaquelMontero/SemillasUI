@@ -16,6 +16,8 @@ export class ManageTrackingComponent implements OnInit {
   data: Table;
   idSelectedVolunter: string;
   idSelectedSeeds: string;
+  trackingAssignmentId: string;
+  contributionConfigId: string;
   constructor(private volunterService: VolunterService,
               private dialog: MatDialog,) { }
 
@@ -62,10 +64,14 @@ export class ManageTrackingComponent implements OnInit {
   }
 
   selectedSeed(evento): void{
-    this.idSelectedSeeds = evento;
+    console.log('selectedSeed', evento);
+    this.idSelectedSeeds = evento.seedId;
+    this.trackingAssignmentId = evento.trackingAssignmentId;
+    this.contributionConfigId = evento.contributionConfigId;
     this.index = 2;
   }
-  back(evento){
-    this.index = 0;
+  back(evento): void{
+    console.log('evento', evento);
+    this.index = evento.tabAction.number;
   }
 }

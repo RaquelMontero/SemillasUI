@@ -1,7 +1,11 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TrackingService} from '../../../../services/tracking.service';
 import {CellContent, Table} from '../../../../models/Table.model.';
-
+export interface SelectSeed{
+  seedId: string;
+  trackingAssignmentId: string;
+  contributionConfigId: string;
+}
 @Component({
   selector: 'app-list-tracking-volunter-seeds',
   templateUrl: './list-tracking-volunter-seeds.component.html',
@@ -9,7 +13,7 @@ import {CellContent, Table} from '../../../../models/Table.model.';
 })
 export class ListTrackingVolunterSeedsComponent implements OnChanges {
   @Output() emitter: EventEmitter<{ tabAction }> = new EventEmitter();
-  @Output() selectedSeed: EventEmitter<{ seedId }> = new EventEmitter();
+  @Output() selectedSeed: EventEmitter<SelectSeed> = new EventEmitter();
   @Input() volunterId: string;
   loadingtable = true;
   data: Table;
@@ -33,7 +37,12 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
   actionOutput(evento: CellContent): void{
     console.log('event', evento);
     if (evento.clickedAction === 'Donations'){
-      this.selectedSeed.emit({seedId: evento.params[0].paramContent})
+      const out: SelectSeed = {
+        seedId: evento.params[0].paramContent,
+        trackingAssignmentId: evento.params[1].paramContent,
+        contributionConfigId: evento.params[2].paramContent
+      };
+      this.selectedSeed.emit(out);
       // this.donations();
     }
   }

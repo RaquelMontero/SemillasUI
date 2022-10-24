@@ -32,4 +32,11 @@ export class TrackingService {
       '/seeds/trackingassignment/trackingSeeds'
       , { params: p });
   }
+
+  getSeedsDonations(idSeed): Observable<Table> {
+      const p = new HttpParams().set('id', idSeed);
+      return this.http.get<Table>(environment.backend +
+        '/seeds/tracking/trackingSeeds'
+        , { params: p });
+  }
 }

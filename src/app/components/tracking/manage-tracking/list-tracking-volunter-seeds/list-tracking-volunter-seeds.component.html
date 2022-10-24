@@ -1,12 +1,9 @@
-<div>
-  <div class="add-button">
-    <button (click)="back()"
-            mat-fab
-            color="accent">
-      <mat-icon>backspace</mat-icon>
-    </button>
-  </div>
-  <div class="main">
+<mat-toolbar class="toolbar">
+  <button color="primary" mat-fab (click)="back()">
+    <mat-icon>backspace</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
     <h2 class="header">SEMILLAS ASIGNADAS</h2>
     <hr>
     <ng-container *ngIf="!loadingtable else loading">
@@ -21,7 +18,6 @@
       <mat-spinner class="loading">
       </mat-spinner>
     </ng-template>
-  </div>
 </div>
 
 <!--
