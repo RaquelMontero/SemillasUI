@@ -37,8 +37,9 @@ export class ListPendingApplicantsComponent implements OnInit {
   onReject(applicantId: string): void {
     const dialogConfig =  this.dialog.open(ModalProcessSeedComponent, {
       disableClose: false,
+      panelClass: 'icon-outside',
       autoFocus: true,
-      width: '800px',
+      width: '700px',
       data: {
         contributorId: applicantId,
         isReject: true
@@ -54,8 +55,9 @@ export class ListPendingApplicantsComponent implements OnInit {
   onAcept(applicantId): void {
     const dialogConfig =  this.dialog.open(ModalProcessSeedComponent, {
       disableClose: false,
+      panelClass: 'icon-outside',
       autoFocus: true,
-      width: '800px',
+      width: '700px',
       data: {
         contributorId: applicantId,
         isReject: false

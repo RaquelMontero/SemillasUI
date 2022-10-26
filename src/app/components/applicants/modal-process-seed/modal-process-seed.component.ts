@@ -18,11 +18,15 @@ export interface DialogData {
 export class ModalProcessSeedComponent implements OnInit {
   contributor = this.fb.group({
     contributor_id: [null, Validators.required],
+    contributionStartDate: [new Date()],
+    contributionEndDate: [null],
     processed_date: [null, Validators.required],
     processReason: [null, [Validators.required]],
     processVolunterId: [null, Validators.required],
     state: [null, Validators.required],
   });
+  startDate = new Date();
+  endDate = new Date();
   seed: Seed;
   loadingSeed = true;
   processVolunterId = 1;
@@ -32,6 +36,16 @@ export class ModalProcessSeedComponent implements OnInit {
               private applicantService: ApplicantService) { }
 
   ngOnInit(): void {
+    this.getSeedById();
+    this.endDate.setFullYear(this.startDate.getFullYear() + 1);
+    this.contributor.patchValue({
+      contributor_id: this.data.contributorId,
+      processed_date: new Date(),
+      processVolunterId: 1,
+      state: this.data.isReject ? 0 : 1,
+      contributionStartDate: new Date(),
+      contributionEndDate: this.endDate,
+    });
   }
 
   getSeedById(): void{

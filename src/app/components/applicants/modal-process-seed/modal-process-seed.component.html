@@ -1,15 +1,46 @@
-<div mat-dialog-title>
-  <button class="close-buton" mat-icon-button
-          (click)="close()">
-    <mat-icon>close</mat-icon>
-  </button>
-  <div class="header">{{title}}</div>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<div mat-dialog-title class="header">
+  <span class="title">{{title}}</span>
+  <img class="img" src="../../../../assets/logo.png" />
+  <!--
+    <button class="close-buton" mat-icon-button
+           (click)="close()">
+     <mat-icon>close</mat-icon>
+   </button>
+   <div class="header">{{title}}</div>
+   -->
 </div>
 <mat-dialog-content>
   <form  [formGroup]="contributor" class="row">
-
-    <div class="col-md-12">
-      <mat-form-field appearance="legacy">
+    <ng-container *ngIf="!data.isReject">
+      <mat-form-field
+        class="col-md-6"
+        appearance="standard">
+        <mat-label>Ingrese la fecha de inicio del ciclo de aportes</mat-label>
+        <input formControlName="contributionStartDate"
+               matInput
+               required
+               [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        class="col-md-6"
+        appearance="standard">
+        <mat-label>Ingrese la fecha de fin del ciclo de aportes</mat-label>
+        <input formControlName="contributionEndDate"
+               matInput
+               required
+               [matDatepicker]="picker2">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 startView="year" [startAt]="endDate"></mat-datepicker>
+      </mat-form-field>
+    </ng-container>
+      <mat-form-field class="col-md-12" appearance="standard">
         <mat-label>Razón</mat-label>
         <textarea matInput
                   formControlName="processReason"
@@ -18,8 +49,8 @@
                   cdkAutosizeMinRows="2"
                   cdkAutosizeMaxRows="5"></textarea>
         <mat-error *ngIf="processReason.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-hint align="end">{{processReason.value?.length || 0}}/100</mat-hint>
       </mat-form-field>
-    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
