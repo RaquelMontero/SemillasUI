@@ -63,7 +63,10 @@ export class ModalNewDonationComponent implements OnInit {
       this.data.contribution_config_id
     ).subscribe((data) => {
       this.contributionConfig = data;
-      console.log('getContributionConfigById', data );
+      this.donation.patchValue({
+        paymentMethod: this.contributionConfig.contribution.paymentMethod,
+        contribution_ammount: this.contributionConfig.contribution.contribution_amount
+      });
     }, (error) => {
       console.log('getContributionConfigById', error );
       this.contributionConfig = {
