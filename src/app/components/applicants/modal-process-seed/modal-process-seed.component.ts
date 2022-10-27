@@ -21,13 +21,14 @@ export class ModalProcessSeedComponent implements OnInit {
     contributionStartDate: [new Date()],
     contributionEndDate: [null],
     processed_date: [null, Validators.required],
-    processReason: [null, [Validators.required]],
+    process_reason: [null, [Validators.required]],
     processVolunterId: [null, Validators.required],
     state: [null, Validators.required],
+    contributionType: [null]
   });
   startDate = new Date();
   endDate = new Date();
-  seed: Seed;
+  seed: any;
   loadingSeed = true;
   processVolunterId = 1;
   constructor(public dialogRef: MatDialogRef<ModalProcessSeedComponent>,
@@ -57,7 +58,8 @@ export class ModalProcessSeedComponent implements OnInit {
           contributor_id: this.data.contributorId,
           processed_date: new Date(),
           processVolunterId: this.processVolunterId,
-          state: this.data.isReject ? 0 : 1
+          state: this.data.isReject ? 2 : 1,
+          contributionType: this.seed.contribution_config.contribution_key
         });
       });
   }
@@ -69,17 +71,18 @@ export class ModalProcessSeedComponent implements OnInit {
     this.dialogRef.close();
   }
   get processReason(): any{
-    return this.contributor.get('processReason');
+    return this.contributor.get('process_reason');
   }
 
   getErrorMessage(): string{
-    if (this.contributor.get('processReason').hasError('required')){
+    if (this.contributor.get('process_reason').hasError('required')){
       return 'Debe ingresar una razón para procesar la persona';
     }
   }
 
   onSubmit(): void{
     const processSeed = this.contributor.value;
+    processSeed.state = this.data.isReject ? 2 : 1;
     this.applicantService.processSeed(processSeed)
       .subscribe((data) => {
         this.dialogRef.close('processed');

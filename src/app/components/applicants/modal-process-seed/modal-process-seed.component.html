@@ -4,16 +4,21 @@
 <div mat-dialog-title class="header">
   <span class="title">{{title}}</span>
   <img class="img" src="../../../../assets/logo.png" />
-  <!--
-    <button class="close-buton" mat-icon-button
-           (click)="close()">
-     <mat-icon>close</mat-icon>
-   </button>
-   <div class="header">{{title}}</div>
-   -->
 </div>
 <mat-dialog-content>
   <form  [formGroup]="contributor" class="row">
+    <div class="col-md-12">
+      <div class="volunter-cont" *ngIf="seed">
+        <div class="name">
+          <mat-icon>person</mat-icon>
+          <span>{{seed.name}} {{seed.lastname}}</span>
+        </div>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="primary" selected>
+            {{seed.contributionType}}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
     <ng-container *ngIf="!data.isReject">
       <mat-form-field
         class="col-md-6"
@@ -43,7 +48,7 @@
       <mat-form-field class="col-md-12" appearance="standard">
         <mat-label>Razón</mat-label>
         <textarea matInput
-                  formControlName="processReason"
+                  formControlName="process_reason"
                   cdkTextareaAutosize
                   #autosize="cdkTextareaAutosize"
                   cdkAutosizeMinRows="2"
@@ -58,5 +63,5 @@
           (click)="onSubmit()"
           class="accept-bt"
           [disabled]="!contributor.valid"
-          color="primary">GUARDAR</button>
+          color="primary">PROCESAR SEMILLA</button>
 </mat-dialog-actions>
