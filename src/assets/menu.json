@@ -30,11 +30,6 @@
     "icon": "supervised_user_circle",
     "children": [
       {
-        "text": "Registrar Responsable",
-        "icon": "category",
-        "routerLink": "/product/category"
-      },
-      {
         "text": "Ver Responsables",
         "icon": "layers",
         "routerLink": "admin/ver-voluntarios"

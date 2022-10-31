@@ -1,5 +1,6 @@
 export interface  Volunter{
-  volunter_id?: number;
+  volunterId?: number;
+  userId?: number;
   name?: string;
   lastname?: string;
   email?: string;
@@ -15,4 +16,9 @@ export interface  Volunter{
 export interface  Role{
   roleId: number ;
   role_name: string;
+}
+
+export interface VolunterFilter{
+  status: string;
+  roleId: string;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Volunter} from '../models/volunter.model';
+import {Volunter, VolunterFilter} from '../models/volunter.model';
 import {environment} from '../../environments/environment';
 import {Observable, Subject} from 'rxjs';
 import {Table} from '../models/Table.model.';
@@ -32,17 +32,27 @@ export class VolunterService {
   addvolunter(volunter: Volunter): Observable<any> {
     return this.http.post<any>(environment.backend + '/seeds/volunters/create/', volunter);
   }
+
   updatevolunter(volunter: Volunter): Observable<any> {
-    return this.http.put<any>(environment.backend + '/seeds/volunters/' + volunter.volunter_id, volunter);
+    return this.http.put<any>(environment.backend + '/seeds/volunters/updateVolunter',  volunter);
   }
 
   exitvolunter(id: any): Observable<any>{
-    console.log(environment.backend + '/exit/' + id);
-    return this.http.post<any>(environment.backend + '/seeds/volunters/exit/', {
+    return this.http.post<any>(environment.backend + '/seeds/volunters/exitVolunter', {
       id
     });
   }
-  listexitvolunter(): Observable<Volunter[]> {
+  deleteVolunter(id: any): Observable<any>{
+    return this.http.post<any>(environment.backend + '/seeds/volunters/deleteVolunter', {
+      id
+    });
+  }
+
+  listexitvolunter(filter: VolunterFilter): Observable<Volunter[]> {
+    const p = new HttpParams()
+      .set('status', filter.status)
+      .set('roleId', filter.roleId);
+
     return this.http.get<Volunter[]>(environment.backend + '/seeds/volunters/exitvolunters');
   }
   listen(): Observable<any> {

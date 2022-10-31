@@ -41,6 +41,7 @@ export class ListVoluntersComponent implements OnInit {
   onedit(volunterid: any): void {
     const dialogRef = this.dialog.open(VolunterDialogComponent, {
       disableClose: false,
+      panelClass: 'icon-outside',
       autoFocus: true,
       width: '800px',
       data: {
@@ -59,6 +60,7 @@ export class ListVoluntersComponent implements OnInit {
     const dialogRef = this.dialog.open(VolunterDialogComponent, {
       disableClose: false,
       autoFocus: true,
+      panelClass: 'icon-outside',
       width: '800px',
       data: {
         volunterId: null,
@@ -79,6 +81,7 @@ export class ListVoluntersComponent implements OnInit {
     const dialogRef = this.dialog.open(ViewVolunterDetailsComponent, {
       disableClose: false,
       autoFocus: true,
+      panelClass: 'icon-outside',
       width: '50%',
       data: {
         volunterId
@@ -88,6 +91,7 @@ export class ListVoluntersComponent implements OnInit {
   ondelete(volunterId): void {
     const dialogRef = this.dialog.open(ExitElementComponent, {
       disableClose: false,
+      panelClass: 'icon-outside',
       autoFocus: true,
       width: '500px',
       data: {
