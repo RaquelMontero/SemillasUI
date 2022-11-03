@@ -8,13 +8,16 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
   formLogin = this.formgroup.group({
-    user: ['', Validators.required],
-    password: ['', Validators.required]
+    user: [null, Validators.required],
+    password: [null, Validators.required]
   });
-
+  hide = true;
   constructor(private formgroup: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+  login(): void{
+
+  }
 }

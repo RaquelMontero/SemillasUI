@@ -1,13 +1,29 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<div mat-dialog-title class="header">
+  <span class="title">INCIAR SESIÓN</span>
+  <img class="img" src="../../../../assets/logo.png" />
+</div>
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="formLogin">
-    <mat-form-field>
+  <form [formGroup]="formLogin" class="row">
+    <mat-form-field appearance="outline" class="col-md-12">
       <mat-label>Usuario</mat-label>
-      <input mat-input formControlName="user">
+      <input matInput formControlName="user">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-md-12">
+      <mat-label>Contrasenia</mat-label>
+      <input matInput formControlName="password"
+             [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
     </mat-form-field>
   </form>
+  {{formLogin.value | json}}
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+<mat-dialog-actions align="center">
+  <button mat-raised-button
+          [disabled]="!formLogin.valid"
+          color="primary">INICIAR</button>
 </mat-dialog-actions>

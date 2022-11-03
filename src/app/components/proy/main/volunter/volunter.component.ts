@@ -5,6 +5,9 @@ import { SocialUser } from 'angularx-social-login';
 import { TokenDto } from 'src/app/models/token';
 import { OauthService } from 'src/app/services/auth/oauth.service';
 import { TokenService } from 'src/app/services/auth/token.service';
+import {ModalProcessSeedComponent} from '../../../applicants/modal-process-seed/modal-process-seed.component';
+import {MatDialog} from '@angular/material/dialog';
+import {LogInComponent} from '../../../admin/log-in/log-in.component';
 
 @Component({
   selector: 'app-volunter',
@@ -19,6 +22,7 @@ export class VolunterComponent implements OnInit {
   constructor(
     private authService: SocialAuthService,
     private router: Router,
+    private dialog: MatDialog,
     private tokenService: TokenService,
     private oauthService: OauthService,
   ) { }
@@ -31,7 +35,15 @@ export class VolunterComponent implements OnInit {
      });
   }
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+    const dialogConfig =  this.dialog.open(LogInComponent, {
+      disableClose: false,
+      panelClass: 'icon-outside',
+      autoFocus: true,
+      width: '500px',
+    });
+    dialogConfig.afterClosed().subscribe(result => {
+    });
+    /*this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
        data => {
          this.userLogged = data;
          console.log(data);
@@ -52,7 +64,7 @@ export class VolunterComponent implements OnInit {
        err => {
          console.log(err);
        }
-     );
+     );*/
   }
   logOut(): void {
     this.authService.signOut().then(

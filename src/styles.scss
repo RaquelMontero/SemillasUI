@@ -13,8 +13,12 @@ body {
 
 mat-form-field{
   width: 100%;
-  letter-spacing: 0.1em !important;
-  margin-bottom: 16px;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 12px;
+  input{
+    letter-spacing: 0.05em !important;
+    height: 100% !important;
+  }
 }
 
 .header{
