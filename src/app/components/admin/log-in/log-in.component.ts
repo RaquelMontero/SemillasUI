@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import {OauthService} from '../../../services/auth/oauth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -8,16 +9,31 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
   formLogin = this.formgroup.group({
-    user: [null, Validators.required],
+    username: [null, Validators.required],
     password: [null, Validators.required]
   });
   hide = true;
-  constructor(private formgroup: FormBuilder) { }
+  constructor(private formgroup: FormBuilder,
+              private oauthservice: OauthService) { }
 
   ngOnInit(): void {
   }
 
   login(): void{
+    const payload = this.formLogin.value;
+    this.oauthservice.loginVolunter(payload)
+      .subscribe((data) => {
+        console.log(data);
+        this.oauthservice.login(data.token);
+        this.oauthservice.getCurrentUser().subscribe((usr)=>{
+          console.log('curr', usr);
+        });
+      });
+  }
 
+  get getUsernameError(){
+    if (this.formLogin.get('username').hasError('required')){
+      return 'El nombre de usuario es requerido';
+    }
   }
 }

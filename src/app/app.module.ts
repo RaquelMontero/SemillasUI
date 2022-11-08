@@ -26,7 +26,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
@@ -40,10 +39,6 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
-
-import {
-  GoogleLoginProvider,
-} from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -85,6 +80,7 @@ import { ListSeedDonationsComponent } from './components/tracking/manage-trackin
 import { AsignSeedToVolunterComponent } from './components/tracking/asign-seed-to-volunter/asign-seed-to-volunter.component';
 import { ListAllTrackingSeedsComponent } from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 import { ModalNewDonationComponent } from './components/tracking/modal-new-donation/modal-new-donation.component';
+import {authInterceptorProviders} from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -152,7 +148,6 @@ import { ModalNewDonationComponent } from './components/tracking/modal-new-donat
     MatTreeModule,
     MatToolbarModule,
     MatCarouselModule.forRoot(),
-    SocialLoginModule,
     CdkAccordionModule,
     HttpClientModule,
     MatAutocompleteModule,
@@ -170,20 +165,7 @@ import { ModalNewDonationComponent } from './components/tracking/modal-new-donat
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [{
-    provide: 'SocialAuthServiceConfig',
-    useValue: {
-      autoLogin: false,
-      providers: [
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider(
-            '460291057573-9dhoui1sslarqe6c911duli469fvbhii.apps.googleusercontent.com'
-          )
-        }
-      ]
-    } as SocialAuthServiceConfig,
-  }],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
   schemas:
     [CUSTOM_ELEMENTS_SCHEMA]

@@ -9,11 +9,12 @@
   <form [formGroup]="formLogin" class="row">
     <mat-form-field appearance="outline" class="col-md-12">
       <mat-label>Usuario</mat-label>
-      <input matInput formControlName="user">
+      <input matInput required formControlName="username">
+      <mat-error *ngIf="formLogin.get('username').invalid">{{getUsernameError}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="col-md-12">
       <mat-label>Contrasenia</mat-label>
-      <input matInput formControlName="password"
+      <input required matInput formControlName="password"
              [type]="hide ? 'password' : 'text'">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -24,6 +25,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button mat-raised-button
+          (click)="login()"
           [disabled]="!formLogin.valid"
           color="primary">INICIAR</button>
 </mat-dialog-actions>

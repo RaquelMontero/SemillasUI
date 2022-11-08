@@ -7,3 +7,8 @@ export interface ComboElement{
 export interface ComboResponse{
   data: ComboElement[];
 }
+
+export interface PayloadLogin{
+  username: string;
+  password: string;
+}

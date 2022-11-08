@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenDto } from '../../models/token';
+import {environment} from '../../../environments/environment';
+import {PayloadLogin} from '../../models/Utils.model';
 const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -12,8 +14,55 @@ export class OauthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public google(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.httpClient.post<TokenDto>(this.oauthURL + 'google', tokenDto, cabecera);
+  loginVolunter(payload: PayloadLogin): Observable<any> {
+    return this.httpClient.post<any>(environment.backend + '/oauth/generate-token', payload);
   }
+
+  public login(token: any){
+    localStorage.setItem('token', token);
+  }
+
+  public isLoggedIn(): boolean{
+    const tokenStr = localStorage.getItem('token');
+    if (tokenStr === undefined || tokenStr === '' || tokenStr === null){
+      return false;
+    } else { return true; }
+  }
+
+  public logout(): boolean{
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    return true;
+  }
+
+  public getToken(): any{
+    return localStorage.getItem('token');
+  }
+
+  public setUser(user): any{
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  public getUser(): any{
+    const userStr = localStorage.getItem('user');
+    if (userStr != null){
+      return JSON.parse(userStr);
+    }else {
+      this.logout();
+      return null;
+    }
+  }
+
+  public getCurrentUser(){
+    return this.httpClient.get(environment.backend + '/oauth/actual-usuario');
+  }
+
+  public getUserRoles(){
+    const user = this.getUser();
+    return user.authorities[0].authority;
+  }
+ /* public google(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.httpClient.post<TokenDto>(this.oauthURL + 'google', tokenDto, cabecera);
+  }*/
 
 }

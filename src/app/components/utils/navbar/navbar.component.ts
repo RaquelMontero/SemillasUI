@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
-import { SocialUser } from 'angularx-social-login';
-import { TokenDto } from 'src/app/models/token';
 import { OauthService } from 'src/app/services/auth/oauth.service';
 import { TokenService } from 'src/app/services/auth/token.service';
 @Component({
@@ -20,11 +17,9 @@ export class NavbarComponent implements OnInit {
   panelOpenState = false;
   snav: MatSidenav;
 
-  userLogged: SocialUser;
   loggedIn: boolean = false;
 
   constructor(
-    private authService: SocialAuthService,
     private router: Router,
     private tokenService: TokenService,
     private oauthService: OauthService,
@@ -62,7 +57,7 @@ export class NavbarComponent implements OnInit {
   }
 */
 
-  autoLogin(){
+  /*autoLogin(){
     const tokenGoogle = new TokenDto(this.tokenService.getToken());
     console.log('seloguea ' + this.loggedIn + tokenGoogle.value);
     this.oauthService.google(tokenGoogle).subscribe(
@@ -77,26 +72,13 @@ export class NavbarComponent implements OnInit {
         this.logOut();
       }
     );
-  }
+  }*/
   logOut(): void {
-    this.authService.signOut().then(
-      data => {
-        this.tokenService.logOut();
-        this.router.navigate(['/']);
-      }
-    );
+
   }
 
   ngOnInit(): void {
-    // this.autoLogin();
-    this.authService.authState.subscribe((data) => {
-      this.userLogged = data;
-      // this.loggedIn = (this.userLogged != null);
-      this.loggedIn = (this.userLogged != null && this.tokenService.getToken() != null);
-
-    });
   }
   refreshToken(): void {
-    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 }

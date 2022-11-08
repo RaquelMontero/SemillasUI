@@ -12,6 +12,6 @@ export class DomainhelperService {
 
   constructor(private http: HttpClient) { }
   getAllRoles(): Observable<Role[]> {
-    return this.http.get<Role[]>(environment.backend + '/seeds/domainhelper/roles/');
+    return this.http.get<Role[]>(environment.backend + '/seeds/volunters/roles');
   }
 }
