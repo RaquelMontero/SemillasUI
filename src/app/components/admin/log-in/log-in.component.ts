@@ -27,6 +27,11 @@ export class LogInComponent implements OnInit {
         this.oauthservice.login(data.token);
         this.oauthservice.getCurrentUser().subscribe((usr)=>{
           console.log('curr', usr);
+          this.oauthservice.setUser(usr);
+          if (this.oauthservice.getUserRoles() === 'ADMINISTRADOR'){
+            console.log('ADMINISTRADOR', usr);
+
+          }
         });
       });
   }
