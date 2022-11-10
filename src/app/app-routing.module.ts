@@ -15,6 +15,7 @@ import {CreateSeedComponent} from './components/admin/create-seed/create-seed.co
 import {ManageTrackingComponent} from './components/tracking/manage-tracking/manage-tracking.component';
 import {ListAllTrackingSeedsComponent} from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 import {LoggedGuard} from './guards/logged.guard';
+import {AdminDashboardComponent} from './components/admin/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'soy-voluntaria', component: VolunterComponent
+  },
+  {
+    path: 'admin', component: AdminDashboardComponent
   },
   {
     path: 'quiero-aportar', component: WantCollaborateComponent

@@ -1,6 +1,6 @@
 <div class="nav1">
-  <div class="ui top fixed menu">
-    <a class="right item"></a>
+  <div class="menu">
+    <div class="current-user" *ngIf="currentUser">{{currentUser.name}} {{currentUser.lastname}}</div>
   </div>
 </div>
 <nav class="navbar navbar-expand-md navbar-dark">
@@ -16,19 +16,19 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarButtonsExample">
     <ul class="navbar-nav justify-content-start">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!loggedIn">
         <a class="nav-link" routerLink="quiero-aportar">Quiero Aportar</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!loggedIn">
         <a class="nav-link" routerLink="soy-voluntaria">Soy Voluntario</a>
       </li>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" role="presentation" *ngIf="!loggedIn">
         <a class="nav-link" routerLink="actividades-organizacion">Actividades</a>
       </li>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" role="presentation" *ngIf=" loggedIn">
         <a class="item">
-          <img *ngIf=" loggedIn" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 30px">
-          <button mat-icon-button *ngIf=" loggedIn" (click)="logOut()" class="ui green button"><mat-icon> directions</mat-icon>
+          <button mat-icon-button  (click)="logOut()" class="ui green button">
+            <mat-icon> directions</mat-icon>
           </button>
 
         </a>

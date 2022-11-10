@@ -81,6 +81,7 @@ import { AsignSeedToVolunterComponent } from './components/tracking/asign-seed-t
 import { ListAllTrackingSeedsComponent } from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 import { ModalNewDonationComponent } from './components/tracking/modal-new-donation/modal-new-donation.component';
 import {authInterceptorProviders} from './services/auth.interceptor';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import {authInterceptorProviders} from './services/auth.interceptor';
     AsignSeedToVolunterComponent,
     ListAllTrackingSeedsComponent,
     ModalNewDonationComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,

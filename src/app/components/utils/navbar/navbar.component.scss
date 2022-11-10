@@ -88,3 +88,13 @@ mat-icon{
 ::ng-deep .mat-nav-list .mat-list-item.is-active .mat-list-item-content {
     padding: 0 8px;
 }
+
+.menu{
+  display: flex;
+  justify-content: flex-end;
+}
+.current-user{
+  color: #FFFFFF;
+  padding-right: 24px;
+  //float: right;
+}
