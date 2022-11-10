@@ -1,8 +1,22 @@
-<sml-navbar class="nav-container" [inputSideNav]="sidenav"></sml-navbar>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" closed>
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
-
+<mat-toolbar>
+  <!--<button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button> -->
+  <sml-navbar class="nav-container" [inputSideNav]="sidenav"></sml-navbar>
+</mat-toolbar>
+<mat-sidenav class="mat-elevation-z8" #sidenav>
+  <app-sidebar></app-sidebar>
+</mat-sidenav>
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
-<router-outlet></router-outlet>
+
