@@ -1,69 +1,59 @@
 [
   {
-    "text": "Aportadores",
-    "icon": "people",
-    "routerLink": "admin/aportadores"
-  },
-  {
-    "text": "Aportadores del día",
-    "icon": "supervised_user_circle",
-    "routerLink": "admin/aportadores/aportadoresDelDia"
-  },
-  {
-    "text": "Aspirantes",
-    "icon": "inventory_2",
+    "text": "Semillas",
+    "icon": "wc",
     "children": [
       {
-        "text": "Ver Aspirantes",
-        "icon": "category",
-        "routerLink": "admin/aspirantes"
+        "text": "Pendientes de revisión",
+        "icon": "hourglass_empty",
+        "routerLink": "admin/semillas/pendientes"
       },
       {
-        "text": "Ver aspirantes Rechazados",
-        "icon": "layers",
-        "routerLink": "admin/aspirantes/rechazados"
+        "text": "Rechazados",
+        "icon": "thumb_down_alt",
+        "routerLink": "admin/semillas/rechazadas"
+      },
+      {
+        "text": "Semillas Oficiales",
+        "icon": "how_to_reg",
+        "routerLink": "admin/semillas"
+      },
+      {
+        "text": "Registrar Semilla",
+        "icon": "person_add",
+        "routerLink": "/admin/new-seed"
       }
     ]
   },
   {
     "text": "Responsables",
-    "icon": "inventory_2",
+    "icon": "supervised_user_circle",
     "children": [
-      {
-        "text": "Registrar Responsable",
-        "icon": "category",
-        "routerLink": "/product/category"
-      },
       {
         "text": "Ver Responsables",
         "icon": "layers",
         "routerLink": "admin/ver-voluntarios"
-      },
-      {
-        "text": "Responsables Inactivos",
-        "icon": "layers",
-        "routerLink": "/product/sub-category"
       }
     ]
   },
   {
-    "text": "Asignar Responsables",
-    "icon": "layers",
-    "routerLink": "/product/sub-category"
-  },
-  {
     "text": "Seguimiento",
-    "icon": "inventory_2",
+    "icon": "track_changes",
     "children": [
       {
-        "text": "Crear Mes",
-        "icon": "category",
-        "routerLink": "/product/category"
+        "text": "Responsables de seguimiento",
+        "icon": "layers",
+        "routerLink": "/admin/seguimientos"
       },
       {
         "text": "Seguimiento diarío",
         "icon": "layers",
-        "routerLink": "/product/sub-category"
+        "routerLink": "/admin/semillas/semillas-pendientes"
+      },
+      {
+        "text": "Semillas",
+        "icon": "layers",
+        "routerLink": "/admin/tracking/all-seeds"
       }
     ]
   },
@@ -82,10 +72,5 @@
         "routerLink": "/product/sub-category"
       }
     ]
-  },
-  {
-    "text": "Registrar Aportadores",
-    "icon": "layers",
-    "routerLink": "/product/sub-category"
   }
 ]

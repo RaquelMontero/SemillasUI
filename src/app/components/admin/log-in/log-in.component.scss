@@ -1,0 +1,14 @@
+::ng-deep .icon-outside .close-button{
+  float: right;
+  top:-52px;
+  right:-52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+  overflow: unset
+}
+.mat-dialog-content{
+  padding: 36px 36px 12px 36px !important;
+  letter-spacing: 1px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

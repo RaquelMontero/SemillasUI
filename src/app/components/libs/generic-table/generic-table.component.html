@@ -12,25 +12,38 @@
        <ng-container *ngFor="let cell of element['cells']">
          <ng-container *ngIf="cell['cellHeader'].key === column.key">
            <td [class]="!cell['cellProperty'].color ? 'prueba' : 'none'">
-             <ng-container *ngFor="let cont of cell['contents']">
-               <ng-container *ngIf="cont['contentType'] === 'text'">
-                 <span>{{ cont.content }}</span>
-               </ng-container>
-               <ng-container *ngIf="cont['contentType'] === 'chipContent'">
+             <ng-container *ngIf="!isChip(cell['contents']) else chips">
+               <ng-container *ngFor="let cont of cell['contents']">
+                 <ng-container *ngIf="cont['contentType'] === 'text'">
+                   <span>{{ cont.content }}</span>
+                 </ng-container>
+                 <!--
+                  <ng-container *ngIf="cont['contentType'] === 'chipContent'">
                    <span
                      class="chip-element"
                      [ngStyle]="{'background-color': cont.color, 'color':'#FFFFFF'}">
                      {{cont.content}}
                    </span>
-               </ng-container>
-               <ng-container *ngIf="cont['contentType'] === 'iconAccion'">
-                 <button
-                   mat-icon-button
-                   (click)="onclickevent(cont)">
-                   <mat-icon [ngStyle]="{'color': cont.color}">{{cont.iconName}}</mat-icon>
-                 </button>
+                 </ng-container>
+                  -->
+                 <ng-container *ngIf="cont['contentType'] === 'iconAccion'">
+                   <button
+                     [matTooltip]="cont['contentTooltip']"
+                     mat-icon-button
+                     (click)="onclickevent(cont)">
+                     <mat-icon [ngStyle]="{'color': cont.color}">{{cont.iconName}}</mat-icon>
+                   </button>
+                 </ng-container>
                </ng-container>
              </ng-container>
+            <ng-template #chips>
+              <mat-chip-list>
+                <mat-chip *ngFor="let cont of cell['contents']"
+                          [ngStyle]="{'background-color': cont.color, 'color':'#FFFFFF'}">
+                  {{cont.content}}
+                </mat-chip>
+              </mat-chip-list>
+            </ng-template>
            </td>
          </ng-container>
        </ng-container>

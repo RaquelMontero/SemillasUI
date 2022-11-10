@@ -1,21 +1,24 @@
 {
   "data": [
     {
-      "value": "codigoqr",
-      "name": "Código QR"
+      "value": "CODIGO_QR",
+      "selected": true,
+      "name": "CÓDIGO QR"
     },
     {
-      "value": "deposito",
-      "name": "Deposito Bancario"
+      "value": "DEPOSITO_BANCARIO",
+      "selected": false,
+      "name": "DEPOSITO BANCARIO"
     },
     {
-      "value": "transferencia",
-      "name": "Transferencia"
+      "value": "TRANSFERENCIA_BANCARIA",
+      "selected": false,
+      "name": "TRANSFERENCIA BANCARIA"
     },
     {
-      "value": "efectivo",
-      "name": "Efectivo"
+      "value": "EFECTIVO",
+      "selected": false,
+      "name": "EFECTIVO"
     }
   ]
-
 }

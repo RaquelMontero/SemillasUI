@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {ApplicantService} from '../../../services/applicant.service';
 import {MatSort, Sort} from '@angular/material/sort';
+import {CellContent, Table} from '../../../models/Table.model.';
 
 const applicants = [];
 
@@ -16,30 +17,54 @@ const applicants = [];
 })
 
 
-export class ListApprovedApplicantsComponent implements AfterViewInit {
+export class ListApprovedApplicantsComponent implements OnInit {
+  loadingtable = true;
+  data: Table;
   constructor(private router: Router,
               private dialog: MatDialog,
-              // tslint:disable-next-line:variable-name
-              private _liveAnnouncer: LiveAnnouncer,
+             // private _liveAnnouncer: LiveAnnouncer,
               private applicantService: ApplicantService) { }
-  displayedColumns: string[] = ['name', 'email', 'celular', 'send_date',
+
+  ngOnInit(): void {
+    this.getAprovedSeeds();
+  }
+
+  getAprovedSeeds(): void{
+    this.loadingtable = true;
+    this.applicantService.listOficialSeeds().subscribe(
+      (data) => {
+        this.data = data;
+        this.loadingtable = false;
+      }
+    );
+  }
+
+  actionOutput(event: CellContent): void{
+    console.log('event', event);
+    if (event.clickedAction === 'AceptSeed'){
+      //this.onAcept();
+    }else if (event.clickedAction === 'RejectSeed'){
+      //this.onReject();
+    } else if (event.clickedAction === 'SeedInfo'){
+      this.onView();
+    }
+  }
+  onView(): void{
+    console.log('onview');
+  }
+  /*displayedColumns: string[] = ['name', 'email', 'celular', 'send_date',
     'acepted_date', 'contributionType', 'acciones'];
+*/
+  //dataSource = new MatTableDataSource(applicants);
+  //@ViewChild(MatSort) sort: MatSort;
 
-  dataSource = new MatTableDataSource(applicants);
-  @ViewChild(MatSort) sort: MatSort;
-
-  applyFilter(event: Event): void {
+ /* applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.applicantService.listaportadores()
-      .subscribe(data => {
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource.sort = this.sort;
-      });
+
   }
 
   announceSortChange(sortState: Sort): void {
@@ -52,5 +77,5 @@ export class ListApprovedApplicantsComponent implements AfterViewInit {
 
   viewDetails(contributor: any): void{
     console.log(contributor);
-  }
+  }*/
 }

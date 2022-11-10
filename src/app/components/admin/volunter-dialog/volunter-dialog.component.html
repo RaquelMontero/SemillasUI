@@ -1,40 +1,37 @@
-<div  mat-dialog-title>
-  <button class="close-buton" mat-icon-button
-          (click)="close()">
-    <mat-icon>close</mat-icon>
-  </button>
-  <div class="header">{{title}}</div>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<div mat-dialog-title class="header">
+  <span class="title">{{title}}</span>
+  <img class="img" src="../../../../assets/logo.png" />
 </div>
 <mat-dialog-content>
-  <form [formGroup]="volunterform">
-      <div class="row">
-         <div class="col-md-6">
-           <mat-form-field appearance="legacy">
+  <form [formGroup]="volunterform" class="row">
+        <div class="col-md-6">
+           <mat-form-field appearance="standard">
              <mat-label>Nombres</mat-label>
              <input matInput formControlName="name" >
              <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
            </mat-form-field>
          </div>
         <div class="col-md-6">
-          <mat-form-field appearance="legacy">
+          <mat-form-field appearance="standard">
             <mat-label>Apellidos</mat-label>
             <input matInput formControlName="lastname">
             <mat-error *ngIf="lastname.invalid">{{getErrorMessageLastname()}}</mat-error>
             <mat-hint>Puedes Ingresar mas de un apellido</mat-hint>
-
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field appearance="legacy">
+          <mat-form-field appearance="standard">
             <mat-label>Correo</mat-label>
             <input matInput formControlName="email">
             <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
             <mat-hint>correo@gmail.vom</mat-hint>
-
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field appearance="legacy">
+          <mat-form-field appearance="standard">
             <mat-label>Celular</mat-label>
             <input matInput formControlName="phone">
             <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
@@ -42,7 +39,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-form-field appearance="standard">
             <mat-label>Fecha de nacimiento</mat-label>
             <input matInput formControlName="birthdate" [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -50,7 +47,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field  appearance="legacy">
+          <mat-form-field  appearance="standard">
             <mat-label>Carnet De Identidad</mat-label>
             <input matInput formControlName="dni">
             <mat-error *ngIf="dni.invalid">{{getErrorMessageDNI()}}</mat-error>
@@ -58,7 +55,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-12">
-          <mat-form-field appearance="legacy">
+          <mat-form-field appearance="standard">
             <mat-label>Roles</mat-label>
             <mat-chip-list #chipList>
               <mat-chip
@@ -69,21 +66,22 @@
                 </button>
               </mat-chip>
               <input
+                matInput
                 placeholder="Buscar rol..."
                 formControlName="roles"
                 [matAutocomplete]="auto"
                 [matChipInputFor]="chipList">
             </mat-chip-list>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-autocomplete #auto="matAutocomplete"
+                              (optionSelected)="selected($event)">
               <mat-option *ngFor="let fruit of filteredRoles" [value]="fruit">
                 {{fruit.role_name}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
         </div>
-      </div>
   </form>
-
+{{filteredRoles|json}}
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button mat-raised-button

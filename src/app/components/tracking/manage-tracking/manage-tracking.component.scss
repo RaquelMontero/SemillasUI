@@ -1,0 +1,19 @@
+.header {
+  letter-spacing: 0.1rem;
+  font-size: 16px;
+  font-weight: 400;
+}
+/************/
+.container{
+  margin-top: 50px;
+  width: 70%;
+}
+
+.loading{
+  margin: 0 auto;
+  z-index: 100;
+}
+
+::ng-deep mat-tab-body {
+  z-index: -1 /*!important*/;
+}

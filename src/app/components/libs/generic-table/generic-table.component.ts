@@ -3,7 +3,7 @@ import {Sort, SortDirection} from '@angular/material/sort';
 import {ColumnModel, TableModel} from '../../../models/column.model';
 import {cloneDeep, orderBy, sortBy} from 'lodash';
 import {tableSymbol} from '../../../models/decorator/column';
-import {Cell, TableRow} from '../../../models/DTO/Table.model.';
+import {Cell, CellContent, TableRow} from '../../../models/Table.model.';
 
 @Component({
   selector: 'app-generic-table',
@@ -41,6 +41,7 @@ export class GenericTableComponent implements OnInit {
   }
   sortData(params: Sort): void {
     const direction: SortDirection = params.direction;
+    console.log(direction, 'direction');
     this.data = direction
       ? orderBy(this.data, [params.active], [direction])
       : this.originalData;
@@ -58,5 +59,8 @@ export class GenericTableComponent implements OnInit {
 
   onclickevent(event): void {
     this.actionOutput.emit(event);
+  }
+  isChip(contents: CellContent[]): boolean{
+    return contents[0]?.contentType === 'chipContent';
   }
 }

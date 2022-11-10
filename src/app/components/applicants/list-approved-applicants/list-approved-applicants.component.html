@@ -1,4 +1,23 @@
-<div class="container">
+<div class="container" id="htmlData">
+  <h2 class="header">SEMILLAS</h2>
+  <hr>
+  <ng-container *ngIf="!loadingtable else loading">
+    <app-generic-table
+      *ngIf="data"
+      [inputTable]="data.rows"
+      (actionOutput)="actionOutput($event)"
+    >
+    </app-generic-table>
+  </ng-container>
+  <ng-template #loading>
+    <mat-spinner class="loading">
+    </mat-spinner>
+  </ng-template>
+</div>
+
+<!--
+
+ <div class="container">
   <h2 class="header">APORTADORES</h2>
   <hr>
 
@@ -10,36 +29,30 @@
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
          class="mat-elevation-z8 demo-table">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo Electronico </th>
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="celular">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
       <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="send_date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Envío </th>
       <td mat-cell *matCellDef="let element">{{element.send_date | date:'mediumDate'}}</td>
     </ng-container>
-    <!-- Weight Column -->
     <ng-container matColumnDef="acepted_date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de aceptado </th>
       <td mat-cell *matCellDef="let element">{{element.acepted_date | date:'mediumDate'}}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="contributionType">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Aporte </th>
       <td mat-cell *matCellDef="let element"> {{element.contributionType}} </td>
@@ -61,3 +74,5 @@
     </tr>
   </table>
 </div>
+
+ -->

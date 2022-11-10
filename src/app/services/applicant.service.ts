@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Applicant} from '../models/applicant.model';
 import {Observable, Subject} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {PostMessage} from '../models/Message.model';
+import {Table} from '../models/Table.model.';
+import {ProcessSeedPayload, Seed} from '../models/Seed.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,29 +17,24 @@ export class ApplicantService {
   formData: any;
   // tslint:disable-next-line:variable-name
   private _listeners = new Subject<any>();
-
-  listApplicants(): Observable<Applicant[]> {
-    return this.http.get<Applicant[]>(environment.backend + '/seeds/applicants');
-  }
-
-  listen(): Observable<any> {
-    return this._listeners.asObservable();
-  }
-
-
-  addapplicant(applicant: Applicant): Observable<any> {
-    return this.http.post<any>(environment.backend + '/applicants/unique', applicant
+  createUniqueApplicant(applicant: Applicant): Observable<PostMessage> {
+    return this.http.post<PostMessage>(environment.backend + '/seeds/applicants/unique', applicant
     );
   }
 
-  addconstantapplicant(applicant: Applicant): Observable<any>  {
-    return this.http.post<any>(environment.backend + '/applicants/constant', applicant);
+  createConstantapplicant(applicant: Applicant): Observable<any>  {
+    return this.http.post<any>(environment.backend + '/seeds/applicants/constant', applicant);
   }
 
-  rejectapplicant(reason: any, applicantId: number): Observable<any> {
-    return this.http.put<any>(environment.backend + '/applicants/reject/' + applicantId, reason);
+  processSeed(payload: ProcessSeedPayload): Observable<any> {
+    return this.http.post<any>(environment.backend + '/seeds/applicants/processSeed' , payload);
   }
 
+  getSeedById(id): Observable<Seed> {
+    const p = new HttpParams().set('id', id);
+    return this.http.get<Seed>(environment.backend + '/seeds/applicants/getSeedById'
+      , { params: p });
+  }
   listRejectedAplicants(): Observable<any> {
     return this.http.get<any[]>(environment.backend + '/applicants/rejected');
   }
@@ -45,16 +43,18 @@ export class ApplicantService {
     return this.http.put<any>(environment.backend + '/applicants/acept/' + applicantId, applicantId);
   }
 
-  listaportadores(): Observable<any> {
-    return this.http.get<any[]>(environment.backend + '/applicants/acepted');
+  listPendingSeeds(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/applicants/pending');
+  }
+  listRejectedSeeds(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/applicants/rejected');
   }
 
-  getCountries(): Observable<any> {
-   return this.http.get<any[]>('./assets/statics/countries.json');
+  listOficialSeeds(): Observable<Table> {
+    return this.http.get<Table>(environment.backend + '/seeds/applicants/acepted');
   }
-
-  getPaymentMethods(): Observable<any> {
-    return this.http.get<any[]>('./assets/statics/payment_methods.json');
+  listen(): Observable<any> {
+    return this._listeners.asObservable();
   }
 
   // tslint:disable-next-line:typedef

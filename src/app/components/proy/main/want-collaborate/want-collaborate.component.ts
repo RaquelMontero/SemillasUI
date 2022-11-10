@@ -8,11 +8,11 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class WantCollaborateComponent implements OnInit {
   index = 0;
-  donationType;
+  donationType = null;
   showDonationTypes = false;
   showDonationDetails = false;
 
-  applicantForm = this.fb.group({
+  applicantForm; /*= this.fb.group({
     name: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -20,7 +20,7 @@ export class WantCollaborateComponent implements OnInit {
     dni: ['', Validators.required],
     birthdate: ['', Validators.required],
 
-  });
+  });*/
   constructor(private fb: FormBuilder,
   ) { }
   ngOnInit(): void {
@@ -34,5 +34,14 @@ export class WantCollaborateComponent implements OnInit {
     console.log('event', event.tabAction);
     this.index = event.tabAction.number;
     this.donationType = event.tabAction.action;
+  }
+
+  getPersonalInfo(event){
+    this.applicantForm = event;
+  }
+
+  onTabChanged(evento): void{
+    console.log('changes');
+    this.index = evento.index;
   }
 }

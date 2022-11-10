@@ -3,7 +3,7 @@ export interface SnackMessage{
   message: string;
 }
 
-export interface Post{
+export interface PostMessage {
   status: string;
   message: string;
 }

@@ -1,0 +1,72 @@
+.header{
+  border-bottom: 1px solid #2e7d32;
+  width: 96%;
+  padding-bottom: 8px;
+  margin: 0 auto;
+}
+
+.img{
+  width: 200px;
+  max-height: 50px;
+}
+.title{
+  float: right;
+  font-size: 16px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin-right: -20px;
+  padding: 10px 0;
+}
+
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+}
+
+::ng-deep .icon-outside .close-button{
+  float: right;
+  top:-52px;
+  right:-52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+  overflow: unset
+}
+
+.mat-dialog-content{
+  padding: 36px;
+  letter-spacing: 1px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.volunter-cont{
+  border-bottom: 1px solid rgba(76, 175, 80, 0.6);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: rgba(76, 175, 80, 0.1);
+  display: flex;
+  span{
+    padding-top: 2px;
+    margin-left: 8px;
+    font-size: 0.9em;
+  }
+}
+
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+mat-error{
+  color: 	#ad2831;
+}

@@ -1,11 +1,14 @@
 <div class="container">
   <mat-card>
     <mat-tab-group
-      [backgroundColor]="'primary'"
-      [selectedIndex]="index" mat-align-tabs="center">
+      [backgroundColor]="'warn'"
+      [selectedIndex]="index" mat-align-tabs="center"
+      (selectedTabChange)="onTabChanged($event);"
+    >
       <mat-tab label="INFORMACIÒN PERSONAL">
         <app-personal-information
         (emitter)="move_tab($event)"
+        (personalInfo)="getPersonalInfo($event)"
         ></app-personal-information>
       </mat-tab>
       <mat-tab label="TIPOS DE APORTE">
@@ -13,12 +16,16 @@
           (emitter)="move_tab($event)"
         ></app-donations-types>
       </mat-tab>
-      <mat-tab label="DETALLES DEL APORTE">
+      <mat-tab label="DETALLES DEL APORTE" [disabled]="!donationType">
         <ng-container *ngIf="donationType==='CONSTANT'">
-          <app-constant-donation></app-constant-donation>
+          <app-constant-donation
+            [personalInformation]="applicantForm">
+          </app-constant-donation>
         </ng-container>
         <ng-container *ngIf="donationType==='UNIQUE'">
-          <app-unique-donation></app-unique-donation>
+          <app-unique-donation
+            [personalInformation]="applicantForm"
+          ></app-unique-donation>
         </ng-container>
       </mat-tab>
     </mat-tab-group>

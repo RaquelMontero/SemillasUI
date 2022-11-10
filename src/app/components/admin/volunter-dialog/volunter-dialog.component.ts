@@ -3,11 +3,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {VolunterService} from '../../../services/volunter.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Role, Volunter} from '../../../models/volunter.model';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {DomainhelperService} from '../../../services/domainhelper.service';
 
 export interface DialogData {
@@ -22,6 +17,7 @@ export interface DialogData {
 })
 export class VolunterDialogComponent implements OnInit {
   volunterform = this.fb.group({
+    userId: [null],
     name: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -55,6 +51,7 @@ export class VolunterDialogComponent implements OnInit {
       .subscribe((response) => {
       this.volunter = response;
       this.volunterform.patchValue({
+        userId: this.volunter.userId,
         name: this.volunter.name,
         lastname: this.volunter.lastname,
         email: this.volunter.email,
@@ -81,6 +78,18 @@ export class VolunterDialogComponent implements OnInit {
        roles: this.roles
      };
      this.volunterService.addvolunter(data)
+       .subscribe(( data ) => {
+         this.dialogRef.close('saved');
+       }, (error) => {
+         console.log('error', this.volunterform.value);
+       });
+   }else{
+     const data = {
+       volunterId: this.volunter.volunterId,
+       user: this.volunterform.value,
+       roles: this.roles
+     };
+     this.volunterService.updatevolunter(data)
        .subscribe(( data ) => {
          this.dialogRef.close('saved');
        }, (error) => {
@@ -152,7 +161,7 @@ export class VolunterDialogComponent implements OnInit {
     this.filteredRoles = this.filteredRoles.filter(r => r.roleId !== roleId);
   }
   filterRoles(): void{
-    this.roles.map((role)=>{
+    this.roles.map((role) => {
       this.filteredRoles = this.filteredRoles.filter(r => r.roleId !== role.roleId);
     });
   }

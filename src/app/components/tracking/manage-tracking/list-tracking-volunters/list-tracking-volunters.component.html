@@ -1,0 +1,16 @@
+<div>
+  <h2 class="header">VOLUNTARIOS DE SEGUIMIENTO</h2>
+  <hr>
+  <ng-container *ngIf="!loadingtable else loading">
+    <app-generic-table
+      *ngIf="data"
+      [inputTable]="data.rows"
+      (actionOutput)="actionOutput($event)"
+    >
+    </app-generic-table>
+  </ng-container>
+  <ng-template #loading>
+    <mat-spinner class="loading">
+    </mat-spinner>
+  </ng-template>
+</div>

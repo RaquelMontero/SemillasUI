@@ -1,0 +1,36 @@
+.container{
+  width: 70%;
+}
+.header {
+  letter-spacing: 0.1rem;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.main{
+  padding-top: 40px;
+}
+.loading{
+  margin: 0 auto;
+  z-index: 100;
+}
+.mat-tab{
+  z-index: 1;
+}
+
+.add-button{
+  position: absolute;
+  margin-top: 20px;
+  right: 10px;
+}
+mat-tab-group{
+  padding-top: -50px;
+}
+
+.toolbar{
+  width: 90%;
+  margin-top: 40px;
+  background-color: #A5D6A700;
+  color: #1b7549;
+}
+

@@ -5,3 +5,44 @@ body {
   margin: 0;
   font-family: 'M PLUS 1 Code', sans-serif;
 }
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+}
+
+mat-form-field{
+  width: 100%;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 12px;
+  input{
+    letter-spacing: 0.05em !important;
+    height: 100% !important;
+  }
+}
+
+.header{
+  border-bottom: 1px solid #2e7d32;
+  width: 96%;
+  padding-bottom: 8px;
+  margin: 0 auto !important;
+}
+
+.img{
+  width: 200px;
+  max-height: 50px;
+}
+.title{
+  float: right;
+  font-size: 16px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin-right: -20px;
+  padding: 10px 0;
+}
+
+.mat-dialog-content{
+  padding: 36px !important;
+  letter-spacing: 1px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

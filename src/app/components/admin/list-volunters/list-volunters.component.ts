@@ -5,7 +5,7 @@ import {VolunterService} from '../../../services/volunter.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ViewVolunterDetailsComponent} from '../view-volunter-details/view-volunter-details.component';
 import {VolunterDialogComponent} from '../volunter-dialog/volunter-dialog.component';
-import {CellContent, CellParam, Table} from '../../../models/DTO/Table.model.';
+import {CellContent, CellParam, Table} from '../../../models/Table.model.';
 import {ExitElementComponent} from '../../libs/exit-element/exit-element.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
@@ -41,6 +41,7 @@ export class ListVoluntersComponent implements OnInit {
   onedit(volunterid: any): void {
     const dialogRef = this.dialog.open(VolunterDialogComponent, {
       disableClose: false,
+      panelClass: 'icon-outside',
       autoFocus: true,
       width: '800px',
       data: {
@@ -59,6 +60,7 @@ export class ListVoluntersComponent implements OnInit {
     const dialogRef = this.dialog.open(VolunterDialogComponent, {
       disableClose: false,
       autoFocus: true,
+      panelClass: 'icon-outside',
       width: '800px',
       data: {
         volunterId: null,
@@ -79,6 +81,7 @@ export class ListVoluntersComponent implements OnInit {
     const dialogRef = this.dialog.open(ViewVolunterDetailsComponent, {
       disableClose: false,
       autoFocus: true,
+      panelClass: 'icon-outside',
       width: '50%',
       data: {
         volunterId
@@ -88,6 +91,7 @@ export class ListVoluntersComponent implements OnInit {
   ondelete(volunterId): void {
     const dialogRef = this.dialog.open(ExitElementComponent, {
       disableClose: false,
+      panelClass: 'icon-outside',
       autoFocus: true,
       width: '500px',
       data: {
@@ -109,7 +113,6 @@ export class ListVoluntersComponent implements OnInit {
   }
 
   outputEvent(event: CellContent): void{
-    console.log('evento', event);
     const id = this.getVolunteerId(event.params);
     if (event.clickedAction === 'editVolunter'){
       this.onedit(id);

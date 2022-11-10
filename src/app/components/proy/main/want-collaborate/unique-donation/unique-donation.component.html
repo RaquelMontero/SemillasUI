@@ -1,56 +1,71 @@
 <div class="donations">
-  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
-    <mat-chip selected color="primary" class="chip-title">
-      APORTE ÚNICO
-    </mat-chip>
-  </mat-chip-list>
-    <form [formGroup]="donationForm">
-      <div class="row justify-content-between">
-        <div class="col-md-6">
-          <div>
-            <span>Monto de Aporte</span>
-            <mat-form-field appearance="legacy">
-              <input required matInput formControlName="donationAmount" >
-              <mat-error *ngIf="donationAmount.invalid">{{getErrorMessage()}}</mat-error>
-              <mat-hint>Hint</mat-hint>
+  <div class="title">
+    <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+      <mat-chip selected color="primary" class="chip-title">
+       <span class="let"> APORTE ÚNICO</span>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+    <form [formGroup]="donationForm" class="row">
+        <div class="col-md-12">
+            <mat-form-field appearance="standard">
+              <mat-label>Monto de Aporte</mat-label>
+              <input class="example-right-align"
+                     required matInput type="number"
+                     formControlName="contribution_amount" placeholder="0">
+              <mat-error *ngIf="donationAmount.invalid">{{getDonationAmountError()}}</mat-error>
+              <!--<span matPrefix>{{dolarsamount}}&nbsp;</span> -->
+              <span matSuffix>.00 BOB</span>
+              <mat-hint>{{childscount}}</mat-hint>
             </mat-form-field>
-          </div>
-          <div>
-            <span>Metodo de Pago</span>
-            <mat-form-field appearance="outline">
-              <input required matInput formControlName="paymentMethod" >
-              <mat-error *ngIf="paymentMethod.invalid">{{getErrorMessage()}}</mat-error>
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-          </div>
-          <div>
-            <span>Dia del Mes</span>
-            <mat-form-field appearance="outline">
-              <input required matInput formControlName="monthDay" >
-              <mat-error *ngIf="monthDay.invalid">{{getErrorMessage()}}</mat-error>
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-          </div>
         </div>
-        <div class="col-md-6">
-          <div>
-            <span>Noticias</span>
-            <mat-radio-group color="warn" formControlName="getNews">
-              <mat-radio-button value="1">Option 1</mat-radio-button>
-              <mat-radio-button value="2">Option 2</mat-radio-button>
-            </mat-radio-group>
-          </div>
-          <div>
-            <span>Envío de noticias</span>
-            <mat-form-field appearance="outline">
-              <mat-select formControlName="newsMethod">
+          <div class="col-md-6">
+            <mat-form-field appearance="standard">
+              <mat-label>Método de Pago</mat-label>
+              <mat-select formControlName="paymentMethod">
                 <mat-option *ngFor="let method of paymentMethods" [value]="method.value">
                   {{method.name}}
                 </mat-option>
               </mat-select>
+              <mat-error *ngIf="donationAmount.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="standard">
+                <mat-label>Fecha de aporte</mat-label>
+                <input required matInput formControlName="date_contribution"
+                       [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="date_contribution.invalid">{{getPaymentDateError()}}</mat-error>
+                <mat-hint>Elige una fecha en la que realizará el aporte</mat-hint>
+              </mat-form-field>
+          </div>
+        <div class="col-md-6 views-fields">
+             <div class="subtittle">¿ Desea recibir noticias ?</div>
+             <mat-radio-group color="accent" formControlName="send_news">
+               <mat-radio-button [value]="true">SÍ</mat-radio-button>
+               <mat-radio-button [value]="false">NÓ</mat-radio-button>
+             </mat-radio-group>
         </div>
-      </div>
+        <div class="col-md-6">
+             <mat-form-field appearance="standard" *ngIf="donationForm.get('send_news').value === true">
+               <mat-label>Metodo envío de noticias</mat-label>
+               <mat-select formControlName="sendNewsType">
+                 <mat-option *ngFor="let method of newsTypes" [value]="method.value">
+                   {{method.name}}
+                 </mat-option>
+               </mat-select>
+             </mat-form-field>
+        </div>
     </form>
+ <div class="back">
+   <button [disabled]="!donationForm.valid"
+           mat-raised-button color="primary"
+           (click)="sentData()">ENVIAR DATOS
+   <mat-icon>save</mat-icon>
+ </button>
+ </div>
 </div>
+

@@ -27,7 +27,6 @@
     "@types/chart.js": "^2.7.40",
     "@types/lodash": "^4.14.186",
     "angular-bootstrap-md": "^12.1.0",
-    "angularx-social-login": "^3.5.7",
     "animate.css": "~3.7.2",
     "bootstrap": "^5.2.2",
     "html-to-pdfmake": "^2.3.2",

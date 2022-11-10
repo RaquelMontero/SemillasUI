@@ -4,12 +4,27 @@
           matTooltip="REGISTRAR NUEVO VOLUNTARIO">
     <mat-icon>person_add</mat-icon>
   </button>
-  <button mat-raised-button color="warn" (click)="openPDF()">Download PDF</button>
-  <button mat-raised-button color="accent" (click)="openPDF()">Download PDF</button>
 
 </div>
 <div class="container" id="htmlData">
-  <h2 class="header">RESPONSABLES</h2>
+  <h2 class="lis-header">RESPONSABLES</h2>
+  <button color="primary" mat-icon-button [matMenuTriggerFor]="afterMenu">
+    Estado <mat-icon>expand_more</mat-icon></button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Activo</button>
+    <button mat-menu-item>Inactivo</button>
+  </mat-menu>
+  <mat-chip-list aria-label="Fish selection">
+    <mat-chip class="filter-chip" color="accent" selected>
+      <span>Primary fish</span>
+      <button mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-chip>
+    <mat-chip color="primary" selected>Accent fish</mat-chip>
+  </mat-chip-list>
+  <button mat-raised-button color="warn" (click)="openPDF()">Download PDF</button>
+  <button mat-raised-button color="accent" (click)="openPDF()">Download PDF</button>
   <hr>
   <ng-container *ngIf="!loadingVolunteers else isloading">
     <app-generic-table

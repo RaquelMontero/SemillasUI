@@ -11,6 +11,10 @@ import {ListRejectedApplicantsComponent} from './components/applicants/list-reje
 import {
   ListContributorsOfMomentComponent
 } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
+import {CreateSeedComponent} from './components/admin/create-seed/create-seed.component';
+import {ManageTrackingComponent} from './components/tracking/manage-tracking/manage-tracking.component';
+import {ListAllTrackingSeedsComponent} from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
+import {LoggedGuard} from './guards/logged.guard';
 
 const routes: Routes = [
   {
@@ -26,19 +30,30 @@ const routes: Routes = [
     path: 'quiero-aportar', component: WantCollaborateComponent
   },
   {
-    path: 'admin/ver-voluntarios', component: ListVoluntersComponent
+    path: 'admin/ver-voluntarios',
+    component: ListVoluntersComponent,
+    canActivate: [LoggedGuard]
   },
   {
-    path: 'admin/aspirantes', component: ListPendingApplicantsComponent
+    path: 'admin/semillas/pendientes', component: ListPendingApplicantsComponent
   },
   {
-    path: 'admin/aspirantes/rechazados', component: ListRejectedApplicantsComponent
+    path: 'admin/semillas/rechazadas', component: ListRejectedApplicantsComponent
   },
   {
-    path: 'admin/aportadores', component: ListApprovedApplicantsComponent
+    path: 'admin/semillas', component: ListApprovedApplicantsComponent
   },
   {
-    path: 'admin/aportadores/aportadoresDelDia', component: ListContributorsOfMomentComponent
+    path: 'admin/semillas/semillas-pendientes', component: ListContributorsOfMomentComponent
+  },
+  {
+    path: 'admin/seguimientos', component: ManageTrackingComponent
+  },
+  {
+    path: 'admin/tracking/all-seeds', component: ListAllTrackingSeedsComponent
+  },
+  {
+    path: 'admin/new-seed', component: CreateSeedComponent
   }
 ];
 
