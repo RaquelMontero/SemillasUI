@@ -1,6 +1,5 @@
 <div class="nav1">
   <div class="menu">
-    <div class="current-user" *ngIf="currentUser">{{currentUser.name}} {{currentUser.lastname}}</div>
   </div>
 </div>
 <nav class="navbar navbar-expand-md navbar-dark">
@@ -25,6 +24,9 @@
       <li class="nav-item" role="presentation" *ngIf="!loggedIn">
         <a class="nav-link" routerLink="actividades-organizacion">Actividades</a>
       </li>
+      <li class="nav-item" role="presentation" *ngIf="loggedIn">
+        <div class="current-user" *ngIf="currentUser">{{currentUser.name}} {{currentUser.lastname}}</div>
+      </li>
       <li class="nav-item" role="presentation" *ngIf=" loggedIn">
         <a class="item">
           <button mat-icon-button  (click)="logOut()" class="ui green button">
@@ -36,34 +38,3 @@
     </ul>
   </div>
 </nav>
-
-
-<!--<nav class="navbar navbar-expand-sm navbar-dark">
-  <button mat-button (click)="inputSideNav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-
-  <a class="navbar-brand me-2" href="#"><img class="img-fluid" alt="Semillas logo"
-      src="../../../../assets/nav_logo.png" /></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="menu">
-    <ul class="navbar-nav ms-3 justify-content-start">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" href="#pills-home" role="tab" aria-selected="true">Quiero Aportar</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" href="#pills-profile" role="tab" aria-selected="false">Soy Voluntario</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" href="#pills-contact" role="tab" aria-selected="false">Actividades</a>
-      </li>
-    </ul>
-
-  </div>
-</nav>
--->

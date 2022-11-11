@@ -37,10 +37,9 @@ export class VolunterService {
     return this.http.put<any>(environment.backend + '/seeds/volunters/updateVolunter',  volunter);
   }
 
-  exitvolunter(id: any): Observable<any>{
-    return this.http.post<any>(environment.backend + '/seeds/volunters/exitVolunter', {
-      id
-    });
+  exitvolunter(payload: any): Observable<any>{
+    return this.http.post<any>(environment.backend + '/seeds/volunters/exitVolunter', payload
+    );
   }
   deleteVolunter(id: any): Observable<any>{
     return this.http.post<any>(environment.backend + '/seeds/volunters/deleteVolunter', {

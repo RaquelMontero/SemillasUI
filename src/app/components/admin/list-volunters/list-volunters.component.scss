@@ -1,6 +1,6 @@
 .container{
   margin-top: 100px;
-  width: 70%;
+  width: 94%;
 }
 
 mat-chip{
@@ -9,7 +9,7 @@ mat-chip{
 
 .add-buton{
   position: absolute;
-  margin-top: 100px;
+  margin-top: 60px;
   right: 10px;
 }
 .loading{
@@ -18,6 +18,10 @@ mat-chip{
 }
 
 .filter-chip{
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.01em;
+}
+
+.table{
+  padding-top: 24px;
 }

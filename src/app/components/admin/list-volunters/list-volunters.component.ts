@@ -102,10 +102,14 @@ export class ListVoluntersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'afirmative'){
-        this.voluntersService.exitvolunter(Number(volunterId))
+      if (result.status === 'afirmative'){
+        const payload = {
+          message: result.message,
+          volunteerId: volunterId
+        };
+        this.voluntersService.exitvolunter(payload)
           .subscribe(( result ) => {
-            this.showMessage(['saved', 'saved2']);
+            this.showMessage([result.message]);
             console.log('done', result);
           });
       }
@@ -113,6 +117,7 @@ export class ListVoluntersComponent implements OnInit {
   }
 
   outputEvent(event: CellContent): void{
+    console.log('event', event);
     const id = this.getVolunteerId(event.params);
     if (event.clickedAction === 'editVolunter'){
       this.onedit(id);

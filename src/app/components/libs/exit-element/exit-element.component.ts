@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder} from '@angular/forms';
 
 export interface DialogData {
   title: string;
@@ -13,14 +14,21 @@ export interface DialogData {
 })
 
 export class ExitElementComponent implements OnInit {
+  form = this.formBuilder.group({
+    comment: [null]
+  });
   constructor(public dialogRef: MatDialogRef<ExitElementComponent>,
+              private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
   }
 
   onSure(): void{
-    this.dialogRef.close('afirmative');
+    this.dialogRef.close({
+      status: 'afirmative',
+      message: this.form.get('comment').value
+    });
   }
   close(): void{
     this.dialogRef.close();

@@ -19,6 +19,8 @@ export class VolunterDialogComponent implements OnInit {
   volunterform = this.fb.group({
     userId: [null],
     name: ['', Validators.required],
+    username: [null, Validators.required],
+    password: [null, Validators.required],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', Validators.required],
@@ -75,7 +77,9 @@ export class VolunterDialogComponent implements OnInit {
      const data = {
        user: this.volunterform.value,
        entry_date: new Date(),
-       roles: this.roles
+       roles: this.roles,
+       username: this.volunterform.get('username').value,
+       password: this.volunterform.get('password').value
      };
      this.volunterService.addvolunter(data)
        .subscribe(( data ) => {
@@ -87,7 +91,9 @@ export class VolunterDialogComponent implements OnInit {
      const data = {
        volunterId: this.volunter.volunterId,
        user: this.volunterform.value,
-       roles: this.roles
+       roles: this.roles,
+       username: this.volunterform.get('username').value,
+       password: this.volunterform.get('password').value
      };
      this.volunterService.updatevolunter(data)
        .subscribe(( data ) => {
