@@ -3,8 +3,7 @@ import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from '@angular/material/snack-bar';
 import {SnackMessage} from '../../../models/Message.model';
 
 interface MessageData{
-  messages: SnackMessage[];
-  title: string;
+  data: SnackMessage;
 }
 
 @Component({
@@ -18,6 +17,10 @@ export class MessageSnackBarComponent implements OnInit {
               @Inject(MAT_SNACK_BAR_DATA) public data: any) { }
 
   ngOnInit(): void {
+    console.log('dialog', this.data);
   }
 
+  get title(){
+    return this.data.data.status ? 'Exito' : 'error';
+  }
 }

@@ -49,7 +49,8 @@ export class VolunterDialogComponent implements OnInit {
     this.getTitle();
   }
   getVolunter(): void{
-    this.volunterService.getvolunter(this.data.volunterId).pipe()
+    console.log('getVolunter', this.data.volunterId );
+    this.volunterService.getvolunter(this.data.volunterId)
       .subscribe((response) => {
       this.volunter = response;
       this.volunterform.patchValue({
@@ -83,7 +84,7 @@ export class VolunterDialogComponent implements OnInit {
      };
      this.volunterService.addvolunter(data)
        .subscribe(( data ) => {
-         this.dialogRef.close('saved');
+         this.dialogRef.close(data);
        }, (error) => {
          console.log('error', this.volunterform.value);
        });

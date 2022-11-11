@@ -4,7 +4,8 @@
 </div>
 <nav class="navbar navbar-expand-md navbar-dark">
   <div class="leftmenu">
-    <button mat-icon-button (click)="inputSideNav.toggle()">
+    <button *ngIf="loggedIn && inputSideNav.mode === 'over'"
+            mat-icon-button (click)="inputSideNav.toggle()">
       <mat-icon>view_list</mat-icon>
     </button>
     <a class="navbar-brand" routerLink="/"><img src="../../../../assets/seeds.png" /></a>

@@ -25,13 +25,13 @@
     </mat-chip>
   </mat-chip-list>
   <ng-container *ngIf="!loadingVolunteers else isloading">
-   <div class="table">
+   <mat-card class="table">
      <app-generic-table
        *ngIf="volunteers"
        [inputTable]="volunteers.rows"
        (actionOutput)="outputEvent($event)">
      </app-generic-table>
-   </div>
+   </mat-card>
   </ng-container>
   <ng-template #isloading>
     <mat-spinner class="loading">

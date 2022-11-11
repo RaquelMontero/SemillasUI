@@ -1,11 +1,9 @@
 <div class="snackcont">
-    <strong>Notification</strong><br>
-    <div *ngFor="let d of data">
+    <strong>{{title}}</strong><br>
      <div class="mess-container">
      <mat-icon>notifications</mat-icon>
        <span>
-         {{d}}
+         {{data.data.message}}
        </span>
      </div>
-    </div>
 </div>

@@ -91,6 +91,7 @@ export class NavbarComponent implements OnInit {
       this.loadingUser = false;
       this.loggedIn = true;
     }, (error => {
+      this.inputSideNav.close();
       this.currentUser = null;
       this.loadingUser = false;
       this.loggedIn = false;
