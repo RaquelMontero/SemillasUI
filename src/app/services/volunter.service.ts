@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Volunter, VolunterFilter} from '../models/volunter.model';
 import {environment} from '../../environments/environment';
 import {Observable, Subject} from 'rxjs';
@@ -24,9 +24,11 @@ export class VolunterService {
     return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunters/');
   }
   getvolunter(volunterId: any): Observable<Volunter> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
     const p = new HttpParams().set('id', volunterId);
     return this.http.get<Volunter>(environment.backend +
-      '/seeds/volunters/getVolunter', { params: p});
+      '/seeds/volunters/getVolunter', { params: p });
   }
 
   addvolunter(volunter: Volunter): Observable<any> {

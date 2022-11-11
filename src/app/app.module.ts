@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 /*MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -82,6 +82,7 @@ import { ListAllTrackingSeedsComponent } from './components/tracking/list-all-tr
 import { ModalNewDonationComponent } from './components/tracking/modal-new-donation/modal-new-donation.component';
 import {authInterceptorProviders} from './services/auth.interceptor';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import {EncodeHttpParamsInterceptor} from './interceptors/encoder.interceptor';
 
 @NgModule({
   declarations: [
@@ -167,7 +168,13 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [authInterceptorProviders],
+  providers:
+    [authInterceptorProviders,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: EncodeHttpParamsInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   schemas:
     [CUSTOM_ELEMENTS_SCHEMA]
