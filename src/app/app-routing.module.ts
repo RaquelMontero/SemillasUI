@@ -57,7 +57,7 @@ const routes: Routes = [
     path: 'admin/semillas/semillas-pendientes', component: ListContributorsOfMomentComponent
   },
   {
-    path: 'admin/seguimientos', component: ManageTrackingComponent
+    path: 'admin/tracking', component: ManageTrackingComponent
   },
   {
     path: 'admin/tracking/all-seeds', component: ListAllTrackingSeedsComponent

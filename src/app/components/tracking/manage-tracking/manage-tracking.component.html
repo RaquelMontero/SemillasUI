@@ -4,15 +4,18 @@
                  mat-align-tabs="center">
     <mat-tab label="First">
       <div class="container">
-        <h2 class="header">VOLUNTARIOS DE SEGUIMIENTO</h2>
-        <hr>
+        <mat-card>
+          <h2 class="head">VOLUNTARIOS DE SEGUIMIENTO</h2>
+        </mat-card>
         <ng-container *ngIf="!loadingtable else loading">
-          <app-generic-table
-            *ngIf="data"
-            [inputTable]="data.rows"
-            (actionOutput)="actionOutput($event)"
-          >
-          </app-generic-table>
+         <mat-card>
+           <app-generic-table
+             *ngIf="data"
+             [inputTable]="data.rows"
+             (actionOutput)="actionOutput($event)"
+           >
+           </app-generic-table>
+         </mat-card>
         </ng-container>
         <ng-template #loading>
           <mat-spinner class="loading">

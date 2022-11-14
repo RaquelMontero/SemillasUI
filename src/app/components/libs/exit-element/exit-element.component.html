@@ -6,10 +6,11 @@
 </div>
 <mat-dialog-content>
   <div class="content">{{data.question}}</div>
-  <form [formGroup]="form">
-    <mat-form-field appearance="fill">
+  <form class="ref-text" [formGroup]="form" *ngIf="!data.isDelete">
+    <mat-form-field hintLabel="200 caractéres permitidos" appearance="fill">
       <mat-label>Comentario</mat-label>
       <textarea formControlName="comment" matInput></textarea>
+      <mat-hint align="end">{{form.get('comment').value?.length || 0}}/200</mat-hint>
     </mat-form-field>
   </form>
 </mat-dialog-content>

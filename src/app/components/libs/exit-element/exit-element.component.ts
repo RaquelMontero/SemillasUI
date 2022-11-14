@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder} from '@angular/forms';
 
 export interface DialogData {
+  isDelete: boolean;
   title: string;
   question: string;
 }

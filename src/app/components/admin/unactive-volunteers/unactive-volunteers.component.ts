@@ -63,27 +63,27 @@ export class UnactiveVolunteersComponent implements OnInit {
     });
   }
 
-  ondelete(volunterId): void {
+  ondelete(id): void {
     const dialogRef = this.dialog.open(ExitElementComponent, {
       disableClose: false,
       panelClass: 'icon-outside',
       autoFocus: true,
       width: '500px',
       data: {
+        isDelete: true,
         title: 'ELIMINAR RESPONSABLE',
-        question: 'Al confirmar se eliminará al responsable  ' +
-          ' ¿ Está seguro de desactivarlo ?'
+        question: 'Al confirmar se eliminará al responsable y todos los registro relacionados ' +
+          ' ¿ Está seguro de eliminarlo ?'
       }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result?.status === 'afirmative'){
-        const payload = {
-          volunteerId: volunterId
-        };
-        this.voluntersService.deleteVolunter(payload)
-          .subscribe(( result ) => {
-            this.showMessage(result);
-            console.log('done', result);
+        this.voluntersService.deleteVolunter(id)
+          .subscribe(( res ) => {
+            this.showMessage(res);
+            console.log('done', res);
+          }, ( error ) => {
+            this.showMessage(error);
           });
       }
     });

@@ -27,7 +27,7 @@ export class VolunterService {
 
   listTrackingvolunters(): Observable<Table> {
     //return this.http.get<Table>('./assets/statics/trackingvolunters.json');
-    return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunters/');
+    return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunteers/');
   }
   getvolunter(volunterId: any): Observable<Volunter> {
     let headers = new HttpHeaders();
@@ -50,9 +50,8 @@ export class VolunterService {
     );
   }
   deleteVolunter(payload: any): Observable<any>{
-    return this.http.post<any>(environment.backend + '/seeds/volunters/deleteVolunter', {
-      payload
-    });
+    return this.http.post<any>(environment.backend + '/seeds/volunters/deleteVolunter', payload
+    );
   }
 
   listexitvolunter(filter: VolunterFilter): Observable<Volunter[]> {
