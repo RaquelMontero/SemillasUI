@@ -12,3 +12,9 @@ export interface PayloadLogin{
   username: string;
   password: string;
 }
+
+export enum ResponseStatus{
+  ERROR = 'ERROR',
+  SUCCESS = 'SUCCESS',
+  WARNING = 'WARNING',
+}

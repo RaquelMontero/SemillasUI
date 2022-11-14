@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from '@angular/material/snack-bar';
 import {SnackMessage} from '../../../models/Message.model';
+import {ResponseStatus} from '../../../models/Utils.model';
 
 interface MessageData{
   data: SnackMessage;
@@ -21,6 +22,17 @@ export class MessageSnackBarComponent implements OnInit {
   }
 
   get title(){
-    return this.data.data.status ? 'Exito' : 'error';
+    switch (this.data.data.status){
+      case ResponseStatus.ERROR: {
+        return 'ERROR';
+      }
+      case ResponseStatus.SUCCESS: {
+        return 'ÉXITO';
+      }
+      case ResponseStatus.WARNING: {
+        return 'ADVERTENCIA';
+      }
+    }
+    //return this.data.data.status ? 'Exito' : 'error';
   }
 }

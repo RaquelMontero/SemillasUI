@@ -1,0 +1,28 @@
+.container{
+  margin-top: 100px;
+  width: 94%;
+}
+
+mat-chip{
+  font-size: 10px;
+}
+
+.add-buton{
+  position: absolute;
+  margin-top: 60px;
+  right: 10px;
+}
+.loading{
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.filter-chip{
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+.table{
+  margin-top: 24px;
+  padding-top: 24px;
+}

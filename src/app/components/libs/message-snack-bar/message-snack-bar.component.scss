@@ -1,8 +1,18 @@
 ::ng-deep .snack-style{
   background-color: #FFFFFF;
-  color: #1b7549;
+  //color: #1b7549;
 }
+.SUCCESS{
+  color: #2e7d32;
+}
+.ERROR{
+  color: #C02126;
+}
+
 .mess-container{
   display: flex;
   flex-direction: row;
+  span{
+    padding-top: 4px;
+  }
 }

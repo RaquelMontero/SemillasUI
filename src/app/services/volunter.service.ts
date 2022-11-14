@@ -19,6 +19,12 @@ export class VolunterService {
     return this.http.get<Table>(environment.backend + '/seeds/volunters/all/');
   }
 
+  listExitevolunters(): Observable<Table> {
+    const p = new HttpParams().set('status', 'INACTIVE');
+    return this.http.get<Table>(environment.backend +
+      '/seeds/volunters/exitvolunters', { params: p });
+  }
+
   listTrackingvolunters(): Observable<Table> {
     //return this.http.get<Table>('./assets/statics/trackingvolunters.json');
     return this.http.get<Table>(environment.backend + '/seeds/volunters/trackingVolunters/');
@@ -43,9 +49,9 @@ export class VolunterService {
     return this.http.post<any>(environment.backend + '/seeds/volunters/exitVolunter', payload
     );
   }
-  deleteVolunter(id: any): Observable<any>{
+  deleteVolunter(payload: any): Observable<any>{
     return this.http.post<any>(environment.backend + '/seeds/volunters/deleteVolunter', {
-      id
+      payload
     });
   }
 

@@ -4,6 +4,8 @@ import {VolunterService} from '../../../services/volunter.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Role, Volunter} from '../../../models/volunter.model';
 import {DomainhelperService} from '../../../services/domainhelper.service';
+import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DialogData {
   volunterId: string;
@@ -38,6 +40,7 @@ export class VolunterDialogComponent implements OnInit {
               private volunterService: VolunterService,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private fb: FormBuilder,
+              private matSnackBar: MatSnackBar,
               private domainhelperService: DomainhelperService
   ) { }
 
@@ -49,7 +52,6 @@ export class VolunterDialogComponent implements OnInit {
     this.getTitle();
   }
   getVolunter(): void{
-    console.log('getVolunter', this.data.volunterId );
     this.volunterService.getvolunter(this.data.volunterId)
       .subscribe((response) => {
       this.volunter = response;
@@ -84,8 +86,11 @@ export class VolunterDialogComponent implements OnInit {
      };
      this.volunterService.addvolunter(data)
        .subscribe(( data ) => {
-         this.dialogRef.close(data);
+         this.showMessage(data);
+         this.dialogRef.close('success');
        }, (error) => {
+         this.showMessage(error.error);
+         //this.dialogRef.close();
          console.log('error', this.volunterform.value);
        });
    }else{
@@ -98,9 +103,10 @@ export class VolunterDialogComponent implements OnInit {
      };
      this.volunterService.updatevolunter(data)
        .subscribe(( data ) => {
-         this.dialogRef.close('saved');
+         this.showMessage(data);
+         this.dialogRef.close('success');
        }, (error) => {
-         console.log('error', this.volunterform.value);
+         this.showMessage(error.error);
        });
    }
   }
@@ -172,4 +178,16 @@ export class VolunterDialogComponent implements OnInit {
       this.filteredRoles = this.filteredRoles.filter(r => r.roleId !== role.roleId);
     });
   }
+
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
+  }
+
 }

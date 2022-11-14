@@ -68,12 +68,7 @@ export class ListVoluntersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
-      {
-        this.showMessage(result);
-        this.getVolunters();
-      }
-      console.log('The dialog was closed');
+      if (result) { this.getVolunters(); }
     });
   }
 

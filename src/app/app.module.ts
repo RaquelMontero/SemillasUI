@@ -83,6 +83,7 @@ import { ModalNewDonationComponent } from './components/tracking/modal-new-donat
 import {authInterceptorProviders} from './services/auth.interceptor';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import {EncodeHttpParamsInterceptor} from './interceptors/encoder.interceptor';
+import { UnactiveVolunteersComponent } from './components/admin/unactive-volunteers/unactive-volunteers.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import {EncodeHttpParamsInterceptor} from './interceptors/encoder.interceptor';
     ListAllTrackingSeedsComponent,
     ModalNewDonationComponent,
     AdminDashboardComponent,
+    UnactiveVolunteersComponent,
   ],
   imports: [
     BrowserModule,

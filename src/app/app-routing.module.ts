@@ -16,6 +16,7 @@ import {ManageTrackingComponent} from './components/tracking/manage-tracking/man
 import {ListAllTrackingSeedsComponent} from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 import {LoggedGuard} from './guards/logged.guard';
 import {AdminDashboardComponent} from './components/admin/admin-dashboard/admin-dashboard.component';
+import {UnactiveVolunteersComponent} from './components/admin/unactive-volunteers/unactive-volunteers.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: 'admin/ver-voluntarios',
     component: ListVoluntersComponent,
+    canActivate: [LoggedGuard]
+  },
+  {
+    path: 'admin/ver-voluntarios/inactivos',
+    component: UnactiveVolunteersComponent,
     canActivate: [LoggedGuard]
   },
   {
