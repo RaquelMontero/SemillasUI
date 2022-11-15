@@ -69,3 +69,9 @@ mat-chip{
   font-size: 0.9em;
   font-weight: 400;
 }
+::ng-deep .mat-tooltip {
+  background-color: #1b7549;
+  color: #FFFFFF;
+  font-size: 12px;
+  letter-spacing: 1px;
+}

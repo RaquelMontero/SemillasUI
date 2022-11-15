@@ -1,6 +1,8 @@
 <div class="container" id="htmlData">
-  <h2 class="lis-header">RESPONSABLES DESACTIVADOS</h2>
-  <hr>
+ <mat-card>
+   <h2 class="lis-header">RESPONSABLES DESACTIVADOS</h2>
+   <hr>
+ </mat-card>
   <ng-container *ngIf="!loadingVolunteers else isloading">
     <mat-card class="table">
       <app-generic-table
