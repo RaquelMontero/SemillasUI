@@ -1,5 +1,8 @@
 .container{
-  width: 70%;
+  width: 96%;
+}
+mat-card{
+  margin-bottom: 12px;
 }
 .header {
   letter-spacing: 0.1rem;
@@ -34,3 +37,20 @@ mat-tab-group{
   color: #1b7549;
 }
 
+.header{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+}
+.title{
+  float: left;
+  font-size: 18px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 14px 0;
+}
+hr{
+  width: 96%;
+  margin: 12px auto;
+}

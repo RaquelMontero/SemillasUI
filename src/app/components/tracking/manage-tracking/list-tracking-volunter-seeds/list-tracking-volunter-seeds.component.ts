@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TrackingService} from '../../../../services/tracking.service';
 import {CellContent, Table} from '../../../../models/Table.model.';
+import {MessageSnackBarComponent} from '../../../libs/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 export interface SelectSeed{
   seedId: string;
   trackingAssignmentId: string;
@@ -18,7 +20,8 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
   loadingtable = true;
   data: Table;
   index = 0;
-  constructor(private trackingService: TrackingService) {
+  constructor(private trackingService: TrackingService,
+              private matSnackBar: MatSnackBar) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -30,8 +33,9 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
       (data) => {
         this.data = data;
         this.loadingtable = false;
-      }
-    );
+      }, (error) => {
+        this.showMessage(error.error);
+      });
   }
 
   actionOutput(evento: CellContent): void{
@@ -56,6 +60,16 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
   }
   onTabChanged(evento){
     console.log('event', evento);
+  }
 
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
   }
 }

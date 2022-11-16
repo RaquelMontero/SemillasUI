@@ -17,7 +17,7 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
     paymentMethod: ['', Validators.required],
     send_news: [true, Validators.required],
     date_contribution: ['', Validators.required],
-    sendNewsType: ['', Validators.required],
+    sendNewsType: [null],
   });
   sendingData = false;
   paymentMethods: ComboElement[] = [];
@@ -121,5 +121,12 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
         this.sendingData = false;
 
       });
+  }
+
+  get canSendForm(): boolean{
+    return this.donationForm.get('send_news').value ?
+      this.donationForm.get('sendNewsType').value !== null &&
+      this.donationForm.valid
+      : this.donationForm.valid;
   }
 }

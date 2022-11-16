@@ -5,8 +5,16 @@
     <mat-tab label="First">
       <div class="container">
         <mat-card>
-          <h2 class="head">VOLUNTARIOS DE SEGUIMIENTO</h2>
+          <div  class="header">
+            <span class="title">VOLUNTARIOS DE SEGUIMIENTO</span>
+            <img class="img" src="../../../../assets/logo.png" />
+          </div>
+          <hr>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="accent" selected>ACTIVOS</mat-chip>
+          </mat-chip-list>
         </mat-card>
+
         <ng-container *ngIf="!loadingtable else loading">
          <mat-card>
            <app-generic-table
@@ -24,7 +32,7 @@
       </div>
     </mat-tab>
     <mat-tab>
-      <app-list-tracking-volunter-seeds
+      <app-list-tracking-volunter-seeds *ngIf="index === 1"
         (emitter)="back($event)"
         (selectedSeed)="selectedSeed($event)"
         [volunterId]="idSelectedVolunter">

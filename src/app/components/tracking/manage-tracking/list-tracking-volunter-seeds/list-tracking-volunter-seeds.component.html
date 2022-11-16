@@ -4,15 +4,21 @@
   </button>
 </mat-toolbar>
 <div class="container">
-    <h2 class="header">SEMILLAS ASIGNADAS</h2>
-    <hr>
+    <mat-card>
+      <div  class="header">
+        <span class="title">SEMILLAS ASIGNADAS</span>
+        <img class="img" src="../../../../assets/logo.png" />
+      </div>
+    </mat-card>
     <ng-container *ngIf="!loadingtable else loading">
-      <app-generic-table
-        *ngIf="data"
-        [inputTable]="data.rows"
-        (actionOutput)="actionOutput($event)"
-      >
-      </app-generic-table>
+     <mat-card>
+       <app-generic-table
+         *ngIf="data"
+         [inputTable]="data.rows"
+         (actionOutput)="actionOutput($event)"
+       >
+       </app-generic-table>
+     </mat-card>
     </ng-container>
     <ng-template #loading>
       <mat-spinner class="loading">

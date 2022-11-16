@@ -12,15 +12,18 @@
               color="accent" mat-raised-button>
         REGISTRAR APORTE</button>
     </mat-card-actions>
-    <ng-container *ngIf="!loadingtable else loading">
-      <app-generic-table
-        *ngIf="data"
-        [inputTable]="data.rows"
-        (actionOutput)="actionOutput($event)"
-      >
-      </app-generic-table>
-    </ng-container>
   </mat-card>
+
+  <ng-container *ngIf="!loadingtable else loading">
+     <mat-card>
+       <app-generic-table
+         *ngIf="data"
+         [inputTable]="data.rows"
+         (actionOutput)="actionOutput($event)"
+       >
+       </app-generic-table>
+     </mat-card>
+    </ng-container>
 
   <ng-template #loading>
     <mat-spinner class="loading">

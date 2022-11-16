@@ -81,7 +81,6 @@ export class ListPendingApplicantsComponent implements OnInit {
     });
   }
   actionOutput(event: CellContent): void{
-    console.log('event', event);
     const id = this.getSeedId(event.params);
     if (event.clickedAction === 'AceptSeed'){
       this.onAcept(id);
