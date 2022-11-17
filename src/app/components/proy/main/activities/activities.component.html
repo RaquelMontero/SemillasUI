@@ -1,6 +1,19 @@
 <div class="container">
   <mat-card class="example-card">
-    <mat-card-header>
+      <form [formGroup]="form" class="edit">
+        <angular-editor
+          formControlName="htmlContent"
+          [config]="editorConfig">
+        </angular-editor>
+      </form>
+    {{form.get('htmlContent').value}}
+
+  </mat-card>
+</div>
+
+
+<!--
+ <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Shiba Inu</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
@@ -74,5 +87,4 @@
       <button mat-button>LIKE</button>
       <button mat-button>SHARE</button>
     </mat-card-actions>
-  </mat-card>
-</div>
+ -->

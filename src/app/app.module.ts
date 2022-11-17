@@ -39,6 +39,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -169,6 +170,7 @@ import { UnactiveVolunteersComponent } from './components/admin/unactive-volunte
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularEditorModule
   ],
   providers:
     [authInterceptorProviders,
