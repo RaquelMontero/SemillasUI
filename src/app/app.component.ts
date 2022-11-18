@@ -1,20 +1,22 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import {BreakpointObserver} from '@angular/cdk/layout';
+import {OauthService} from './services/auth/oauth.service';
 
 @Component({
   selector: 'sml-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   title = 'semillasui';
+  logged = false;
   events: string[] = [];
-  opened = false;
-
-  constructor(private observer: BreakpointObserver) {}
+  constructor(
+    private oauthService: OauthService,
+    private observer: BreakpointObserver) {}
 
   ngAfterViewInit(): void {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
@@ -26,5 +28,11 @@ export class AppComponent implements AfterViewInit{
         this.sidenav.open();
       }
     });
+  }
+  ngOnInit(): void {
+    this.logged = this.isLogged;
+  }
+  get isLogged(): boolean{
+    return this.oauthService.isLoggedIn();
   }
 }
