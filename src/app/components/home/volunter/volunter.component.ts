@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { OauthService } from 'src/app/services/auth/oauth.service';
 import { TokenService } from 'src/app/services/auth/token.service';
 import {MatDialog} from '@angular/material/dialog';
-import {LogInComponent} from '../../../admin/log-in/log-in.component';
+import {LogInComponent} from '../../admin/log-in/log-in.component';
 
 @Component({
   selector: 'app-volunter',

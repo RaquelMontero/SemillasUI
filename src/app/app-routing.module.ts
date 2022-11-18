@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivitiesComponent } from './components/proy/main/activities/activities.component';
-import { HomeComponent } from './components/proy/main/home/home.component';
-import { VolunterComponent } from './components/proy/main/volunter/volunter.component';
-import { WantCollaborateComponent } from './components/proy/main/want-collaborate/want-collaborate.component';
+import { ActivitiesComponent } from './components/home/activities/activities.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { VolunterComponent } from './components/home/volunter/volunter.component';
+import { WantCollaborateComponent } from './components/home/want-collaborate/want-collaborate.component';
 import {ListVoluntersComponent} from './components/admin/list-volunters/list-volunters.component';
 import {ListPendingApplicantsComponent} from './components/applicants/list-pending-applicants/list-pending-applicants.component';
 import {ListApprovedApplicantsComponent} from './components/applicants/list-approved-applicants/list-approved-applicants.component';
