@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
 
   loggedIn: boolean = false;
 
+  currentUser;
+  loadingUser = true;
   constructor(
     private router: Router,
     private tokenService: TokenService,
@@ -79,6 +81,21 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(): void{
+    this.oauthService.getCurrentUser().subscribe((usr)=>{
+      this.oauthService.setUser(usr);
+      this.currentUser = usr;
+      this.loadingUser = false;
+      this.loggedIn = true;
+    }, (error => {
+      this.inputSideNav.close();
+      this.currentUser = null;
+      this.loadingUser = false;
+      this.loggedIn = false;
+    }));
   }
   refreshToken(): void {
   }

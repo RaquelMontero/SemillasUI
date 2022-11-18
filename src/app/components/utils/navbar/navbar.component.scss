@@ -6,8 +6,9 @@
   right:0;
   left: 0;
   z-index:80;
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: -20px;
   /*height: 80px;*/
 }
 
@@ -87,4 +88,15 @@ mat-icon{
 
 ::ng-deep .mat-nav-list .mat-list-item.is-active .mat-list-item-content {
     padding: 0 8px;
+}
+
+.menu{
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.current-user{
+  color: #FFFFFF;
+  padding-right: 24px;
+  //float: right;
 }

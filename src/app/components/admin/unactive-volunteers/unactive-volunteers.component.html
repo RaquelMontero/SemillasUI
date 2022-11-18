@@ -1,0 +1,20 @@
+<div class="container" id="htmlData">
+ <mat-card>
+   <h2 class="lis-header">RESPONSABLES DESACTIVADOS</h2>
+   <hr>
+ </mat-card>
+  <ng-container *ngIf="!loadingVolunteers else isloading">
+    <mat-card class="table">
+      <app-generic-table
+        *ngIf="volunteers"
+        [inputTable]="volunteers.rows"
+        (actionOutput)="outputEvent($event)">
+      </app-generic-table>
+    </mat-card>
+  </ng-container>
+  <ng-template #isloading>
+    <mat-spinner class="loading">
+    </mat-spinner>
+
+  </ng-template>
+</div>

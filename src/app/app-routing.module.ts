@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivitiesComponent } from './components/proy/main/activities/activities.component';
-import { HomeComponent } from './components/proy/main/home/home.component';
-import { VolunterComponent } from './components/proy/main/volunter/volunter.component';
-import { WantCollaborateComponent } from './components/proy/main/want-collaborate/want-collaborate.component';
+import { ActivitiesComponent } from './components/home/activities/activities.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { VolunterComponent } from './components/home/volunter/volunter.component';
+import { WantCollaborateComponent } from './components/home/want-collaborate/want-collaborate.component';
 import {ListVoluntersComponent} from './components/admin/list-volunters/list-volunters.component';
 import {ListPendingApplicantsComponent} from './components/applicants/list-pending-applicants/list-pending-applicants.component';
 import {ListApprovedApplicantsComponent} from './components/applicants/list-approved-applicants/list-approved-applicants.component';
@@ -15,6 +15,8 @@ import {CreateSeedComponent} from './components/admin/create-seed/create-seed.co
 import {ManageTrackingComponent} from './components/tracking/manage-tracking/manage-tracking.component';
 import {ListAllTrackingSeedsComponent} from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 import {LoggedGuard} from './guards/logged.guard';
+import {AdminDashboardComponent} from './components/admin/admin-dashboard/admin-dashboard.component';
+import {UnactiveVolunteersComponent} from './components/admin/unactive-volunteers/unactive-volunteers.component';
 
 const routes: Routes = [
   {
@@ -27,11 +29,19 @@ const routes: Routes = [
     path: 'soy-voluntaria', component: VolunterComponent
   },
   {
+    path: 'admin', component: AdminDashboardComponent
+  },
+  {
     path: 'quiero-aportar', component: WantCollaborateComponent
   },
   {
     path: 'admin/ver-voluntarios',
     component: ListVoluntersComponent,
+    canActivate: [LoggedGuard]
+  },
+  {
+    path: 'admin/ver-voluntarios/inactivos',
+    component: UnactiveVolunteersComponent,
     canActivate: [LoggedGuard]
   },
   {
@@ -47,7 +57,7 @@ const routes: Routes = [
     path: 'admin/semillas/semillas-pendientes', component: ListContributorsOfMomentComponent
   },
   {
-    path: 'admin/seguimientos', component: ManageTrackingComponent
+    path: 'admin/tracking', component: ManageTrackingComponent
   },
   {
     path: 'admin/tracking/all-seeds', component: ListAllTrackingSeedsComponent

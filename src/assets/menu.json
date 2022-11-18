@@ -30,9 +30,14 @@
     "icon": "supervised_user_circle",
     "children": [
       {
-        "text": "Ver Responsables",
-        "icon": "layers",
+        "text": "Responsables",
+        "icon": "group",
         "routerLink": "admin/ver-voluntarios"
+      },
+      {
+        "text": "Responsables inactivos",
+        "icon": "layers_clear",
+        "routerLink": "admin/ver-voluntarios/inactivos"
       }
     ]
   },
@@ -43,7 +48,7 @@
       {
         "text": "Responsables de seguimiento",
         "icon": "layers",
-        "routerLink": "/admin/seguimientos"
+        "routerLink": "/admin/tracking"
       },
       {
         "text": "Seguimiento diarío",

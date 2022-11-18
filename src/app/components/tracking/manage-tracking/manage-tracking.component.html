@@ -4,15 +4,26 @@
                  mat-align-tabs="center">
     <mat-tab label="First">
       <div class="container">
-        <h2 class="header">VOLUNTARIOS DE SEGUIMIENTO</h2>
-        <hr>
+        <mat-card>
+          <div  class="header">
+            <span class="title">VOLUNTARIOS DE SEGUIMIENTO</span>
+            <img class="img" src="../../../../assets/logo.png" />
+          </div>
+          <hr>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="accent" selected>ACTIVOS</mat-chip>
+          </mat-chip-list>
+        </mat-card>
+
         <ng-container *ngIf="!loadingtable else loading">
-          <app-generic-table
-            *ngIf="data"
-            [inputTable]="data.rows"
-            (actionOutput)="actionOutput($event)"
-          >
-          </app-generic-table>
+         <mat-card>
+           <app-generic-table
+             *ngIf="data"
+             [inputTable]="data.rows"
+             (actionOutput)="actionOutput($event)"
+           >
+           </app-generic-table>
+         </mat-card>
         </ng-container>
         <ng-template #loading>
           <mat-spinner class="loading">
@@ -21,7 +32,7 @@
       </div>
     </mat-tab>
     <mat-tab>
-      <app-list-tracking-volunter-seeds
+      <app-list-tracking-volunter-seeds *ngIf="index === 1"
         (emitter)="back($event)"
         (selectedSeed)="selectedSeed($event)"
         [volunterId]="idSelectedVolunter">

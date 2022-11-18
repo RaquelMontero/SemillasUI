@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {ApplicantService} from '../../../../../services/applicant.service';
-import {ComboElement} from '../../../../../models/Utils.model';
-import {UtilService} from '../../../../../services/util.service';
+import {ApplicantService} from '../../../../services/applicant.service';
+import {ComboElement} from '../../../../models/Utils.model';
+import {UtilService} from '../../../../services/util.service';
 
 @Component({
   selector: 'app-unique-donation',
@@ -17,7 +17,7 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
     paymentMethod: ['', Validators.required],
     send_news: [true, Validators.required],
     date_contribution: ['', Validators.required],
-    sendNewsType: ['', Validators.required],
+    sendNewsType: [null],
   });
   sendingData = false;
   paymentMethods: ComboElement[] = [];
@@ -121,5 +121,12 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
         this.sendingData = false;
 
       });
+  }
+
+  get canSendForm(): boolean{
+    return this.donationForm.get('send_news').value ?
+      this.donationForm.get('sendNewsType').value !== null &&
+      this.donationForm.valid
+      : this.donationForm.valid;
   }
 }

@@ -28,8 +28,8 @@ export class TrackingService {
 
   listSeedTrackingRecords(idSeed): Observable<Table> {
     const p = new HttpParams().set('id', idSeed);
-    return this.http.get<Table>(/*environment.backend + */'./assets/statics/donations.json');
-    //return this.http.get<Table>(environment.backend + '/seeds/trackingassignment/trackingSeeds', { params: p });
+    //return this.http.get<Table>(/*environment.backend + */'./assets/statics/donations.json');
+    return this.http.get<Table>(environment.backend + '/seeds/contribution/getRecords', { params: p });
   }
 
   getIncomeContributions(beginDate?): Observable<Table> {

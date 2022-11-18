@@ -45,12 +45,10 @@
         <mat-datepicker #picker2 startView="year" [startAt]="endDate"></mat-datepicker>
       </mat-form-field>
     </ng-container>
-      <mat-form-field class="col-md-12" appearance="standard">
+      <mat-form-field class="col-md-12" appearance="fill">
         <mat-label>Razón</mat-label>
         <textarea matInput
                   formControlName="process_reason"
-                  cdkTextareaAutosize
-                  #autosize="cdkTextareaAutosize"
                   cdkAutosizeMinRows="2"
                   cdkAutosizeMaxRows="5"></textarea>
         <mat-error *ngIf="processReason.invalid">{{getErrorMessage()}}</mat-error>

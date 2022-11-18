@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Sort, SortDirection} from '@angular/material/sort';
 import {ColumnModel, TableModel} from '../../../models/column.model';
 import {cloneDeep, orderBy, sortBy} from 'lodash';
@@ -8,7 +8,7 @@ import {Cell, CellContent, TableRow} from '../../../models/Table.model.';
 @Component({
   selector: 'app-generic-table',
   templateUrl: './generic-table.component.html',
-  styleUrls: ['./generic-table.component.scss']
+  styleUrls: ['./generic-table.component.scss'],
 })
 export class GenericTableComponent implements OnInit {
   @Output() actionOutput = new EventEmitter<any>();

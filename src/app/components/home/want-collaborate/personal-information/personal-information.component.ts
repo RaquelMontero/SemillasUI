@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {ApplicantService} from '../../../../../services/applicant.service';
-import {ComboElement} from '../../../../../models/Utils.model';
-import {UtilService} from '../../../../../services/util.service';
+import {ApplicantService} from '../../../../services/applicant.service';
+import {ComboElement} from '../../../../models/Utils.model';
+import {UtilService} from '../../../../services/util.service';
 
 @Component({
   selector: 'app-personal-information',

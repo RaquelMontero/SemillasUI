@@ -57,12 +57,10 @@ export class OauthService {
     return this.httpClient.get(environment.backend + '/oauth/actual-usuario');
   }
 
+  // tslint:disable-next-line:typedef
   public getUserRoles(){
     const user = this.getUser();
-    return user.authorities[0].authority;
+    console.log('user', user);
+    return user.roles;
   }
- /* public google(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.httpClient.post<TokenDto>(this.oauthURL + 'google', tokenDto, cabecera);
-  }*/
-
 }

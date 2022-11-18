@@ -1,6 +1,6 @@
 .container{
-  margin-top: 150px;
-  max-width: 70%;
+  margin-top: 100px;
+  max-width: 96%;
   padding-bottom: 24px;
 }
 .header {
@@ -12,4 +12,13 @@
 .loading{
   margin: 0 auto;
   z-index: 100;
+}
+.mat-card{
+  margin-bottom: 12px;
+}
+
+
+hr{
+  width: 96%;
+  margin: 12px auto;
 }

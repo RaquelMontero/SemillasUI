@@ -1,5 +1,5 @@
 <div class="donations">
-  <div class="title">
+  <div class="unique-title">
     <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
       <mat-chip selected color="primary" class="chip-title">
        <span class="let"> APORTE ÚNICO</span>
@@ -61,7 +61,7 @@
         </div>
     </form>
  <div class="back">
-   <button [disabled]="!donationForm.valid"
+   <button [disabled]="!canSendForm"
            mat-raised-button color="primary"
            (click)="sentData()">ENVIAR DATOS
    <mat-icon>save</mat-icon>

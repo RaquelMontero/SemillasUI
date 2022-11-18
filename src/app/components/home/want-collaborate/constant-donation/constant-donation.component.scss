@@ -1,24 +1,24 @@
-.title{
+.personal-info{
+  padding: 8px;
+  form{
+    margin: 8px;
+  }
+}
+mat-form-field{
+  width: 100%;
+  //padding-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.cont-title{
   font-weight: 500;
   text-align: center;
   padding-top: 12px;
   padding-bottom: 24px;
 }
-.let{
+
+.chip-title{
   margin: 0 auto;
 }
-mat-form-field{
-  width: 100%;
-  padding-bottom: 8px;
-  letter-spacing: 0.5px;
-}
-.donations{
-   padding: 8px;
-   form{
-     margin: 8px;
-   }
- }
-
 
 .example-right-align {
   text-align: right;
@@ -36,6 +36,7 @@ input.example-right-align {
 .views-fields{
   padding-top: 10px;
   padding-bottom: 20px;
+  //padding-left: 24px;
 }
 .mat-radio-button{
   width: 20%;
@@ -50,7 +51,6 @@ input.example-right-align {
   letter-spacing: 0.5px;
   width: 100%;
 }
-
 mat-error{
   color: 	#ad2831;
 }

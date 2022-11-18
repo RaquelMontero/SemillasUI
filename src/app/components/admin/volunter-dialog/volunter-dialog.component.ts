@@ -4,6 +4,8 @@ import {VolunterService} from '../../../services/volunter.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Role, Volunter} from '../../../models/volunter.model';
 import {DomainhelperService} from '../../../services/domainhelper.service';
+import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DialogData {
   volunterId: string;
@@ -19,6 +21,8 @@ export class VolunterDialogComponent implements OnInit {
   volunterform = this.fb.group({
     userId: [null],
     name: ['', Validators.required],
+    username: [null, Validators.required],
+    password: [null, Validators.required],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', Validators.required],
@@ -36,6 +40,7 @@ export class VolunterDialogComponent implements OnInit {
               private volunterService: VolunterService,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private fb: FormBuilder,
+              private matSnackBar: MatSnackBar,
               private domainhelperService: DomainhelperService
   ) { }
 
@@ -47,7 +52,7 @@ export class VolunterDialogComponent implements OnInit {
     this.getTitle();
   }
   getVolunter(): void{
-    this.volunterService.getvolunter(this.data.volunterId).pipe()
+    this.volunterService.getvolunter(this.data.volunterId)
       .subscribe((response) => {
       this.volunter = response;
       this.volunterform.patchValue({
@@ -75,25 +80,33 @@ export class VolunterDialogComponent implements OnInit {
      const data = {
        user: this.volunterform.value,
        entry_date: new Date(),
-       roles: this.roles
+       roles: this.roles,
+       username: this.volunterform.get('username').value,
+       password: this.volunterform.get('password').value
      };
      this.volunterService.addvolunter(data)
        .subscribe(( data ) => {
-         this.dialogRef.close('saved');
+         this.showMessage(data);
+         this.dialogRef.close('success');
        }, (error) => {
+         this.showMessage(error.error);
+         //this.dialogRef.close();
          console.log('error', this.volunterform.value);
        });
    }else{
      const data = {
        volunterId: this.volunter.volunterId,
        user: this.volunterform.value,
-       roles: this.roles
+       roles: this.roles,
+       username: this.volunterform.get('username').value,
+       password: this.volunterform.get('password').value
      };
      this.volunterService.updatevolunter(data)
        .subscribe(( data ) => {
-         this.dialogRef.close('saved');
+         this.showMessage(data);
+         this.dialogRef.close('success');
        }, (error) => {
-         console.log('error', this.volunterform.value);
+         this.showMessage(error.error);
        });
    }
   }
@@ -165,4 +178,16 @@ export class VolunterDialogComponent implements OnInit {
       this.filteredRoles = this.filteredRoles.filter(r => r.roleId !== role.roleId);
     });
   }
+
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
+  }
+
 }

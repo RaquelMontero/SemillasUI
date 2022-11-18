@@ -9,11 +9,18 @@
       <div class="box">
         <div>
           <h2 class="voluntario">
-            Si eres voluntario, por favor Inicia sesión con un correo registrado en el Programa Semillas
+            Si eres voluntario, por favor Inicia sesión con las credenciales proporcionadas por
+            el Programa Semillas
           </h2>
         </div>
         <div *ngIf="!loggedIn">
-          <button type="button" class="btn btn-outline-secondary" (click)="signInWithGoogle()">INICIAR SESION CON
+          <button
+            (click)="signInWithGoogle()"
+            class="login-button"
+                  mat-stroked-button color="primary"> INICIAR SESIÓN
+            <mat-icon>supervisor_account</mat-icon>
+          </button>
+          <!--<button type="button" class="btn btn-outline-secondary" (click)="signInWithGoogle()">INICIAR SESION CON
             GOOGLE
             <svg aria-hidden="true" class="native svg-icon iconGoogle" width="32" height="32" viewBox="0 0 18 18">
               <path
@@ -27,7 +34,7 @@
                 fill="#EA4335">
               </path>
             </svg>
-          </button>
+          </button> -->
         </div>
 
       </div>

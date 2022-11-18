@@ -68,12 +68,7 @@ export class ListVoluntersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'saved')
-      {
-        this.showMessage(['saved', 'saved2']);
-        this.getVolunters();
-      }
-      console.log('The dialog was closed');
+      if (result) { this.getVolunters(); }
     });
   }
 
@@ -102,10 +97,14 @@ export class ListVoluntersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'afirmative'){
-        this.voluntersService.exitvolunter(Number(volunterId))
+      if (result?.status === 'afirmative'){
+        const payload = {
+          message: result.message,
+          volunteerId: volunterId
+        };
+        this.voluntersService.exitvolunter(payload)
           .subscribe(( result ) => {
-            this.showMessage(['saved', 'saved2']);
+            this.showMessage(result);
             console.log('done', result);
           });
       }
@@ -113,6 +112,7 @@ export class ListVoluntersComponent implements OnInit {
   }
 
   outputEvent(event: CellContent): void{
+    console.log('event', event);
     const id = this.getVolunteerId(event.params);
     if (event.clickedAction === 'editVolunter'){
       this.onedit(id);
@@ -127,9 +127,9 @@ export class ListVoluntersComponent implements OnInit {
     return params.find(p => p.paramName === 'volunterId').paramContent;
   }
 
-  showMessage(messages: any[]): void{
+  showMessage(data: any): void{
     this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
-      data: messages,
+      data: { data },
       duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'top',

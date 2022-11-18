@@ -54,6 +54,22 @@
             <mat-hint>68465456.</mat-hint>
           </mat-form-field>
         </div>
+    <div class="col-md-6">
+      <mat-form-field  appearance="standard">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+        <mat-error *ngIf="dni.invalid">{{getErrorMessageDNI()}}</mat-error>
+        <mat-hint>Unico.</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field  appearance="standard">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password">
+        <mat-error *ngIf="dni.invalid">{{getErrorMessageDNI()}}</mat-error>
+        <mat-hint>***********.</mat-hint>
+      </mat-form-field>
+    </div>
         <div class="col-md-12">
           <mat-form-field appearance="standard">
             <mat-label>Roles</mat-label>
