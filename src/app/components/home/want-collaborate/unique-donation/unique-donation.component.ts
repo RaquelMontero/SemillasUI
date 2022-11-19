@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../services/applicant.service';
 import {ComboElement} from '../../../../models/Utils.model';
 import {UtilService} from '../../../../services/util.service';
@@ -29,7 +29,7 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
     return day !== 0 && day !== 6;
   };
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private applicantService: ApplicantService,
               private utilsService: UtilService) {
   }

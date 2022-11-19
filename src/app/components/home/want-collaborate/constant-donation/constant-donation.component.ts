@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../services/applicant.service';
 import {UtilService} from '../../../../services/util.service';
 import {ComboElement} from '../../../../models/Utils.model';
@@ -28,7 +28,7 @@ export class ConstantDonationComponent implements OnInit, OnChanges {
   beginMonths: ComboElement[] = [];
   paymentNumberDays: ComboElement[] = [];
   contributor;
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private applicantService: ApplicantService,
               private utilsService: UtilService) { }
 

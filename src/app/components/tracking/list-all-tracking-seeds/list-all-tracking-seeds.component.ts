@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ComboElement} from '../../../models/Utils.model';
 import {UtilService} from '../../../services/util.service';
 import {Table, TableRow} from '../../../models/Table.model.';
@@ -19,7 +19,7 @@ export class ListAllTrackingSeedsComponent implements OnInit {
   paymentMethods: ComboElement[] = [];
   tracking: TableRow[];
   loadingTracking = true;
-  constructor( private fb: FormBuilder,
+  constructor( private fb: UntypedFormBuilder,
                private trackingService: TrackingService,
                private utilServce: UtilService) { }
 

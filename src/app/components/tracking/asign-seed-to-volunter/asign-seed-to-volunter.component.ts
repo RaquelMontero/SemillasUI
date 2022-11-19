@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {TrackingService} from '../../../services/tracking.service';
 import {BoxSeed} from '../../../models/Seed.model';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -35,7 +35,7 @@ export class AsignSeedToVolunterComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private trackingService: TrackingService,
     private volunteerService: VolunterService,
-    private form: FormBuilder) { }
+    private form: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.getActiveSeeds();

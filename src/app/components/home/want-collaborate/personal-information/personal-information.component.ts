@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ApplicantService} from '../../../../services/applicant.service';
 import {ComboElement} from '../../../../models/Utils.model';
 import {UtilService} from '../../../../services/util.service';
@@ -25,7 +25,7 @@ export class PersonalInformationComponent implements OnInit {
     address: [null, Validators.required],
 
   });
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private applicantService: ApplicantService,
               private utilsService: UtilService) { }
 

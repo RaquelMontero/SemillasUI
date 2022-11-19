@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 
 export interface DialogData {
   isDelete: boolean;
@@ -19,7 +19,7 @@ export class ExitElementComponent implements OnInit {
     comment: [null]
   });
   constructor(public dialogRef: MatDialogRef<ExitElementComponent>,
-              private formBuilder: FormBuilder,
+              private formBuilder: UntypedFormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {

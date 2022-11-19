@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ContributionConfigService} from '../../../services/contribution-config.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ComboElement, ComboResponse} from '../../../models/Utils.model';
@@ -38,7 +38,7 @@ export class ModalNewDonationComponent implements OnInit {
     volunter: [null, Validators.required],
 
   });
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private utilService: UtilService,
               private contributionconfigservice: ContributionConfigService) { }
