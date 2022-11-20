@@ -1,7 +1,9 @@
-<div mat-dialog-title class="header">{{data.title}}
-  <button class="close-buton" mat-icon-button
-          (click)="close()">
-    <mat-icon>close</mat-icon>
+<div mat-dialog-title>
+  <div class="dialog-header">
+    <span class="dialog-title"> {{data.title}}</span>
+  </div>
+  <button mat-icon-button class="close-button2" (click)="close()">
+    <mat-icon class="close-icon">close</mat-icon>
   </button>
 </div>
 <mat-dialog-content>

@@ -15,8 +15,9 @@ export class VolunterService {
   // tslint:disable-next-line:variable-name
   private _listeners = new Subject<any>();
 
-  listvolunters(): Observable<Table> {
-    return this.http.get<Table>(environment.backend + '/seeds/volunters/all/');
+  listvolunters(status: string): Observable<Table> {
+    const p = new HttpParams().set('status', status);
+    return this.http.get<Table>(environment.backend + '/seeds/volunters/all/', { params: p });
   }
 
   listExitevolunters(): Observable<Table> {

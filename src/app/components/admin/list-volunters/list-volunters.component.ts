@@ -11,6 +11,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import {FormBuilder, FormControl} from '@angular/forms';
 @Component({
   selector: 'app-list-volunters',
   templateUrl: './list-volunters.component.html',
@@ -19,18 +20,24 @@ import html2canvas from 'html2canvas';
 export class ListVoluntersComponent implements OnInit {
   volunteers: Table;
   loadingVolunteers = true;
+  lastStatus = '';
+  val = this.formb.group({
+    state: [null]
+  });
   constructor(private router: Router,
               private voluntersService: VolunterService,
               private dialog: MatDialog,
+              private formb: FormBuilder,
               private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.getVolunters();
+    this.valuechanges();
+    this.val.patchValue({state: 'ACTIVE'});
   }
 
-  getVolunters(): void{
+  getActiveVolunters(state): void{
     this.loadingVolunteers = true;
-    this.voluntersService.listvolunters()
+    this.voluntersService.listvolunters(state)
       .subscribe(data => {
         this.volunteers = data;
         this.loadingVolunteers = false;
@@ -38,6 +45,7 @@ export class ListVoluntersComponent implements OnInit {
         this.loadingVolunteers = false;
       });
   }
+
   onedit(volunterid: any): void {
     const dialogRef = this.dialog.open(VolunterDialogComponent, {
       disableClose: false,
@@ -68,7 +76,7 @@ export class ListVoluntersComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result) { this.getVolunters(); }
+      if (result) { this.getActiveVolunters(this.val.get('state').value); }
     });
   }
 
@@ -77,13 +85,14 @@ export class ListVoluntersComponent implements OnInit {
       disableClose: false,
       autoFocus: true,
       panelClass: 'icon-outside',
-      width: '50%',
+      width: '800px',
       data: {
-        volunterId
+        volunterId: volunterId,
+        edit: false
       }
     });
   }
-  ondelete(volunterId): void {
+  inactiveVolunter(volunterId): void {
     const dialogRef = this.dialog.open(ExitElementComponent, {
       disableClose: false,
       panelClass: 'icon-outside',
@@ -118,9 +127,36 @@ export class ListVoluntersComponent implements OnInit {
       this.onedit(id);
     } else if (event.clickedAction === 'seeVolunter'){
       this.onview(id);
-    } else if (event.clickedAction === 'deleteVolunter'){
+    } else if (event.clickedAction === 'inactiveVolunter'){
+      this.inactiveVolunter(id);
+    } else  if (event.clickedAction === 'deleteVolunter'){
       this.ondelete(id);
     }
+  }
+  ondelete(id): void {
+    const dialogRef = this.dialog.open(ExitElementComponent, {
+      disableClose: false,
+      panelClass: 'icon-outside',
+      autoFocus: true,
+      width: '500px',
+      data: {
+        isDelete: true,
+        title: 'ELIMINAR RESPONSABLE',
+        question: 'Al confirmar se eliminará al responsable y todos los registro relacionados ' +
+          ' ¿ Está seguro de eliminarlo ?'
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.status === 'afirmative'){
+        this.voluntersService.deleteVolunter(id)
+          .subscribe(( res ) => {
+            this.showMessage(res);
+            console.log('done', res);
+          }, ( error ) => {
+            this.showMessage(error);
+          });
+      }
+    });
   }
 
   getVolunteerId(params: CellParam[]): string{
@@ -148,5 +184,16 @@ export class ListVoluntersComponent implements OnInit {
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
       PDF.save('angular-demo.pdf');
     });
+  }
+
+  valuechanges(){
+    this.val.get('state').valueChanges.subscribe((value => {
+      if(value && value!=this.lastStatus){
+        this.getActiveVolunters(value);
+        this.lastStatus=value;
+      }/*else{
+        this.val.patchValue({state: 'ACTIVE'});
+      }*/
+    }))
   }
 }

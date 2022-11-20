@@ -21,8 +21,8 @@ export class VolunterDialogComponent implements OnInit {
   volunterform = this.fb.group({
     userId: [null],
     name: ['', Validators.required],
-    username: [null, Validators.required],
-    password: [null, Validators.required],
+    username: [null],
+    password: [null],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', Validators.required],

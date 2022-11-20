@@ -1,8 +1,11 @@
 .container {
-  margin-top: 100px;
+  margin-top: 120px;
   width: 94%;
 }
-
+mat-card{
+  margin-bottom: 12px;
+  padding: 16px;
+}
 mat-chip{
   font-size: 10px;
 }
@@ -22,7 +25,21 @@ mat-chip{
   letter-spacing: 0.01em;
 }
 
-.table{
-  margin-top: 24px;
-  padding-top: 24px;
+.header{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+}
+.title{
+  float: left;
+  font-size: 18px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 14px 0;
+}
+
+hr{
+  width: 96%;
+  margin: 12px auto;
 }

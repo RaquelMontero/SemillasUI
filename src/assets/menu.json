@@ -33,11 +33,6 @@
         "text": "Responsables",
         "icon": "group",
         "routerLink": "admin/ver-voluntarios"
-      },
-      {
-        "text": "Responsables inactivos",
-        "icon": "layers_clear",
-        "routerLink": "admin/ver-voluntarios/inactivos"
       }
     ]
   },

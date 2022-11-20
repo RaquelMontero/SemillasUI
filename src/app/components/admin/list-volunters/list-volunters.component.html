@@ -8,24 +8,21 @@
 
 </div>
 <div class="container" id="htmlData">
-  <h2 class="lis-header">RESPONSABLES</h2>
-  <hr>
-  <button color="warn" mat-icon-button [matMenuTriggerFor]="afterMenu">
-    Estado <mat-icon>expand_more</mat-icon></button>
-  <mat-menu #afterMenu="matMenu" xPosition="after">
-    <button mat-menu-item>Activo</button>
-    <button mat-menu-item>Inactivo</button>
-  </mat-menu>
-  <mat-chip-list>
-    <mat-chip class="filter-chip" color="accent" selected>
-      <span>Activo</span>
-      <button mat-icon-button>
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-chip>
-  </mat-chip-list>
+  <mat-card>
+    <div  class="header">
+      <span class="title">VOLUNTARIOS RESPONSABLE</span>
+      <img class="img" src="../../../../assets/logo.png" />
+    </div>
+    <hr>
+    <form [formGroup]="val">
+      <mat-chip-listbox formControlName="state">
+        <mat-chip-option [value]="'ACTIVE'" color="accent" selected>Activo</mat-chip-option>
+        <mat-chip-option [value]="'INACTIVE'" color="warn">Inactivo</mat-chip-option>
+      </mat-chip-listbox>
+    </form>
+  </mat-card>
   <ng-container *ngIf="!loadingVolunteers else isloading">
-   <mat-card class="table">
+   <mat-card>
      <app-generic-table
        *ngIf="volunteers"
        [inputTable]="volunteers.rows"

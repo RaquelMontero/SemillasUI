@@ -8,14 +8,36 @@
 .center-spinner{
   margin: auto;
 }
-.row{
-  margin: auto;
-}
 
 mat-chip-list{
   text-align: center;
 }
 
-h2{
-  margin-bottom: 8px;
+mat-dialog-content{
+  padding: 24px !important;
+  font-size: 0.9em!important;
+}
+.mdc-dialog__title{
+  margin: 0 auto !important;
+  display: flex;
+  padding: 0!important;
+  justify-content: space-between;
+  border-bottom: 1px solid #2e7d32;
+  background-color: #A5D6A7;
+  //width: 94%;
+  //position: relative;
+}
+.dialog-header{
+  //padding:  12px;
+  width: 96% !important;
+  text-align: center;
+  padding-top: 8px;
+}
+.dialog-title{
+  font-size: 16px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin-right: -20px;
+  padding:  16px 12px;
+  margin-top: 8px;
 }
