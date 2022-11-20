@@ -9,6 +9,23 @@
         <span class="title">SEMILLAS ASIGNADAS</span>
         <img class="img" src="../../../../assets/logo.png" />
       </div>
+      <hr>
+      <div class="under-card">
+        <ng-container *ngIf="!loadingVolunteer else loadingData">
+          <div class="volunter-cont">
+           <span class="name-cont"> <mat-icon>person_outline</mat-icon>
+            Responsable => {{volunteer.name}} {{volunteer.lastname}}</span>
+          </div>
+          <button (click)="openAssinDialog()"
+                  matTooltip="Asignar semilla a responsable"
+                  mat-mini-fab color="accent">
+            <mat-icon>group_add</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #loadingData>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </ng-template>
+      </div>
     </mat-card>
     <ng-container *ngIf="!loadingtable else loading">
      <mat-card>

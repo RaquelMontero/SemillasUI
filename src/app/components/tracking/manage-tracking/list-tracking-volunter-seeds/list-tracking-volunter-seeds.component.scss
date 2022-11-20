@@ -3,6 +3,7 @@
 }
 mat-card{
   margin-bottom: 12px;
+  padding: 16px;
 }
 .header {
   letter-spacing: 0.1rem;
@@ -32,7 +33,6 @@ mat-tab-group{
 
 .toolbar{
   width: 90%;
-  margin-top: 40px;
   background-color: #A5D6A700;
   color: #1b7549;
 }
@@ -53,4 +53,20 @@ mat-tab-group{
 hr{
   width: 96%;
   margin: 12px auto;
+}
+
+.under-card{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.volunter-cont{
+  background-color: #8ba73a;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+.name-cont{
+  display: flex;
+  padding: 6px 0;
 }
