@@ -9,6 +9,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatOptionSelectionChange} from '@angular/material/core';
 import {Volunter} from '../../../models/volunter.model';
 import {VolunterService} from '../../../services/volunter.service';
+import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 export interface DialogData {
   volunterId: string;
 }
@@ -35,6 +37,7 @@ export class AsignSeedToVolunterComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private trackingService: TrackingService,
     private volunteerService: VolunterService,
+    private matSnackBar: MatSnackBar,
     private form: UntypedFormBuilder) { }
 
   ngOnInit(): void {
@@ -80,9 +83,11 @@ export class AsignSeedToVolunterComponent implements OnInit {
     const form = this.assignForm.value;
     this.trackingService.saveTrackingAssign(form)
       .subscribe((data) => {
-        this.dialogRef.close();
-        console.log('data');
-      });
+        this.showMessage(data);
+        this.dialogRef.close('success');
+      },(error => {
+        this.showMessage(error.error);
+      }));
   }
 
   getVolunterById(): void{
@@ -91,5 +96,16 @@ export class AsignSeedToVolunterComponent implements OnInit {
         this.volunter = data ;
         this.assignForm.get('volunter_id').setValue(this.data.volunterId);
       });
+  }
+
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
   }
 }

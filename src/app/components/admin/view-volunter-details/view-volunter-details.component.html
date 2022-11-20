@@ -43,10 +43,10 @@
     <div class="col-md-6" >
       <h2 class="center">Roles del Voluntario</h2>
       <p *ngIf="messageRoles===''  else mensajeroles">
-        <mat-chip-list aria-label="Fish selection"
+        <mat-chip-listbox aria-label="Fish selection"
                        *ngFor="let role of volunter.roles">
-          <mat-chip color="primary" selected>{{role.role_name}}</mat-chip>
-        </mat-chip-list>
+          <mat-chip  [ngStyle]="{'background-color': '#4b597b'}"><span class="mat-chip">{{role.role_name |titlecase}}</span></mat-chip>
+        </mat-chip-listbox>
       </p>
       <ng-template #mensajeroles>
         {{messageRoles}}

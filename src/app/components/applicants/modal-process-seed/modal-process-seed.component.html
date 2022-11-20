@@ -1,9 +1,10 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-  <mat-icon class="close-icon">close</mat-icon>
-</button>
-<div mat-dialog-title class="header">
-  <span class="title">{{title}}</span>
-  <img class="img" src="../../../../assets/logo.png" />
+<div mat-dialog-title>
+  <div class="dialog-header">
+    <span class="dialog-title">{{title}}</span>
+  </div>
+  <button mat-icon-button class="close-button2" [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
 </div>
 <mat-dialog-content>
   <form  [formGroup]="contributor" class="row">
@@ -13,16 +14,16 @@
           <mat-icon>person</mat-icon>
           <span>{{seed.name}} {{seed.lastname}}</span>
         </div>
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>
-            {{seed.contributionType}}</mat-chip>
-        </mat-chip-list>
+        <mat-chip-listbox>
+          <mat-chip class="contr-type">
+            <span>{{seed.contributionType}}</span></mat-chip>
+        </mat-chip-listbox>
       </div>
     </div>
     <ng-container *ngIf="!data.isReject">
       <mat-form-field
         class="col-md-6"
-        appearance="standard">
+        appearance="fill">
         <mat-label>Ingrese la fecha de inicio del ciclo de aportes</mat-label>
         <input formControlName="contributionStartDate"
                matInput
@@ -34,7 +35,7 @@
       </mat-form-field>
       <mat-form-field
         class="col-md-6"
-        appearance="standard">
+        appearance="fill">
         <mat-label>Ingrese la fecha de fin del ciclo de aportes</mat-label>
         <input formControlName="contributionEndDate"
                matInput

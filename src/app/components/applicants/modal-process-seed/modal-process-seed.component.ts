@@ -59,7 +59,7 @@ export class ModalProcessSeedComponent implements OnInit {
           processed_date: new Date(),
           processVolunterId: this.processVolunterId,
           state: this.data.isReject ? 2 : 1,
-          contributionType: this.seed.contribution_config.contribution_key
+          contributionType: this.seed.contribution_config?.contribution_key
         });
       });
   }

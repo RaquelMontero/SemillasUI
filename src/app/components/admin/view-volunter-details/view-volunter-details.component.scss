@@ -9,10 +9,6 @@
   margin: auto;
 }
 
-mat-chip-list{
-  text-align: center;
-}
-
 mat-dialog-content{
   padding: 24px !important;
   font-size: 0.9em!important;
@@ -40,4 +36,9 @@ mat-dialog-content{
   margin-right: -20px;
   padding:  16px 12px;
   margin-top: 8px;
+}
+.mat-chip{
+  font-size: 0.8em !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
 }
