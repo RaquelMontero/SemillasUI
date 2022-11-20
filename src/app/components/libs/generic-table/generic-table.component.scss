@@ -1,77 +1,71 @@
 table {
-  width: 100%;
-
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 th:last-child{
-  width: 15%;
-  text-align: center;
+  width: 15% !important;
+  text-align: center !important;
 }
 th{
-  padding: 8px;
-  background-color: #102027;
-  color: #FFFFFF;
-  font-size: 14px;
-  letter-spacing: 0.08rem;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 8px!important;
+  background-color: #102027!important;
+  color: #FFFFFF!important;
+  font-size: 13px!important;
+  //letter-spacing: 0.08rem!important;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
 }
 
 td{
-  color: #333333;
-  font-size: 13px;
-  border-right: 1px solid #3333;
-  border-bottom: 1px solid #3333;
-  letter-spacing: 0.06rem;
-  padding-left: 8px;
+  //color: #333333 !important;
+  font-size: 13px !important;
+  border-right: 1px solid #3333 !important;
+  border-bottom: 1px solid #3333 !important;
+  letter-spacing: 0.06rem !important;
+  padding-left: 8px !important;
 }
 td:first-child{
-  border-left: 1px solid #3333;
-  padding-left: 24px;
-  width: 7%;
+  border-left: 1px solid #3333 !important;
+  padding-left: 24px !important;
+  width: 7% !important;
 }
 
 td:last-child{
-  width: 15%;
-  text-align: center;
-}
-
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-accent{
-
-  background-color: rgba(253, 126, 20, 0.8);;
-  color:white;
-  font-size: 9px;
+  width: 15% !important;
+  text-align: center !important;
 }
 
 .on-view{
-  color: #4285F499;
-  width: 35px;
-  height: 35px;
+  color: #4285F499 !important;
+  width: 35px !important;
+  height: 35px !important;
 }
 .on-accept{
-  color: #A5D6A7;
-  width: 35px;
-  height: 35px;
+  color: #A5D6A7 !important;
+  width: 35px !important;
+  height: 35px !important;
 }
 .on-cancel{
-  color: #C01823B2;
-  width: 35px;
-  height: 35px;
+  color: #C01823B2 !important;
+  width: 35px !important;
+  height: 35px !important;
 }
 
-.chip-element{
-  border-radius: 10px;
-  padding: 5px;
-  margin-top: 8px;
-  font-size: 0.7em;
+.mat-chip{
+  font-size: 0.8em !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
 }
-mat-chip{
-  font-size: 0.9em;
-  font-weight: 400;
+.tooltip{
+  background-color: #1b7549 !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  letter-spacing: 1px !important;
 }
-::ng-deep .mat-tooltip {
-  background-color: #1b7549;
-  color: #FFFFFF;
-  font-size: 12px;
-  letter-spacing: 1px;
+
+.mat-icon-button{
+ padding: 0;
+}
+.mat-mdc-icon-button{
+  width: 35px!important;
 }
