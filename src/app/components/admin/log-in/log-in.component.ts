@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {OauthService} from '../../../services/auth/oauth.service';
 import {Router} from '@angular/router';
 import {MatDialogRef} from '@angular/material/dialog';
@@ -15,7 +15,7 @@ export class LogInComponent implements OnInit {
     password: [null, Validators.required]
   });
   hide = true;
-  constructor(private formgroup: FormBuilder,
+  constructor(private formgroup: UntypedFormBuilder,
               private oauthservice: OauthService,
               private router: Router,
               public dialogRef: MatDialogRef<LogInComponent>)

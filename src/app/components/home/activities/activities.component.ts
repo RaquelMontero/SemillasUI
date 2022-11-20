@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
-import {FormBuilder, FormControl} from '@angular/forms';
+import {UntypedFormBuilder, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-activities',
@@ -40,7 +40,7 @@ export class ActivitiesComponent implements OnInit {
     ]
   };
 
-constructor(private fb: FormBuilder) { }
+constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
   }

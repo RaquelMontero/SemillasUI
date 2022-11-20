@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-want-collaborate',
@@ -21,7 +21,7 @@ export class WantCollaborateComponent implements OnInit {
     birthdate: ['', Validators.required],
 
   });*/
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
   ) { }
   ngOnInit(): void {
   }

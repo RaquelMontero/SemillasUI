@@ -28,7 +28,9 @@
                   -->
                  <ng-container *ngIf="cont['contentType'] === 'iconAccion'">
                    <button
+                     class="mat-icon-button"
                      [matTooltip]="cont['contentTooltip']"
+                     matTooltipClass="tooltip"
                      mat-icon-button
                      (click)="onclickevent(cont)">
                      <mat-icon [ngStyle]="{'color': cont.color}">{{cont.iconName}}</mat-icon>
@@ -37,12 +39,12 @@
                </ng-container>
              </ng-container>
             <ng-template #chips>
-              <mat-chip-list>
+              <mat-chip-listbox>
                 <mat-chip *ngFor="let cont of cell['contents']"
-                          [ngStyle]="{'background-color': cont.color, 'color':'#FFFFFF'}">
-                  {{cont.content}}
+                          [ngStyle]="{'background-color': cont.color}">
+                 <span class="mat-chip"> {{cont.content}}</span>
                 </mat-chip>
-              </mat-chip-list>
+              </mat-chip-listbox>
             </ng-template>
            </td>
          </ng-container>

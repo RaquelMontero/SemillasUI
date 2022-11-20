@@ -38,7 +38,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
+//import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -153,7 +153,7 @@ import { UnactiveVolunteersComponent } from './components/admin/unactive-volunte
     MatRadioModule,
     MatTreeModule,
     MatToolbarModule,
-    MatCarouselModule.forRoot(),
+  //  MatCarouselModule.forRoot(),
     CdkAccordionModule,
     HttpClientModule,
     MatAutocompleteModule,

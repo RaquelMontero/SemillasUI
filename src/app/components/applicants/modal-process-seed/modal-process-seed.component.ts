@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {Seed} from '../../../models/Seed.model';
 import {ApplicantService} from '../../../services/applicant.service';
 
@@ -33,7 +33,7 @@ export class ModalProcessSeedComponent implements OnInit {
   processVolunterId = 1;
   constructor(public dialogRef: MatDialogRef<ModalProcessSeedComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private applicantService: ApplicantService) { }
 
   ngOnInit(): void {

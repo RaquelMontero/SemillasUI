@@ -1,7 +1,7 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {VolunterService} from '../../../services/volunter.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Role, Volunter} from '../../../models/volunter.model';
 import {DomainhelperService} from '../../../services/domainhelper.service';
 import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
@@ -39,7 +39,7 @@ export class VolunterDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<VolunterDialogComponent>,
               private volunterService: VolunterService,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private matSnackBar: MatSnackBar,
               private domainhelperService: DomainhelperService
   ) { }
