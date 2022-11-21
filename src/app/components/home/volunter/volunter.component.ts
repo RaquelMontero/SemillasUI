@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OauthService } from 'src/app/core/auth/oauth.service';
-import { TokenService } from 'src/app/core/auth/token.service';
+import { OauthService } from 'src/app/core/services/auth/oauth.service';
+import { TokenService } from 'src/app/core/services/auth/token.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LogInComponent} from '../../admin/log-in/log-in.component';
 

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { OauthService } from 'src/app/core/auth/oauth.service';
-import { TokenService } from 'src/app/core/auth/token.service';
+import { OauthService } from 'src/app/core/services/auth/oauth.service';
+import { TokenService } from 'src/app/core/services/auth/token.service';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'sml-navbar',
