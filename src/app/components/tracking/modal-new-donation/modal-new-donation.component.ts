@@ -1,9 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ContributionConfigService} from '../../../services/contribution-config.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ComboElement, ComboResponse} from '../../../models/Utils.model';
 import {UtilService} from '../../../services/util.service';
+import {TrackingService} from '../../../services/tracking.service';
+import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DialogData {
   id: string;
@@ -18,6 +21,7 @@ export interface DialogData {
   styleUrls: ['./modal-new-donation.component.scss']
 })
 export class ModalNewDonationComponent implements OnInit {
+  loadingContributionConfig = true;
   contributionConfig: any;
   paymentMethods: ComboElement[];
   donation = this.fb.group({
@@ -31,16 +35,17 @@ export class ModalNewDonationComponent implements OnInit {
     contribution_ammount  : [null, Validators.required],
     receipt_number: [null, Validators.required],
     receipt_code: [null, Validators.required],
-    extra_income_ammount: [null, Validators.required],
-    contribution_obtained: [null, Validators.required],
-    sent_payment_proof: [null, Validators.required],
-    extraExpense: [null, Validators.required],
-    volunter: [null, Validators.required],
-
+    extra_income_ammount: [0],
+    sent_payment_proof: [false],
+//    extraExpense: [null, Validators.required],
+    hasExtra: [false],
   });
   constructor(private fb: UntypedFormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private utilService: UtilService,
+              private matSnackBar: MatSnackBar,
+              private trackingService: TrackingService,
+              public dialogRef: MatDialogRef<ModalNewDonationComponent>,
               private contributionconfigservice: ContributionConfigService) { }
 
   ngOnInit(): void {
@@ -59,16 +64,25 @@ export class ModalNewDonationComponent implements OnInit {
       });
   }
   getContributionConfigById(): void{
+    this.loadingContributionConfig = true;
     this.contributionconfigservice.getContributionConfigById(
       this.data.contribution_config_id
     ).subscribe((data) => {
       this.contributionConfig = data;
       this.donation.patchValue({
         paymentMethod: this.contributionConfig.contribution.paymentMethod,
-        contribution_ammount: this.contributionConfig.contribution.contribution_amount
+        contribution_ammount: this.contributionConfig.contribution.contribution_amount,
+        contributor_id: this.data.seedId,
+        contribution_config_id: this.data.contribution_config_id,
+        tracking_assignment_id: this.data.tracking_assignment_id
       });
+      this.loadingContributionConfig = false;
+
     }, (error) => {
-      console.log('getContributionConfigById', error );
+      this.contributionConfig = null;
+      this.loadingContributionConfig = false;
+
+      /*console.log('getContributionConfigById', error );
       this.contributionConfig = {
         contribution_config_id: 1,
         contribution_key: 'APORTE_CONSTANTE',
@@ -88,7 +102,7 @@ export class ModalNewDonationComponent implements OnInit {
       };
       this.donation.patchValue({
         paymentMethod: this.contributionConfig.contribution.paymentMethod
-      });
+      });*/
     });
   }
 
@@ -115,5 +129,28 @@ export class ModalNewDonationComponent implements OnInit {
     let amount = this.donation.get('contribution_ammount').value;
     amount = Math.trunc(Number(amount) / 35);
     return amount + ' Niños';
+  }
+
+  sendData(){
+    const payload = this.donation.value
+    this.trackingService.saveContribution(payload)
+      .subscribe((res) => {
+          this.showMessage(res);
+          this.dialogRef.close('success');
+      },(error => {
+        this.showMessage(error.error);
+        this.dialogRef.close();
+      }))
+  }
+
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
   }
 }

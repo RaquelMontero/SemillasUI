@@ -12,7 +12,9 @@
       <ng-container mat-cell *matCellDef="let element">
         <ng-container *ngFor="let cell of element['cells']">
           <ng-container *ngIf="cell['cellHeader'].key === column.key">
-            <td [class]="!cell['cellProperty'].color ? 'prueba' : 'none'">
+            <td
+              [ngStyle]="{'background-color':cell['cellProperty'].color}"
+              [class]="!cell['cellProperty'].color ? 'none' : 'none'">
               <ng-container *ngIf="!isChip(cell['contents']) else chips">
                 <ng-container *ngFor="let cont of cell['contents']">
                   <ng-container *ngIf="cont['contentType'] === 'text'">
@@ -49,9 +51,11 @@
               </ng-template>
             </td>
           </ng-container>
+
         </ng-container>
       </ng-container>
     </ng-container>
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

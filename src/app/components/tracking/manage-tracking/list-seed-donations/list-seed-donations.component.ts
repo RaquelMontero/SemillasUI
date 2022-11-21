@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {TrackingService} from '../../../../services/tracking.service';
 import {CellContent, Table} from '../../../../models/Table.model.';
 import {MatDialog} from '@angular/material/dialog';
-import {AsignSeedToVolunterComponent} from '../../asign-seed-to-volunter/asign-seed-to-volunter.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {ModalNewDonationComponent} from '../../modal-new-donation/modal-new-donation.component';
+import {ApplicantService} from '../../../../services/applicant.service';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-list-seed-donations',
@@ -16,9 +17,13 @@ export class ListSeedDonationsComponent implements OnChanges {
   @Input() seedId: string;
   @Input() trackingAssignmentId: string;
   @Input() contributionConfigId: string;
-  loadingtable = true;
+  loadingTable = true;
   data: Table;
+
+  loadingSeed = true;
+  seed: any;
   constructor(private trackingService: TrackingService,
+              private seedService: ApplicantService,
               private dialog: MatDialog) { }
 
   back(): void{
@@ -26,7 +31,7 @@ export class ListSeedDonationsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.getDonations();
+    this.getSeedInfo();
     this.getDonationsRecord();
   }
 
@@ -39,18 +44,8 @@ export class ListSeedDonationsComponent implements OnChanges {
   }
   onAdding(): void{}
 
-  getDonations(): void{
-    this.trackingService.getSeedsDonations(this.seedId)
-      .subscribe((data) => {
-        this.data = data;
-        this.loadingtable = false;
-      }, (error => {
-        this.loadingtable = false;
-      }));
-  }
-
   newDonation(): void {
-    console.log('new dialog', this.seedId );
+    console.log('new seedId', this.seedId );
     console.log('new trackingAssignmentId', this.trackingAssignmentId );
     console.log('new contributionConfigId', this.contributionConfigId );
 
@@ -58,7 +53,7 @@ export class ListSeedDonationsComponent implements OnChanges {
       disableClose: false,
       panelClass: 'icon-outside',
       autoFocus: true,
-      width: '700px',
+      width: '800px',
       data: {
         seedId: this.seedId,
         tracking_assignment_id: this.trackingAssignmentId,
@@ -68,17 +63,40 @@ export class ListSeedDonationsComponent implements OnChanges {
     });
     dialogConfig.afterClosed().subscribe(result => {
       if (result){
-        this.getDonations();
+        this.getDonationsRecord();
       }
     });
   }
   getDonationsRecord(): void{
-    this.loadingtable = true;
-    this.trackingService.listSeedTrackingRecords('d')
+    this.loadingTable = true;
+    this.trackingService.listSeedTrackingRecords(this.seedId)
       .subscribe((table) => {
         this.data = table;
-        this.loadingtable = false;
+        this.loadingTable = false;
       });
   }
-  outputEvent(evento): void{}
+
+  getSeedInfo(){
+    this.loadingSeed = true;
+    this.seedService.getSeedById(this.seedId).subscribe((data) => {
+      this.seed = data;
+      this.loadingSeed = false;
+    }, (error => {
+      this.seed = null;
+      this.loadingSeed = false;
+    }))
+  }
+
+  public openPDF(): void {
+    const DATA: any = document.getElementById('htmlData');
+    html2canvas(DATA).then((canvas) => {
+      const fileWidth = 208;
+      const fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      const PDF = new jsPDF('p', 'mm', 'a4');
+      const position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('contributor-record.pdf');
+    });
+  }
 }

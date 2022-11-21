@@ -39,10 +39,15 @@ export class TrackingService {
       , { params: p });
   }
 
-  getSeedsDonations(idSeed): Observable<Table> {
+  /*getSeedsDonations(idSeed): Observable<Table> {
       const p = new HttpParams().set('id', idSeed);
       return this.http.get<Table>(environment.backend +
         '/seeds/tracking/trackingSeeds'
         , { params: p });
+  }*/
+
+  saveContribution(payload){
+    return this.http.post<any>(environment.backend +
+      '/seeds/contribution/createContributionRecord', payload);
   }
 }
