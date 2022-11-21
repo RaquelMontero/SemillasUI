@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {TrackingService} from '../../../../services/tracking.service';
-import {CellContent, Table} from '../../../../models/Table.model.';
-import {MessageSnackBarComponent} from '../../../libs/message-snack-bar/message-snack-bar.component';
+import {TrackingService} from '../../../../core/services/tracking.service';
+import {CellContent, Table} from '../../../../core/models/Table.model.';
+import {MessageSnackBarComponent} from '../../../../shared/message-snack-bar/message-snack-bar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AsignSeedToVolunterComponent} from '../../asign-seed-to-volunter/asign-seed-to-volunter.component';
 import {MatDialog} from '@angular/material/dialog';
-import {VolunterService} from '../../../../services/volunter.service';
-import {Volunter} from '../../../../models/volunter.model';
+import {VolunterService} from '../../../../core/services/volunter.service';
+import {Volunter} from '../../../../core/models/volunter.model';
 export interface SelectSeed{
   seedId: string;
   trackingAssignmentId: string;

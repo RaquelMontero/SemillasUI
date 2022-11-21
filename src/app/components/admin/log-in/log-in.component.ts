@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {OauthService} from '../../../services/auth/oauth.service';
+import {OauthService} from '../../../core/auth/oauth.service';
 import {Router} from '@angular/router';
 import {MatDialogRef} from '@angular/material/dialog';
 

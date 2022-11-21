@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {TrackingService} from '../../../../services/tracking.service';
-import {CellContent, Table} from '../../../../models/Table.model.';
+import {TrackingService} from '../../../../core/services/tracking.service';
+import {CellContent, Table} from '../../../../core/models/Table.model.';
 import {MatDialog} from '@angular/material/dialog';
 import {ModalNewDonationComponent} from '../../modal-new-donation/modal-new-donation.component';
-import {ApplicantService} from '../../../../services/applicant.service';
+import {ApplicantService} from '../../../../core/services/applicant.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 

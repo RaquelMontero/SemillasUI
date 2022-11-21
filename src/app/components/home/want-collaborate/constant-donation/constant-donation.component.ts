@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ApplicantService} from '../../../../services/applicant.service';
-import {UtilService} from '../../../../services/util.service';
-import {ComboElement} from '../../../../models/Utils.model';
+import {ApplicantService} from '../../../../core/services/applicant.service';
+import {UtilService} from '../../../../core/services/util.service';
+import {ComboElement} from '../../../../core/models/Utils.model';
 
 @Component({
   selector: 'app-constant-donation',

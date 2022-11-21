@@ -1,15 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {TrackingService} from '../../../services/tracking.service';
-import {BoxSeed} from '../../../models/Seed.model';
+import {TrackingService} from '../../../core/services/tracking.service';
+import {BoxSeed} from '../../../core/models/Seed.model';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatOptionSelectionChange} from '@angular/material/core';
-import {Volunter} from '../../../models/volunter.model';
-import {VolunterService} from '../../../services/volunter.service';
-import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {Volunter} from '../../../core/models/volunter.model';
+import {VolunterService} from '../../../core/services/volunter.service';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 export interface DialogData {
   volunterId: string;

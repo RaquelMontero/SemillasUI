@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CellContent, Table} from '../../../models/Table.model.';
-import {VolunterService} from '../../../services/volunter.service';
+import {CellContent, Table} from '../../../core/models/Table.model.';
+import {VolunterService} from '../../../core/services/volunter.service';
 import {MatDialog} from '@angular/material/dialog';
-import {ModalProcessSeedComponent} from '../../applicants/modal-process-seed/modal-process-seed.component';
+import {ModalProcessSeedComponent} from '../../seeds/modal-process-seed/modal-process-seed.component';
 import {AsignSeedToVolunterComponent} from '../asign-seed-to-volunter/asign-seed-to-volunter.component';
 
 @Component({

@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ContributionConfigService} from '../../../services/contribution-config.service';
+import {ContributionConfigService} from '../../../core/services/contribution-config.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {ComboElement, ComboResponse} from '../../../models/Utils.model';
-import {UtilService} from '../../../services/util.service';
-import {TrackingService} from '../../../services/tracking.service';
-import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {ComboElement, ComboResponse} from '../../../core/models/Utils.model';
+import {UtilService} from '../../../core/services/util.service';
+import {TrackingService} from '../../../core/services/tracking.service';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DialogData {

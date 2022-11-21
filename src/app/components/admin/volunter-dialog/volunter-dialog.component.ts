@@ -1,10 +1,10 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {VolunterService} from '../../../services/volunter.service';
+import {VolunterService} from '../../../core/services/volunter.service';
 import {UntypedFormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Role, Volunter} from '../../../models/volunter.model';
-import {DomainhelperService} from '../../../services/domainhelper.service';
-import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {Role, Volunter} from '../../../core/models/volunter.model';
+import {DomainhelperService} from '../../../core/services/domainhelper.service';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DialogData {

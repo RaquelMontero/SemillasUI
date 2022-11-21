@@ -1,7 +1,7 @@
 import {Component, OnInit, Output} from '@angular/core';
-import {CellContent, Table} from '../../../../models/Table.model.';
-import {ApplicantService} from '../../../../services/applicant.service';
-import {VolunterService} from '../../../../services/volunter.service';
+import {CellContent, Table} from '../../../../core/models/Table.model.';
+import {ApplicantService} from '../../../../core/services/applicant.service';
+import {VolunterService} from '../../../../core/services/volunter.service';
 
 @Component({
   selector: 'app-list-tracking-volunters',

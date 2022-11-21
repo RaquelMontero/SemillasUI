@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ComboElement} from '../../../models/Utils.model';
-import {UtilService} from '../../../services/util.service';
-import {Table, TableRow} from '../../../models/Table.model.';
-import {TrackingService} from '../../../services/tracking.service';
+import {ComboElement} from '../../../core/models/Utils.model';
+import {UtilService} from '../../../core/services/util.service';
+import {Table, TableRow} from '../../../core/models/Table.model.';
+import {TrackingService} from '../../../core/services/tracking.service';
 
 @Component({
   selector: 'app-list-all-tracking-seeds',
