@@ -1,11 +1,7 @@
 <div class="personal-info">
   <form [formGroup]="applicantForm">
     <div class="row justify-content-between">
-      <mat-chip-listbox class="col-md-12">
-        <mat-chip class="chip">
-          <span class="chip-title">PARA PODER SER PARTE DEL PROGRAMA SEMILLAS, INGRESA Y ENVÍA TUS DATOS</span>
-        </mat-chip>
-      </mat-chip-listbox>
+      <div class="col-md-12 header-message" >PARA PODER SER PARTE DEL PROGRAMA SEMILLAS, INGRESA Y ENVÍA TUS DATOS</div>
       <div class="col-md-6">
        <!-- <span>Nombres</span> -->
         <mat-form-field
@@ -35,6 +31,7 @@
           <input required matInput formControlName="email">
           <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
           <mat-hint>correo@gmail.vom</mat-hint>
+          <mat-icon matSuffix>alternate_email</mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6">
@@ -44,13 +41,17 @@
           <input matInput formControlName="phone">
           <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
           <mat-hint>515151355.....</mat-hint>
+          <mat-icon matSuffix> call</mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field floatLabel="always"
                         appearance="fill">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input required matInput formControlName="birthdate" [matDatepicker]="picker">
+          <input required matInput
+                 formControlName="birthdate"
+                 [matDatepickerFilter]="myFilter"
+                 [matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker ></mat-datepicker>
@@ -100,9 +101,4 @@
       </div>
     </div>
   </form>
-  <div class="next-button">
-    <button mat-raised-button color="primary"
-            [disabled]="!applicantForm.valid"
-            (click)="next()">SIGUIENTE</button>
-  </div>
 </div>

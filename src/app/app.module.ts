@@ -86,6 +86,7 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import {EncodeHttpParamsInterceptor} from './core/interceptors/encoder.interceptor';
 import { UnactiveVolunteersComponent } from './components/admin/unactive-volunteers/unactive-volunteers.component';
 import { OrgActivitiesComponent } from './feature/org-activities/org-activities.component';
+import { SentDataMessageComponent } from './components/home/want-collaborate/sent-data-message/sent-data-message.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { OrgActivitiesComponent } from './feature/org-activities/org-activities.
     AdminDashboardComponent,
     UnactiveVolunteersComponent,
     OrgActivitiesComponent,
+    SentDataMessageComponent,
   ],
   imports: [
     BrowserModule,

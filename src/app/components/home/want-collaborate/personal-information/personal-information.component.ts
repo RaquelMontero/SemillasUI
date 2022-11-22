@@ -19,12 +19,16 @@ export class PersonalInformationComponent implements OnInit {
     email: [null, [Validators.required, Validators.email]],
     phone: [null, Validators.required],
     dni: [null, Validators.required],
-    birthdate: [null, Validators.required],
+    birthdate: [new Date(new Date().setFullYear(new Date().getFullYear() - 16))
+      ,Validators.required],
     country: [null, Validators.required],
     city: [null, Validators.required],
     address: [null, Validators.required],
-
   });
+  myFilter = (d: Date | null): boolean => {
+    const year = new Date().getFullYear();
+    return d?.getFullYear() < (year-15);
+  };
   constructor(private formBuilder: UntypedFormBuilder,
               private applicantService: ApplicantService,
               private utilsService: UtilService) { }
@@ -48,9 +52,6 @@ export class PersonalInformationComponent implements OnInit {
       return 'Debe ingresar el correo';
     }
     return this.email.hasError('email') ? 'Debe ingresar un correo valido' : '';
-    /*if (this.volunterform.get('email').hasError('email')){
-      return 'Debes Ingresar un Correo valido';
-    }*/
   }
 
   getErrorMessagePhone(): any {
