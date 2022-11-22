@@ -1,14 +1,15 @@
 <div class="personal-info">
   <div class="cont-title">
-    <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <mat-chip-listbox class="mat-chip-list-stacked" aria-label="Color selection">
       <mat-chip selected color="primary" >
         <span class="chip-title">APORTE CONSTANTE</span>
       </mat-chip>
-    </mat-chip-list>
+    </mat-chip-listbox>
   </div>
   <form [formGroup]="donationForm" class="row">
     <div class="col-md-12">
-      <mat-form-field appearance="standard">
+      <mat-form-field floatLabel="always"
+                      appearance="fill">
         <mat-label>Monto de Aporte</mat-label>
         <input class="example-right-align"
                required matInput type="number"
@@ -20,7 +21,8 @@
       </mat-form-field>
     </div>
     <div class="col-md-6">
-      <mat-form-field appearance="standard">
+      <mat-form-field floatLabel="always"
+                      appearance="fill">
         <mat-label>Método de Pago</mat-label>
         <mat-select formControlName="paymentMethod">
           <mat-option *ngFor="let method of paymentMethods" [value]="method.value">
@@ -31,7 +33,8 @@
       </mat-form-field>
     </div>
     <div class="col-md-6">
-      <mat-form-field appearance="standard">
+      <mat-form-field floatLabel="always"
+                      appearance="fill">
         <mat-label>Mes de inicio</mat-label>
         <mat-select formControlName="beginMonth">
           <mat-option *ngFor="let month of beginMonths" [value]="month.value">
@@ -42,7 +45,8 @@
       </mat-form-field>
     </div>
     <div class="col-md-6">
-      <mat-form-field appearance="standard">
+      <mat-form-field floatLabel="always"
+                      appearance="fill">
         <mat-label>Día de aporte</mat-label>
         <mat-select formControlName="paymentDay">
           <mat-option *ngFor="let day of paymentNumberDays" [value]="day.value">
@@ -53,7 +57,8 @@
       </mat-form-field>
   </div>
     <div class="col-md-6">
-      <mat-form-field appearance="standard">
+      <mat-form-field floatLabel="always"
+                      appearance="fill">
         <mat-label>Metodo de recordatorio</mat-label>
         <mat-select formControlName="reminderMethod">
           <mat-option *ngFor="let remmeth of reminderMethods" [value]="remmeth.value">
@@ -71,7 +76,8 @@
       </mat-radio-group>
     </div>
     <div class="col-md-6">
-      <mat-form-field appearance="standard" *ngIf="donationForm.get('send_news').value === true">
+      <mat-form-field floatLabel="always"
+                      appearance="fill" *ngIf="donationForm.get('send_news').value === true">
         <mat-label>Metodo envío de noticias</mat-label>
         <mat-select formControlName="sendNewsType">
           <mat-option *ngFor="let method of newsTypes" [value]="method.value">

@@ -25,9 +25,16 @@ mat-form-field{
   padding-bottom: 24px;
 }
 
-.chip-title{
-  margin: 0 auto;
+.chip{
+  width: 100%;
+  background-color: #2e7d32!important;
+  span{
+    color: #FFFFFF;
+    font-size: 12px;
+    margin: auto !important;
+  }
 }
+
 mat-error{
   color: 	#ad2831;
 }

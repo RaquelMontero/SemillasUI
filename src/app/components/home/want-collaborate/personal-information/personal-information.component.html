@@ -1,16 +1,16 @@
 <div class="personal-info">
-  <div class="form-title">
-    <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
-      <mat-chip selected color="primary" >
-        <span class="chip-title">PARA PODER SER PARTE DEL PROGRAMA SEMILLAS, INGRESA Y ENVÍA TUS DATOS</span>
-      </mat-chip>
-    </mat-chip-list>
-  </div>
   <form [formGroup]="applicantForm">
     <div class="row justify-content-between">
+      <mat-chip-listbox class="col-md-12">
+        <mat-chip class="chip">
+          <span class="chip-title">PARA PODER SER PARTE DEL PROGRAMA SEMILLAS, INGRESA Y ENVÍA TUS DATOS</span>
+        </mat-chip>
+      </mat-chip-listbox>
       <div class="col-md-6">
        <!-- <span>Nombres</span> -->
-        <mat-form-field appearance="standard">
+        <mat-form-field
+          floatLabel="always"
+          appearance="fill">
           <mat-label>Nombre(s)</mat-label>
           <input required matInput formControlName="name" >
           <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
@@ -18,7 +18,9 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field
+          floatLabel="always"
+          appearance="fill">
           <mat-label>Apellido(s)</mat-label>
           <input required matInput formControlName="lastname">
           <mat-error *ngIf="lastname.invalid">{{getErrorMessageLastname()}}</mat-error>
@@ -26,7 +28,9 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field
+          floatLabel="always"
+          appearance="fill">
           <mat-label>Correo</mat-label>
           <input required matInput formControlName="email">
           <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
@@ -34,7 +38,8 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field floatLabel="always"
+                        appearance="fill">
           <mat-label>Celular</mat-label>
           <input matInput formControlName="phone">
           <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
@@ -42,7 +47,8 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field floatLabel="always"
+                        appearance="fill">
           <mat-label>Fecha de nacimiento</mat-label>
           <input required matInput formControlName="birthdate" [matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
@@ -51,7 +57,8 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field floatLabel="always"
+                        appearance="fill">
           <mat-label>Carnet De Identidad</mat-label>
           <input required matInput formControlName="dni">
           <mat-error *ngIf="dni.invalid">{{getErrorMessageDNI()}}</mat-error>
@@ -59,7 +66,8 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field floatLabel="always"
+                        appearance="fill">
           <mat-label>País</mat-label>
           <mat-select required formControlName="country">
             <mat-option *ngFor="let c of countries" [value]="c.value">
@@ -69,7 +77,8 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <mat-form-field appearance="standard">
+        <mat-form-field floatLabel="always"
+                        appearance="fill">
           <mat-label>Ciudad</mat-label>
           <mat-select required formControlName="city">
             <mat-option *ngFor="let c of countries" [value]="c.value">

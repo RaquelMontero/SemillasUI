@@ -1,24 +1,20 @@
-<div class="add-buton">
-  <button mat-fab color="primary"
-          (click)="onAdding()"
-          matTooltip="REGISTRAR NUEVO VOLUNTARIO">
-    <mat-icon>person_add</mat-icon>
-  </button>
-  <button mat-raised-button color="accent" (click)="openPDF()">Download PDF</button>
-
-</div>
 <div class="container" id="htmlData">
   <mat-card>
     <div  class="header">
-      <span class="title">VOLUNTARIOS RESPONSABLE</span>
+      <span class="title">VOLUNTARIOS RESPONSABLES</span>
       <img class="img" src="../../../../assets/logo.png" />
     </div>
     <hr>
-    <form [formGroup]="val">
+    <form [formGroup]="val" class="volunteer-head">
       <mat-chip-listbox formControlName="state">
-        <mat-chip-option [value]="'ACTIVE'" color="accent" selected>Activo</mat-chip-option>
-        <mat-chip-option [value]="'INACTIVE'" color="warn">Inactivo</mat-chip-option>
+        <mat-chip-option class="active" [value]="'ACTIVE'" color="primary" selected>Activos</mat-chip-option>
+        <mat-chip-option class="inactive" [value]="'INACTIVE'" color="primary">Inactivos</mat-chip-option>
       </mat-chip-listbox>
+      <button mat-mini-fab color="accent"
+              (click)="onAdding()"
+              matTooltip="REGISTRAR NUEVO VOLUNTARIO">
+        <mat-icon>person_add</mat-icon>
+      </button>
     </form>
   </mat-card>
   <ng-container *ngIf="!loadingVolunteers else isloading">

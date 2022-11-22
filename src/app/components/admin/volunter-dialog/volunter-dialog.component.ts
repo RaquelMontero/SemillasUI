@@ -30,6 +30,7 @@ export class VolunterDialogComponent implements OnInit {
     birthdate: ['', Validators.required],
     roles: null
   });
+  hide = true;
   roles: Role[] = [];
   allRoles: Role[] = [];
   volunter: Volunter = null;
