@@ -24,11 +24,11 @@
           <button color="warn" mat-flat-button matStepperNext>SIGUIENTE</button>
         </div>
       </mat-step>
-      <mat-step state="info">
+      <mat-step [stepControl]="donationType" state="info">
         <ng-template matStepLabel><span class="matStepLabel">DETALLES DEL APORTE</span></ng-template>
         <ng-container *ngIf="donationType==='CONSTANT'">
           <app-constant-donation
-            [personalInformation]="applicantForm">
+            (constantContribution)="emitConstantContribution($event)">
           </app-constant-donation>
         </ng-container>
         <ng-container *ngIf="donationType==='UNIQUE'">
@@ -41,7 +41,7 @@
           <button color="warn" [disabled]="!canSendForm" mat-flat-button matStepperNext>SIGUIENTE</button>
         </div>
       </mat-step>
-      <mat-step state="info">
+      <mat-step  state="info">
         <ng-template matStepLabel><span class="matStepLabel">ENVIAR DATOS</span></ng-template>
         <div class="send-data">
           <span>¿ Esta segur@ de enviar sus datos ?</span>
@@ -65,6 +65,8 @@
         <mat-icon>forum</mat-icon>
       </ng-template>
     </mat-stepper>
+
+    <button mat-flat-button color="accent" (click)="sentInformaTionMessage()">Dialog</button>
   </mat-card>
 
 
