@@ -3,10 +3,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {Seed} from '../../../core/models/Seed.model';
 import {ApplicantService} from '../../../core/services/applicant.service';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 export interface DialogData {
   contributorId: string;
+  volunteerId: string;
   isReject: boolean;
 }
 
@@ -30,10 +33,10 @@ export class ModalProcessSeedComponent implements OnInit {
   endDate = new Date();
   seed: any;
   loadingSeed = true;
-  processVolunterId = 1;
   constructor(public dialogRef: MatDialogRef<ModalProcessSeedComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private fb: UntypedFormBuilder,
+              private matSnackBar: MatSnackBar,
               private applicantService: ApplicantService) { }
 
   ngOnInit(): void {
@@ -42,7 +45,7 @@ export class ModalProcessSeedComponent implements OnInit {
     this.contributor.patchValue({
       contributor_id: this.data.contributorId,
       processed_date: new Date(),
-      processVolunterId: 1,
+      processVolunterId: this.data.volunteerId,
       state: this.data.isReject ? 0 : 1,
       contributionStartDate: new Date(),
       contributionEndDate: this.endDate,
@@ -57,7 +60,7 @@ export class ModalProcessSeedComponent implements OnInit {
         this.contributor.patchValue({
           contributor_id: this.data.contributorId,
           processed_date: new Date(),
-          processVolunterId: this.processVolunterId,
+          processVolunterId: this.data.volunteerId,
           state: this.data.isReject ? 2 : 1,
           contributionType: this.seed.contribution_config?.contribution_key
         });
@@ -86,8 +89,21 @@ export class ModalProcessSeedComponent implements OnInit {
     this.applicantService.processSeed(processSeed)
       .subscribe((data) => {
         this.dialogRef.close('processed');
+        this.showMessage(data);
       }, ( error ) => {
         this.dialogRef.close();
+        this.showMessage(error.error);
       });
+  }
+
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
   }
 }

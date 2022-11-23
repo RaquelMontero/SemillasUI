@@ -23,6 +23,7 @@
     <ng-container *ngIf="!data.isReject">
       <mat-form-field
         class="col-md-6"
+        floatLabel="always"
         appearance="fill">
         <mat-label>Ingrese la fecha de inicio del ciclo de aportes</mat-label>
         <input formControlName="contributionStartDate"
@@ -35,6 +36,7 @@
       </mat-form-field>
       <mat-form-field
         class="col-md-6"
+        floatLabel="always"
         appearance="fill">
         <mat-label>Ingrese la fecha de fin del ciclo de aportes</mat-label>
         <input formControlName="contributionEndDate"
@@ -46,7 +48,9 @@
         <mat-datepicker #picker2 startView="year" [startAt]="endDate"></mat-datepicker>
       </mat-form-field>
     </ng-container>
-      <mat-form-field class="col-md-12" appearance="fill">
+      <mat-form-field
+        floatLabel="always"
+        class="col-md-12" appearance="fill">
         <mat-label>Razón</mat-label>
         <textarea matInput
                   formControlName="process_reason"
@@ -58,7 +62,7 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button mat-raised-button
+  <button mat-flat-button
           (click)="onSubmit()"
           class="accept-bt"
           [disabled]="!contributor.valid"

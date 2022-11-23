@@ -4,6 +4,8 @@ import {ApplicantService} from '../../../core/services/applicant.service';
 import {LogInComponent} from '../../admin/log-in/log-in.component';
 import {MatDialog} from '@angular/material/dialog';
 import {SentDataMessageComponent} from './sent-data-message/sent-data-message.component';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-want-collaborate',
@@ -17,6 +19,7 @@ export class WantCollaborateComponent implements OnInit {
   showDonationDetails = false;
 
   applicantForm;
+  justSentForm = false;
   sendingData = false;
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -31,6 +34,7 @@ export class WantCollaborateComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               private dialog: MatDialog,
+              private matSnackBar: MatSnackBar,
               private applicantService: ApplicantService
   ) { }
   ngOnInit(): void {
@@ -51,7 +55,6 @@ export class WantCollaborateComponent implements OnInit {
   }
 
   onTabChanged(evento): void{
-    console.log('changes');
     this.index = evento.index;
   }
   emitUniqueContribution(event){
@@ -69,24 +72,23 @@ export class WantCollaborateComponent implements OnInit {
     const {country, city, address, ...user} = this.applicantForm;
     const contributor = {country, city, address, user};
     this.contributionPayload.contributor = contributor;
-    console.log('response', this.contributionPayload);
    if (this.donationType === 'UNIQUE'){
      this.applicantService.createUniqueApplicant(this.contributionPayload)
        .subscribe((response) => {
-         console.log('response', response);
+         this.sentInformaTionMessage(response);
          this.sendingData = false;
        }, ( error ) => {
-         console.log('error', error);
          this.sendingData = false;
+         this.showMessage(error.error);
        });
    }else {
      this.applicantService.createConstantapplicant(this.contributionPayload)
        .subscribe((response) => {
-         console.log('response', response);
          this.sendingData = false;
+         this.sentInformaTionMessage(response);
        }, ( error ) => {
-         console.log('error', error);
          this.sendingData = false;
+         this.showMessage(error.error);
        });
    }
   }
@@ -98,14 +100,25 @@ export class WantCollaborateComponent implements OnInit {
     this.contributionPayload.contributor = contributor;
   }
 
-  sentInformaTionMessage(){
+  sentInformaTionMessage(data){
     const dialogConfig =  this.dialog.open(SentDataMessageComponent, {
+      data: data,
       disableClose: false,
       panelClass: 'icon-outside',
       autoFocus: true,
       width: '500px',
     });
     dialogConfig.afterClosed().subscribe(result => {
+    });
+  }
+
+  showMessage(data: any): void{
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
     });
   }
 }

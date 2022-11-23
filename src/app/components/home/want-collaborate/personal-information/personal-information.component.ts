@@ -35,6 +35,7 @@ export class PersonalInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCountries();
+    this.manageInfoFormChanges();
   }
   getErrorMessage(): any {
     if (this.applicantForm.get('name').hasError('required')) {
@@ -86,14 +87,21 @@ export class PersonalInformationComponent implements OnInit {
   get dni(): any {
     return this.applicantForm.get('dni');
   }
-  next(): void {
-    this.personalInfo.emit(this.applicantForm.value);
-    this.emitter.emit({tabAction: {number: 1}}) ;
-  }
+
   getCountries(): void{
    this.utilsService.getCountries()
      .subscribe((data) => {
        this.countries = data.data;
      });
+  }
+
+  manageInfoFormChanges(){
+    this.applicantForm.valueChanges.subscribe(() => {
+      if (this.applicantForm.valid){
+        this.personalInfo.emit(this.applicantForm.value);
+      }else {
+        this.personalInfo.emit(null);
+      }
+    })
   }
 }

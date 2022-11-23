@@ -1,9 +1,9 @@
 <div class="container">
-  <mat-card>
+  <mat-card *ngIf="!justSentForm">
     <mat-card-header class="card-head">
       <span>FORMULARIO DE REGISTRO DE INFORMACIÓN</span>
     </mat-card-header>
-    <mat-stepper  orientation="vertical"  #stepper>
+    <mat-stepper *ngIf="!sendingData else sending"  orientation="vertical"  #stepper>
       <mat-step [stepControl]="firstFormGroup" state="info">
         <ng-template matStepLabel><span class="matStepLabel">INFORMACIÒN PERSONAL</span></ng-template>
         <app-personal-information
@@ -11,7 +11,9 @@
           (personalInfo)="getPersonalInfo($event)"
         ></app-personal-information>
         <div class="next-button">
-          <button color="warn" mat-flat-button matStepperNext>SIGUIENTE</button>
+          <button color="warn"
+                  [disabled]="!applicantForm"
+                  mat-flat-button matStepperNext>SIGUIENTE</button>
         </div>
       </mat-step>
       <mat-step [stepControl]="secondFormGroup" state="info">
@@ -66,11 +68,14 @@
       </ng-template>
     </mat-stepper>
 
-    <button mat-flat-button color="accent" (click)="sentInformaTionMessage()">Dialog</button>
+    <button mat-flat-button color="accent" (click)="sentInformaTionMessage('equis')">Dialog</button>
+
   </mat-card>
-
-
-
+  <ng-template #sending>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+ <div> PERSONAL INFO {{this.applicantForm  | json }}</div>
+<DIV>contr info {{this.contributionPayload | json}}</DIV>
   <!--
     <mat-card>
     <mat-tab-group

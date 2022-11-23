@@ -44,7 +44,7 @@ export class ListTrackingVolunterSeedsComponent implements OnChanges {
         this.data = data;
         this.loadingtable = false;
       }, (error) => {
-        this.showMessage(error.error);
+        //this.showMessage(error.error);
       });
   }
 

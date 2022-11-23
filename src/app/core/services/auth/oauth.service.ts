@@ -53,7 +53,7 @@ export class OauthService {
     }
   }
 
-  public getCurrentUser(){
+  public getCurrentUser(): Observable<any>{
     return this.httpClient.get(environment.backend + '/oauth/actual-usuario');
   }
 

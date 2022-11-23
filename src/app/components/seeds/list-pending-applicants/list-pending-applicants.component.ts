@@ -7,6 +7,7 @@ import {ModalProcessSeedComponent} from '../modal-process-seed/modal-process-see
 import {ModalViewSeedComponent} from '../modal-view-seed/modal-view-seed.component';
 import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {OauthService} from '../../../core/services/auth/oauth.service';
 
 @Component({
   selector: 'app-list-pending-applicants',
@@ -16,15 +17,26 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class ListPendingApplicantsComponent implements OnInit {
   loadingtable = true;
   data: Table;
+
+  volunteerProcess: string;
   constructor(private router: Router,
               private dialog: MatDialog,
               private matSnackBar: MatSnackBar,
+              private authService: OauthService,
               private applicantService: ApplicantService) { }
 
   ngOnInit(): void {
     this.getAllSeeds();
+    this.getCurrentUser();
   }
 
+  getCurrentUser(){
+    this.authService.getCurrentUser()
+      .subscribe((data) =>{
+        console.log('aksjdhkasjdh', data);
+        this.volunteerProcess = data.volunterId;
+      })
+  }
   getAllSeeds(): void{
     this.loadingtable = true;
     this.applicantService.listPendingSeeds().subscribe(
@@ -42,6 +54,7 @@ export class ListPendingApplicantsComponent implements OnInit {
       width: '700px',
       data: {
         contributorId: applicantId,
+        volunteerId: this.volunteerProcess,
         isReject: true
       }
     });
@@ -60,6 +73,7 @@ export class ListPendingApplicantsComponent implements OnInit {
       width: '700px',
       data: {
         contributorId: applicantId,
+        volunteerId: this.volunteerProcess,
         isReject: false
       }
     });
