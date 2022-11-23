@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="download">
+    <button (click)="openPDF()" mat-flat-button color="accent"> DESCARGAR <mat-icon>cloud_download</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+  </div>
+
+  <mat-card id="htmlData">
+    <div class="export-header">
+        <span> APORTES RECIBIDOS</span>
+        <img class="img" src="../../../../../assets/logo.png" />
+    </div>
+    <mat-card-content class="card-cont">
+      <div class="export-info">
+        Reportes del {{beginDate}}
+        al {{endDate}}
+      </div>
+      <app-generic-table
+        *ngIf="data"
+        [inputTable]="data.rows">
+      </app-generic-table>
+    </mat-card-content>
+  </mat-card>
+</div>

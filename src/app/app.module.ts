@@ -38,6 +38,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 //import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -87,6 +88,9 @@ import {EncodeHttpParamsInterceptor} from './core/interceptors/encoder.intercept
 import { UnactiveVolunteersComponent } from './components/admin/unactive-volunteers/unactive-volunteers.component';
 import { OrgActivitiesComponent } from './feature/org-activities/org-activities.component';
 import { SentDataMessageComponent } from './components/home/want-collaborate/sent-data-message/sent-data-message.component';
+import { ExportSheetComponent } from './components/libs/export-sheet/export-sheet.component';
+import { ExportPdfComponent } from './components/libs/export-pdf/export-pdf.component';
+import { ListAllDonationsComponent } from './components/tracking/list-all-donations/list-all-donations.component';
 
 @NgModule({
   declarations: [
@@ -131,6 +135,9 @@ import { SentDataMessageComponent } from './components/home/want-collaborate/sen
     UnactiveVolunteersComponent,
     OrgActivitiesComponent,
     SentDataMessageComponent,
+    ExportSheetComponent,
+    ExportPdfComponent,
+    ListAllDonationsComponent,
   ],
   imports: [
     BrowserModule,

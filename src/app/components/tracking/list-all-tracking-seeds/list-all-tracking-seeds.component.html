@@ -6,31 +6,31 @@
    </div>
    <hr>
    <form [formGroup]="filterform" class="row">
-     <mat-form-field class="col-md-2 date-filter"
+     <mat-form-field class="col-md-4 date-filter"
                      color="primary"
-                     appearance="standard">
-       <input formControlName="begindate"
+                     appearance="fill">
+       <input formControlName="begindate" disabled
               matInput [matDatepicker]="picker">
        <mat-hint>MM/DD/YYYY</mat-hint>
        <mat-datepicker-toggle matSuffix [for]="picker">
          <mat-icon matDatepickerToggleIcon
                    color="warn">date_range</mat-icon>
        </mat-datepicker-toggle>
-       <mat-datepicker #picker></mat-datepicker>
+       <mat-datepicker disabled="false" #picker></mat-datepicker>
      </mat-form-field>
-     <mat-form-field class="col-md-2 date-filter"
+     <mat-form-field class="col-md-4 date-filter"
                      color="primary"
-                     appearance="standard">
-       <input formControlName="enddate"
+                     appearance="fill">
+       <input formControlName="enddate" disabled
               matInput [matDatepicker]="picker1">
        <mat-hint>MM/DD/YYYY</mat-hint>
        <mat-datepicker-toggle matSuffix [for]="picker1">
          <mat-icon matDatepickerToggleIcon
                    color="warn">date_range</mat-icon>
        </mat-datepicker-toggle>
-       <mat-datepicker #picker1></mat-datepicker>
+       <mat-datepicker disabled="false" #picker1></mat-datepicker>
      </mat-form-field>
-     <mat-form-field class="col-md-2" appearance="standard">
+     <mat-form-field class="col-md-4" appearance="fill">
        <mat-label>Metodo de pago</mat-label>
        <mat-select formControlName="paymentMethod" name="food">
          <mat-option *ngFor="let m of paymentMethods" [value]="m.value">

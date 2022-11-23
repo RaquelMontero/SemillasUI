@@ -1,0 +1,39 @@
+.container{
+  margin-top: 60px;
+  width: 94%;
+}
+.download{
+  text-align: center;
+  button{
+    margin-bottom: 12px;
+  }
+  margin-bottom: 24px;
+}
+.export-header{
+  border-radius: 5px 5px 0 0;
+  background-color: #2e7d32;
+  display: flex;
+  padding: 12px;
+  span{
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    margin: auto 0;
+  }
+  justify-content: space-between;
+}
+
+.img{
+  width: 200px;
+  max-height: 50px;
+}
+
+.card-cont{
+  padding: 15px;
+}
+.export-info{
+  letter-spacing: 0.8px;
+
+  margin-bottom: 24px;
+}

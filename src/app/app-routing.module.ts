@@ -18,6 +18,8 @@ import {LoggedGuard} from './core/guards/logged.guard';
 import {AdminDashboardComponent} from './components/admin/admin-dashboard/admin-dashboard.component';
 import {UnactiveVolunteersComponent} from './components/admin/unactive-volunteers/unactive-volunteers.component';
 import {OrgActivitiesComponent} from './feature/org-activities/org-activities.component';
+import {ExportPdfComponent} from './components/libs/export-pdf/export-pdf.component';
+import {ListAllDonationsComponent} from './components/tracking/list-all-donations/list-all-donations.component';
 
 const routes: Routes = [
   {
@@ -55,9 +57,6 @@ const routes: Routes = [
     path: 'admin/semillas', component: ListApprovedApplicantsComponent
   },
   {
-    path: 'admin/semillas/semillas-pendientes', component: ListContributorsOfMomentComponent
-  },
-  {
     path: 'admin/tracking', component: ManageTrackingComponent
   },
   {
@@ -65,7 +64,13 @@ const routes: Routes = [
   },
   {
     path: 'admin/new-seed', component: CreateSeedComponent
-  }
+  },
+  {
+    path: 'admin/tracking/export-tracking', component: ExportPdfComponent
+  },
+  {
+    path: 'admin/tracking/donations', component: ListAllDonationsComponent
+  },
 ];
 
 @NgModule({

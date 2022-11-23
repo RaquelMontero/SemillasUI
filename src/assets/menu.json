@@ -46,14 +46,14 @@
         "routerLink": "/admin/tracking"
       },
       {
-        "text": "Seguimiento diarío",
-        "icon": "layers",
-        "routerLink": "/admin/semillas/semillas-pendientes"
-      },
-      {
         "text": "Semillas",
         "icon": "layers",
         "routerLink": "/admin/tracking/all-seeds"
+      },
+      {
+        "text": "Aportes recibidos",
+        "icon": "layers",
+        "routerLink": "/admin/tracking/donations"
       }
     ]
   },

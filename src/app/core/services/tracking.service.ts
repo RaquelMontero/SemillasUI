@@ -32,6 +32,22 @@ export class TrackingService {
     return this.http.get<Table>(environment.backend + '/seeds/contribution/getRecords', { params: p });
   }
 
+
+  listTrackingRecords(data? : any): Observable<Table> {
+    let p = new HttpParams();
+    if (data) p = p.append('contributionType', data)
+    //return this.http.get<Table>(/*environment.backend + */'./assets/statics/donations.json');
+    return this.http.get<Table>(environment.backend + '/seeds/contribution/getAllRecords', { params: p });
+  }
+
+  listExportRecords(data? : any): Observable<Table> {
+    let p = new HttpParams();
+    if (data) p = p.append('contributionType', data)
+    //return this.http.get<Table>(/*environment.backend + */'./assets/statics/donations.json');
+    return this.http.get<Table>(environment.backend + '/seeds/contribution/getExportRecords', { params: p });
+  }
+
+
   getIncomeContributions(beginDate?): Observable<Table> {
     const p = new HttpParams().set('id', beginDate);
     return this.http.get<Table>(environment.backend +

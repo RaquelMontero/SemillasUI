@@ -6,6 +6,8 @@ import {ModalNewDonationComponent} from '../../modal-new-donation/modal-new-dona
 import {ApplicantService} from '../../../../core/services/applicant.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import {ExportSheetComponent} from '../../../libs/export-sheet/export-sheet.component';
 
 @Component({
   selector: 'app-list-seed-donations',
@@ -24,6 +26,7 @@ export class ListSeedDonationsComponent implements OnChanges {
   seed: any;
   constructor(private trackingService: TrackingService,
               private seedService: ApplicantService,
+              private _bottomSheet: MatBottomSheet,
               private dialog: MatDialog) { }
 
   back(): void{
@@ -98,5 +101,12 @@ export class ListSeedDonationsComponent implements OnChanges {
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
       PDF.save('contributor-record.pdf');
     });
+  }
+
+  openBottomSheet(): void {
+    this._bottomSheet.open(ExportSheetComponent).afterDismissed()
+      .subscribe((dats) => {
+        console.log('sale', dats);
+      });
   }
 }

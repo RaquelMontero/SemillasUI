@@ -17,6 +17,11 @@
             Semilla => {{seed.name}} {{seed.lastname}}</span>
         </div>
        <div>
+         <button (click)="openBottomSheet()"
+                 matTooltip="Exportar"
+                 mat-mini-fab color="primary">
+           <mat-icon>cloud_download</mat-icon>
+         </button>
          <button (click)="openPDF()"
                  matTooltip="Exportar Registros"
                  mat-mini-fab color="primary">
