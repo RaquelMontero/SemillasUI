@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-card>
+    <div  class="header">
+      <span class="title">SEMILLAS BENEFICIADAS</span>
+      <img class="img" src="../../../../assets/logo.png" />
+    </div>
+    <hr>
+    <form [formGroup]="filterForm" class="volunteer-head">
+      <mat-form-field class="col-md-4" appearance="fill">
+        <mat-label>Elige un rando de fechas</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input disabled matStartDate placeholder="Inicio" formControlName="beginSelectedDate">
+          <input disabled matEndDate placeholder="Fin" formControlName="endSelectedDate">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker disabled="false" #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <button mat-mini-fab color="accent"
+              (click)="onAdding()"
+              matTooltip="REGISTRAR NUEVO BENEFICIADO">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </form>
+  </mat-card>
+  <ng-container *ngIf="!loadingTable else isLoading">
+    <mat-card>
+      <app-generic-table
+        *ngIf="benefitedSeeds"
+        [inputTable]="benefitedSeeds.rows"
+        (actionOutput)="outputEvent($event)">
+      </app-generic-table>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #isLoading>
+    <mat-spinner class="loading">
+    </mat-spinner>
+
+  </ng-template>
+</div>

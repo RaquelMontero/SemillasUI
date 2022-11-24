@@ -91,6 +91,10 @@ import { SentDataMessageComponent } from './components/home/want-collaborate/sen
 import { ExportSheetComponent } from './components/libs/export-sheet/export-sheet.component';
 import { ExportPdfComponent } from './components/libs/export-pdf/export-pdf.component';
 import { ListAllDonationsComponent } from './components/tracking/list-all-donations/list-all-donations.component';
+import { BenefitedSeedsComponent } from './components/souvenirs/benefited-seeds/benefited-seeds.component';
+import { BenefitedSeedDialogComponent } from './components/souvenirs/benefited-seed-dialog/benefited-seed-dialog.component';
+import { ViewBenefitedSeedComponent } from './components/souvenirs/view-benefited-seed/view-benefited-seed.component';
+import { SouvenirTrackingHistoryComponent } from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +142,10 @@ import { ListAllDonationsComponent } from './components/tracking/list-all-donati
     ExportSheetComponent,
     ExportPdfComponent,
     ListAllDonationsComponent,
+    BenefitedSeedsComponent,
+    BenefitedSeedDialogComponent,
+    ViewBenefitedSeedComponent,
+    SouvenirTrackingHistoryComponent,
   ],
   imports: [
     BrowserModule,

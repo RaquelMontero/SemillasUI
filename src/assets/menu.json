@@ -62,14 +62,14 @@
     "icon": "inventory_2",
     "children": [
       {
-        "text": "Seleccionar beneficiados",
+        "text": "Semillas beneficiadas",
         "icon": "category",
-        "routerLink": "/product/category"
+        "routerLink": "/admin/souvenirs/benefited-seeds"
       },
       {
-        "text": "Ver beneficiados",
+        "text": "Registros de envío",
         "icon": "layers",
-        "routerLink": "/product/sub-category"
+        "routerLink": "/admin/souvenirs/history"
       }
     ]
   }

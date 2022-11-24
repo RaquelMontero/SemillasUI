@@ -59,7 +59,6 @@ export class AsignSeedToVolunterComponent implements OnInit {
   }
   selected(evento: MatAutocompleteSelectedEvent){
     this.assignForm.get('contributor_id').setValue(evento.option.value.contributor_id);
-
     console.log('selected', evento);
   }
   updateMySelection(evento: MatOptionSelectionChange): void{

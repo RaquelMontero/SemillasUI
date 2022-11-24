@@ -20,6 +20,8 @@ import {UnactiveVolunteersComponent} from './components/admin/unactive-volunteer
 import {OrgActivitiesComponent} from './feature/org-activities/org-activities.component';
 import {ExportPdfComponent} from './components/libs/export-pdf/export-pdf.component';
 import {ListAllDonationsComponent} from './components/tracking/list-all-donations/list-all-donations.component';
+import {BenefitedSeedsComponent} from './components/souvenirs/benefited-seeds/benefited-seeds.component';
+import {SouvenirTrackingHistoryComponent} from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
 
 const routes: Routes = [
   {
@@ -70,6 +72,12 @@ const routes: Routes = [
   },
   {
     path: 'admin/tracking/donations', component: ListAllDonationsComponent
+  },
+  {
+    path: 'admin/souvenirs/benefited-seeds', component: BenefitedSeedsComponent
+  },
+  {
+    path: 'admin/souvenirs/history', component: SouvenirTrackingHistoryComponent
   },
 ];
 

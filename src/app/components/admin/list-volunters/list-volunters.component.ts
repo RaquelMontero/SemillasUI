@@ -21,13 +21,13 @@ export class ListVoluntersComponent implements OnInit {
   volunteers: Table;
   loadingVolunteers = true;
   lastStatus = '';
-  val = this.formb.group({
+  val = this.formBuilder.group({
     state: [null]
   });
   constructor(private router: Router,
               private voluntersService: VolunterService,
               private dialog: MatDialog,
-              private formb: FormBuilder,
+              private formBuilder: FormBuilder,
               private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
