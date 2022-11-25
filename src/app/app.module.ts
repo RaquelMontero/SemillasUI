@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic' ;
+//import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 /*MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -189,7 +192,8 @@ import { SouvenirTrackingHistoryComponent } from './components/souvenirs/souveni
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+    CKEditorModule
   ],
   providers:
     [authInterceptorProviders,

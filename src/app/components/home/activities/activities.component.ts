@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
 import {UntypedFormBuilder, FormControl} from '@angular/forms';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-activities',
@@ -8,6 +9,7 @@ import {UntypedFormBuilder, FormControl} from '@angular/forms';
   styleUrls: ['./activities.component.scss']
 })
 export class ActivitiesComponent implements OnInit {
+  public Editor = ClassicEditor;
   form = this.fb.group({
     htmlContent: []
   });
@@ -45,7 +47,9 @@ constructor(private fb: UntypedFormBuilder) { }
   ngOnInit(): void {
   }
 
+  onReady(evento){
 
+  }
   htmlout(evento){
     console.log('htmlout', evento);
   }
