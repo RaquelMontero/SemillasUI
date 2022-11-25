@@ -4,6 +4,7 @@ import {Table} from '../models/Table.model.';
 import {environment} from '../../../environments/environment';
 import {Volunter} from '../models/volunter.model';
 import {Observable} from 'rxjs';
+import {BoxSeed} from '../models/Seed.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,14 @@ export class SouvenirTrackingService {
   }
   addBenefitedSeed(payload): Observable<any> {
     return this.http.post<any>(environment.backend + '/seeds/souvenir/createBenefitedSeed/', payload);
+  }
+
+  addSouvenirTrackinfReg(payload): Observable<any> {
+    return this.http.post<any>(environment.backend + '/seeds/souvenir/createSouvenirTracking/', payload);
+  }
+
+  getActiveSeeds(): Observable<BoxSeed[]>{
+    //return this.http.get<BoxSeed[]>(/*environment.backend + */'./assets/statics/activeseeds.json');
+    return this.http.get<BoxSeed[]>(environment.backend + '/seeds/souvenir/activeBenefitedSeeds');
   }
 }

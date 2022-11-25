@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {BenefitedSeedDialogComponent} from '../benefited-seed-dialog/benefited-seed-dialog.component';
+import {SouvenirTrackindDialogComponent} from '../souvenir-trackind-dialog/souvenir-trackind-dialog.component';
 
 @Component({
   selector: 'app-souvenir-tracking-history',
@@ -30,7 +31,7 @@ export class SouvenirTrackingHistoryComponent implements OnInit{
   ngOnInit(): void {
   }
   onAdding(){
-    const dialogRef = this.dialog.open(BenefitedSeedDialogComponent, {
+    const dialogRef = this.dialog.open(SouvenirTrackindDialogComponent, {
       disableClose: false,
       autoFocus: true,
       panelClass: 'icon-outside',
@@ -54,5 +55,8 @@ export class SouvenirTrackingHistoryComponent implements OnInit{
       },(error => {
         this.loadingTable = false;
       }))
+  }
+  beginDate(date: Date){
+    return date ?  date.getDate() + '/'+ date.getMonth() + '/' + date.getFullYear() : '';
   }
 }

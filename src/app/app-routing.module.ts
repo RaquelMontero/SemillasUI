@@ -22,6 +22,7 @@ import {ExportPdfComponent} from './components/libs/export-pdf/export-pdf.compon
 import {ListAllDonationsComponent} from './components/tracking/list-all-donations/list-all-donations.component';
 import {BenefitedSeedsComponent} from './components/souvenirs/benefited-seeds/benefited-seeds.component';
 import {SouvenirTrackingHistoryComponent} from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
+import {SendReminderComponent} from './components/tracking/reminders/send-reminder/send-reminder.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,9 @@ const routes: Routes = [
   },
   {
     path: 'admin/tracking/donations', component: ListAllDonationsComponent
+  },
+  {
+    path: 'admin/tracking/reminder-emails', component: SendReminderComponent
   },
   {
     path: 'admin/souvenirs/benefited-seeds', component: BenefitedSeedsComponent

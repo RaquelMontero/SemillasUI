@@ -6,16 +6,23 @@
     </div>
     <hr>
     <form [formGroup]="filterForm" class="volunteer-head">
-      <mat-form-field class="col-md-4" appearance="fill">
+      <mat-form-field [hidden]="true" class="col-md-4 create-account-form" appearance="fill">
         <mat-label>Elige un rando de fechas</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input disabled matStartDate placeholder="Inicio" formControlName="beginSelectedDate">
-          <input disabled matEndDate placeholder="Fin" formControlName="endSelectedDate">
+          <input matStartDate placeholder="Inicio" formControlName="beginSelectedDate">
+          <input matEndDate placeholder="Fin" formControlName="endSelectedDate">
         </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker disabled="false" #picker></mat-date-range-picker>
+        <mat-date-range-picker touchUi #picker></mat-date-range-picker>
       </mat-form-field>
+      <mat-chip-listbox>
+        <mat-chip class="date-range">
+          <span>{{beginDate(filterForm.get('beginSelectedDate').value)}}  ----  {{beginDate(filterForm.get('endSelectedDate').value)}}</span>
+        </mat-chip>
+        <button [matTooltip]="'Elegir rango de fechas'" mat-icon-button (click)="picker.open()">
+          <mat-icon>date_range</mat-icon>
+        </button>
+      </mat-chip-listbox>
 
       <button mat-mini-fab color="accent"
               (click)="onAdding()"

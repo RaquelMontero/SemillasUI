@@ -54,6 +54,11 @@
         "text": "Aportes recibidos",
         "icon": "layers",
         "routerLink": "/admin/tracking/donations"
+      },
+      {
+        "text": "Recordatorios",
+        "icon": "layers",
+        "routerLink": "/admin/tracking/reminder-emails"
       }
     ]
   },

@@ -98,6 +98,8 @@ import { BenefitedSeedsComponent } from './components/souvenirs/benefited-seeds/
 import { BenefitedSeedDialogComponent } from './components/souvenirs/benefited-seed-dialog/benefited-seed-dialog.component';
 import { ViewBenefitedSeedComponent } from './components/souvenirs/view-benefited-seed/view-benefited-seed.component';
 import { SouvenirTrackingHistoryComponent } from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
+import { SouvenirTrackindDialogComponent } from './components/souvenirs/souvenir-trackind-dialog/souvenir-trackind-dialog.component';
+import { SendReminderComponent } from './components/tracking/reminders/send-reminder/send-reminder.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +151,8 @@ import { SouvenirTrackingHistoryComponent } from './components/souvenirs/souveni
     BenefitedSeedDialogComponent,
     ViewBenefitedSeedComponent,
     SouvenirTrackingHistoryComponent,
+    SouvenirTrackindDialogComponent,
+    SendReminderComponent,
   ],
   imports: [
     BrowserModule,

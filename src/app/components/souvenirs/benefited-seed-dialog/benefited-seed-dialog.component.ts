@@ -125,7 +125,6 @@ export class BenefitedSeedDialogComponent implements OnInit{
   }
 
   showMessage(data: any): void{
-    console.log('errormessage', data);
     this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
       data: { data },
       duration: 4000,
