@@ -102,7 +102,7 @@ export class WantCollaborateComponent implements OnInit {
 
   sentInformaTionMessage(data){
     const dialogConfig =  this.dialog.open(SentDataMessageComponent, {
-      data: data,
+      data: { data },
       disableClose: false,
       panelClass: 'icon-outside',
       autoFocus: true,

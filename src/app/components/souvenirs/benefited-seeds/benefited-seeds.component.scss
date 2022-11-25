@@ -38,18 +38,19 @@ hr{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  .active.mat-primary.mat-mdc-chip-selected{
-    background-color: #6db669;
-  }
-
-  .inactive.mat-primary.mat-mdc-chip-selected{
-    background-color: #bd5533;
-  }
 }
 
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: rgba(0, 255, 255, .5);
+}
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled){
-  opacity: unset;
+.date-range{
   background-color: #8ba73a!important;
-  border-radius: 10px;
+  span{
+    font-size: 13px;
+    color: #FFFFFF;
+  }
+}
+.mat-mdc-icon-button.mat-mdc-button-base{
+  padding-top: 4px !important;
 }

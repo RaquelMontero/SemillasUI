@@ -19,6 +19,11 @@ export class SouvenirTrackingService {
       { params: p });
   }
 
+  getSouvenirTrackingHistory(any: any){
+    const p = new HttpParams().set('status', any);
+    return this.http.get<Table>(environment.backend + '/seeds/souvenir/getAllBenefitedSeeds/',
+      { params: p });
+  }
   addBenefitedSeed(payload): Observable<any> {
     return this.http.post<any>(environment.backend + '/seeds/souvenir/createBenefitedSeed/', payload);
   }

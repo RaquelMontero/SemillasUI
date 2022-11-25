@@ -104,11 +104,12 @@
       </mat-form-field>
     </ng-container>
   </form>
-  {{donation.value | json}}
+<!--   {{donation.value | json}}
+-->
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button [disabled]="!donation.valid"
-          mat-stroked-button
+          mat-flat-button
           (click)="sendData()"
           color="primary">REGISTRAR APORTE</button>
 </mat-dialog-actions>

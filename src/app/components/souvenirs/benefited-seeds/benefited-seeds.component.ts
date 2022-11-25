@@ -64,4 +64,8 @@ export class BenefitedSeedsComponent implements OnInit{
       if (result) { this.getBenefitedSeeds(); }
     });
   }
+
+   beginDate(date: Date){
+    return date.getDate() + '/'+ date.getMonth() + '/' + date.getFullYear();
+  }
 }
