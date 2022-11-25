@@ -57,7 +57,7 @@
       },
       {
         "text": "Recordatorios",
-        "icon": "layers",
+        "icon": "send",
         "routerLink": "/admin/tracking/reminder-emails"
       }
     ]

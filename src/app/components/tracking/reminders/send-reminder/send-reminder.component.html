@@ -1,1 +1,25 @@
-<p>send-reminder works!</p>
+<div class="container">
+ <mat-card>
+   <mat-tab-group backgroundColor="warn">
+     <mat-tab>
+       <ng-template mat-tab-label>
+         <mat-icon class="example-tab-icon">people</mat-icon>
+         SELECCIONAR SEMILLAS
+       </ng-template>
+       <app-select-reminder-seeds>
+
+       </app-select-reminder-seeds>
+     </mat-tab>
+
+     <mat-tab>
+       <ng-template mat-tab-label>
+         <mat-icon class="example-tab-icon">email</mat-icon>
+         REDACTAR
+       </ng-template>
+       <app-reminder-structure>
+
+       </app-reminder-structure>
+     </mat-tab>
+   </mat-tab-group>
+ </mat-card>
+</div>
