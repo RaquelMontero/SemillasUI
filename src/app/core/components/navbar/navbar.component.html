@@ -17,23 +17,38 @@
   <div class="collapse navbar-collapse" id="navbarButtonsExample">
     <ul class="navbar-nav justify-content-start">
       <li class="nav-item" *ngIf="!loggedIn">
-        <a class="nav-link" routerLink="quiero-aportar">Quiero Aportar</a>
+        <a class="nav-link" routerLink="quiero-aportar">{{'navbar.want-coll' | translate}}</a>
       </li>
       <li class="nav-item" *ngIf="!loggedIn">
-        <a class="nav-link" routerLink="login-volunteer">Soy Voluntario</a>
+        <a class="nav-link" routerLink="login-volunteer">{{'navbar.volunteer-head' | translate}}</a>
       </li>
       <li class="nav-item" role="presentation" *ngIf="!loggedIn">
-        <a class="nav-link" routerLink="actividades-organizacion">Actividades</a>
+        <a class="nav-link" routerLink="actividades-organizacion">{{'navbar.activities' | translate}}</a>
+      </li>
+      <li class="nav-item" role="presentation" *ngIf="!loggedIn">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="changeLen('en')" mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>EN</span>
+          </button>
+          <button (click)="changeLen('es')" mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>ES</span>
+          </button>
+        </mat-menu>
       </li>
       <li class="nav-item" role="presentation" *ngIf="loggedIn">
         <div class="current-user" *ngIf="currentUser">{{currentUser.name}} {{currentUser.lastname}}</div>
       </li>
+
       <li class="nav-item" role="presentation" *ngIf=" loggedIn">
         <a class="item">
           <button mat-icon-button  (click)="logOut()" class="ui green button">
             <mat-icon> directions</mat-icon>
           </button>
-
         </a>
       </li>
     </ul>

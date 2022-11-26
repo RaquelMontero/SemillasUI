@@ -1,7 +1,3 @@
-.container {
-  margin-top: 70px;
-  width: 94%;
-}
 mat-card{
   margin-bottom: 12px;
   padding: 16px;
@@ -35,6 +31,8 @@ hr{
 }
 
 .volunteer-head{
+  width: 96%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

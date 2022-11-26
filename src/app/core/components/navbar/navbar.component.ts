@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { OauthService } from 'src/app/core/services/auth/oauth.service';
@@ -10,6 +10,7 @@ import { TokenService } from 'src/app/core/services/auth/token.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Output() emitLen: EventEmitter<string> = new EventEmitter();
   @Input() inputSideNav: MatSidenav;
   showFiller = false;
   events: string[] = [];
@@ -98,5 +99,9 @@ export class NavbarComponent implements OnInit {
     }));
   }
   refreshToken(): void {
+  }
+
+  changeLen(len: string){
+    this.emitLen.emit(len);
   }
 }

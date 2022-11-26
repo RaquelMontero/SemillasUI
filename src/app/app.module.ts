@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic' ;
 //import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { CKEditorModule } from 'ng2-ckeditor';
-
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 /*MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
@@ -102,7 +103,11 @@ import { SouvenirTrackindDialogComponent } from './components/souvenirs/souvenir
 import { SendReminderComponent } from './components/tracking/reminders/send-reminder/send-reminder.component';
 import { ReminderStructureComponent } from './components/tracking/reminders/reminder-structure/reminder-structure.component';
 import { SelectReminderSeedsComponent } from './components/tracking/reminders/select-reminder-seeds/select-reminder-seeds.component';
-
+import { NewActivityDialogComponent } from './components/activities/new-activity-dialog/new-activity-dialog.component';
+import { ManageActivitiesComponent } from './components/activities/manage-activities/manage-activities.component';
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -157,6 +162,8 @@ import { SelectReminderSeedsComponent } from './components/tracking/reminders/se
     SendReminderComponent,
     ReminderStructureComponent,
     SelectReminderSeedsComponent,
+    NewActivityDialogComponent,
+    ManageActivitiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -201,7 +208,14 @@ import { SelectReminderSeedsComponent } from './components/tracking/reminders/se
     FormsModule,
     ReactiveFormsModule,
     AngularEditorModule,
-    CKEditorModule
+    CKEditorModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers:
     [authInterceptorProviders,

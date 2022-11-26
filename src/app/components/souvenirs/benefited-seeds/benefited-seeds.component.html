@@ -1,49 +1,58 @@
 <div class="container">
   <mat-card>
-    <div  class="header">
-      <span class="title">SEMILLAS BENEFICIADAS</span>
-      <img class="img" src="../../../../assets/logo.png" />
-    </div>
-    <hr>
-    <form [formGroup]="filterForm" class="volunteer-head">
-        <mat-form-field [hidden]="true" class="col-md-4 create-account-form" appearance="fill">
-          <mat-label>Elige un rando de fechas</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Inicio" formControlName="beginSelectedDate">
-            <input matEndDate placeholder="Fin" formControlName="endSelectedDate">
-          </mat-date-range-input>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker touchUi #picker></mat-date-range-picker>
-        </mat-form-field>
-      <mat-chip-listbox>
-          <mat-chip class="date-range">
-            <span>{{beginDate(filterForm.get('beginSelectedDate').value)}}  ----  {{beginDate(filterForm.get('endSelectedDate').value)}}</span>
-          </mat-chip>
-        <button [matTooltip]="'Elegir rango de fechas'" mat-icon-button (click)="picker.open()">
-          <mat-icon>date_range</mat-icon>
-        </button>
-      </mat-chip-listbox>
+    <mat-tab-group backgroundColor="warn">
+      <mat-tab label="BENEFICIADAS">
+        <div  class="header">
+          <span class="title">SEMILLAS BENEFICIADAS</span>
+          <img class="img" src="../../../../assets/logo.png" />
+        </div>
+        <hr>
+        <form [formGroup]="filterForm" class="volunteer-head">
+          <mat-form-field [hidden]="true" class="col-md-4 create-account-form" appearance="fill">
+            <mat-label>Elige un rando de fechas</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Inicio" formControlName="beginSelectedDate">
+              <input matEndDate placeholder="Fin" formControlName="endSelectedDate">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker touchUi #picker></mat-date-range-picker>
+          </mat-form-field>
+          <mat-chip-listbox>
+            <mat-chip class="date-range">
+              <span>{{beginDate(filterForm.get('beginSelectedDate').value)}}  ----  {{beginDate(filterForm.get('endSelectedDate').value)}}</span>
+            </mat-chip>
+            <button [matTooltip]="'Elegir rango de fechas'" mat-icon-button (click)="picker.open()">
+              <mat-icon>date_range</mat-icon>
+            </button>
+          </mat-chip-listbox>
 
-      <button mat-mini-fab color="accent"
-              (click)="onAdding()"
-              matTooltip="REGISTRAR NUEVO BENEFICIADO">
-        <mat-icon>person_add</mat-icon>
-      </button>
-    </form>
+          <button mat-mini-fab color="accent"
+                  (click)="onAdding()"
+                  matTooltip="REGISTRAR NUEVO BENEFICIADO">
+            <mat-icon>person_add</mat-icon>
+          </button>
+        </form>
+        <ng-container *ngIf="!loadingTable else isLoading">
+          <mat-card>
+            <app-generic-table
+              *ngIf="benefitedSeeds"
+              [inputTable]="benefitedSeeds.rows"
+              (actionOutput)="outputEvent($event)">
+            </app-generic-table>
+          </mat-card>
+        </ng-container>
+
+        <ng-template #isLoading>
+          <mat-spinner class="loading">
+          </mat-spinner>
+
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="ENVÍOS">
+        <app-souvenir-tracking-history>
+        </app-souvenir-tracking-history>
+      </mat-tab>
+    </mat-tab-group>
   </mat-card>
-  <ng-container *ngIf="!loadingTable else isLoading">
-    <mat-card>
-      <app-generic-table
-        *ngIf="benefitedSeeds"
-        [inputTable]="benefitedSeeds.rows"
-        (actionOutput)="outputEvent($event)">
-      </app-generic-table>
-    </mat-card>
-  </ng-container>
 
-  <ng-template #isLoading>
-    <mat-spinner class="loading">
-    </mat-spinner>
-
-  </ng-template>
 </div>

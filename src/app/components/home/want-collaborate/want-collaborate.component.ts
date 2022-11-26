@@ -21,16 +21,19 @@ export class WantCollaborateComponent implements OnInit {
   applicantForm;
   justSentForm = false;
   sendingData = false;
+
+  isLinear = false;
+  confCheck = false;
+  contributionPayload;
+  canSendForm = false;
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  isLinear = false;
-  confCheck = false;
-  contributionPayload;
-  canSendForm = false;
+
 
   constructor(private _formBuilder: FormBuilder,
               private dialog: MatDialog,

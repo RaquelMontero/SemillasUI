@@ -23,6 +23,7 @@ import {ListAllDonationsComponent} from './components/tracking/list-all-donation
 import {BenefitedSeedsComponent} from './components/souvenirs/benefited-seeds/benefited-seeds.component';
 import {SouvenirTrackingHistoryComponent} from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
 import {SendReminderComponent} from './components/tracking/reminders/send-reminder/send-reminder.component';
+import {ManageActivitiesComponent} from './components/activities/manage-activities/manage-activities.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,9 @@ const routes: Routes = [
   },
   {
     path: 'admin/souvenirs/history', component: SouvenirTrackingHistoryComponent
+  },
+  {
+    path: 'admin/activities/manage-activities', component: ManageActivitiesComponent
   },
 ];
 

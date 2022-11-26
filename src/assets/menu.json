@@ -63,18 +63,18 @@
     ]
   },
   {
-    "text": "Envío Souvenirs",
+    "text": "Administración",
     "icon": "inventory_2",
     "children": [
       {
-        "text": "Semillas beneficiadas",
-        "icon": "category",
+        "text": "Souvenirs",
+        "icon": "card_giftcard",
         "routerLink": "/admin/souvenirs/benefited-seeds"
       },
       {
-        "text": "Registros de envío",
-        "icon": "layers",
-        "routerLink": "/admin/souvenirs/history"
+        "text": "Actividades",
+        "icon": "local_activity",
+        "routerLink": "/admin/activities/manage-activities"
       }
     ]
   }
