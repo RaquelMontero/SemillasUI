@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card *ngIf="!justSentForm">
     <mat-card-header class="card-head">
-      <span>FORMULARIO DE REGISTRO DE INFORMACIÓN</span>
+      <span>{{'want-donate.title'|translate}}</span>
     </mat-card-header>
     <mat-stepper *ngIf="!sendingData else sending"  orientation="vertical"  #stepper>
       <mat-step [stepControl]="firstFormGroup" state="info">

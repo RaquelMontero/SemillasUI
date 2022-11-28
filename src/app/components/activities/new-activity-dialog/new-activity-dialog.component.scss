@@ -1,0 +1,83 @@
+.progress-bar {
+  padding: 0;
+}
+
+.progress {
+  width: 50px;
+}
+
+.mat-input-element {
+  font-size: medium;
+  font-weight: 200;
+}
+
+#fileInput {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+}
+
+.mat-toolbar-single-row {
+  height: auto !important;
+  background: transparent;
+  padding: 0;
+}
+
+.mat-toolbar-single-row button {
+  width: 100px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.message {
+  background-color: #ddd;
+  padding: 15px;
+  color: #333;
+  border: #aaa solid 1px;
+  border-radius: 4px;
+  margin: 15px 0;
+}
+
+.preview {
+  max-width: 200px;
+  vertical-align: middle;
+}
+
+.list-card {
+  margin-top: 20px;
+}
+
+.list-item {
+  margin-bottom: 20px;
+}
+.mdc-dialog__title{
+  margin: 0 auto !important;
+  display: flex;
+  padding: 0!important;
+  justify-content: space-between;
+  border-bottom: 1px solid #2e7d32;
+  background-color: #162939;
+  color: #FFFFFF;
+  //width: 94%;
+  //position: relative;
+}
+.dialog-header{
+  //padding:  12px;
+  width: 96% !important;
+  text-align: center;
+  padding-top: 8px;
+}
+.dialog-title{
+  font-size: 16px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin-right: -20px;
+  padding:  16px 12px;
+  margin-top: 8px;
+}
