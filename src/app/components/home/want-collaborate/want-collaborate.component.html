@@ -5,7 +5,7 @@
     </mat-card-header>
     <mat-stepper *ngIf="!sendingData else sending"  orientation="vertical"  #stepper>
       <mat-step [stepControl]="firstFormGroup" state="info">
-        <ng-template matStepLabel><span class="matStepLabel">INFORMACIÒN PERSONAL</span></ng-template>
+        <ng-template matStepLabel><span class="matStepLabel">{{'personal-info.title' | translate}}</span></ng-template>
         <app-personal-information
           (emitter)="move_tab($event)"
           (personalInfo)="getPersonalInfo($event)"
@@ -13,7 +13,7 @@
         <div class="next-button">
           <button color="warn"
                   [disabled]="!applicantForm"
-                  mat-flat-button matStepperNext>SIGUIENTE</button>
+                  mat-flat-button matStepperNext>{{'want-donate.next-button' | translate}}</button>
         </div>
       </mat-step>
       <mat-step [stepControl]="secondFormGroup" state="info">
@@ -23,7 +23,7 @@
           ></app-donations-types>
         <div>
           <button mat-flat-button matStepperPrevious>VOLVER</button>
-          <button color="warn" mat-flat-button matStepperNext>SIGUIENTE</button>
+          <button color="warn" mat-flat-button matStepperNext>{{'want-donate.next-button' | translate}}</button>
         </div>
       </mat-step>
       <mat-step [stepControl]="donationType" state="info">
@@ -40,7 +40,7 @@
         </ng-container>
         <div>
           <button mat-flat-button matStepperPrevious>VOLVER</button>
-          <button color="warn" [disabled]="!canSendForm" mat-flat-button matStepperNext>SIGUIENTE</button>
+          <button color="warn" [disabled]="!canSendForm" mat-flat-button matStepperNext>{{'want-donate.next-button' | translate}}</button>
         </div>
       </mat-step>
       <mat-step  state="info">
