@@ -30,7 +30,7 @@
           <mat-label>{{'personal-info.fieldEmail' | translate}}</mat-label>
           <input required matInput formControlName="email">
           <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
-          <mat-hint>correo@gmail.vom</mat-hint>
+          <mat-hint>{{'personal-info.fieldEmailHint' | translate}}</mat-hint>
           <mat-icon matSuffix>alternate_email</mat-icon>
         </mat-form-field>
       </div>

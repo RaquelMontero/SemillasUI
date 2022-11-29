@@ -1,5 +1,6 @@
 {
   "lenVal": "es",
+  "currentLen": "ES",
   "navbar": {
     "volunteer-head": "Soy voluntario",
     "want-coll": "Quiero Aportar",
@@ -8,7 +9,8 @@
 
   "want-donate": {
     "title": "FORMULARIO DE REGISTRO DE INFORMACIÓN",
-    "next-button": "SIGUIENTE"
+    "next-button": "SIGUIENTE",
+    "back-button": "VOLVER"
   },
   "personal-info":{
     "title": "INFORMACIÒN PERSONAL",
@@ -20,6 +22,7 @@
     "fieldLastNameHint":"Puede Ingresar mas de un apellido",
     "fieldLastNameError":"Debe ingresar el apellido",
     "fieldEmail":"Correo",
+    "fieldEmailHint":"correo@gmail.com",
     "fieldEmailError":"Debe ingresar el correo",
     "fieldPhone":"Celular",
     "fieldPhoneError":"Debe ingresar un celular",
@@ -32,23 +35,23 @@
     "fieldAddressError":"Debe ingresar una dirección"
   },
 
-  "tipos-de-aporte":{
-    "title-aporte-unico":"Consiste en realizar un aporte de mas de 25 $ o su equivalente de 175 Bs. Podrá elegir el metodo de pago de su eleccion y el dia del es actual en elque realizará sus aporte. Asi mismo, si desea  recibir noticias de los últimos logros del Programa Semillas gracias a los aportes obtenidos. ",
-    "title-aporte-constante":"Consiste en realizar un aporte mensual de mas de 5 $ por la alimentación de un niño o su equivalente de 35 Bs. Podrá elegir el mes en el que desee empezar el proceso de aporte (Solo Podra elegir los 3 meses de a partir del mes actual). Podrá elegir el método de pago de su elección la fecha de cobro en la que se espera su aporte, el medio por el cual se desea recibir su recordatorio de aporte mensual. Asi mismo, si desea recibir noticias de los últimos logros delPrograma Semillas gracias a los aportes obtenidos.",
-    "opcion-1":"Opción 1",
-    "opcion-2":"Opción 2",
-    "boton-volver":"VOLVER",
-    "boton-siguiente":"SIGUIENTE"
+  "donation-types":{
+    "title": "TIPOS DE APORTE",
+    "title-unique":"Consiste en realizar un aporte de mas de 25 $ o su equivalente de 175 Bs. Podrá elegir el metodo de pago de su eleccion y el dia del es actual en elque realizará sus aporte. Asi mismo, si desea  recibir noticias de los últimos logros del Programa Semillas gracias a los aportes obtenidos. ",
+    "title-constant":"Consiste en realizar un aporte mensual de mas de 5 $ por la alimentación de un niño o su equivalente de 35 Bs. Podrá elegir el mes en el que desee empezar el proceso de aporte (Solo Podra elegir los 3 meses de a partir del mes actual). Podrá elegir el método de pago de su elección la fecha de cobro en la que se espera su aporte, el medio por el cual se desea recibir su recordatorio de aporte mensual. Asi mismo, si desea recibir noticias de los últimos logros delPrograma Semillas gracias a los aportes obtenidos.",
+    "option1":"Opción 1",
+    "option2":"Opción 2"
   },
-
-  "detalles-del-aporte":{
+  "unique-donation": {
     "title-aporte-unico":"APORTE UNICO",
     "campo-monto-aporte-unico":"Monto de Aporte",
     "campo-obligatorio-monto-aporte-unico":"Debe ingresar el monto de aporte",
     "campo-metodo-de-pago-aporte-unico":"Método de Pago",
     "campo-obligatorio-metodo-de-pago-aporte-unico":"Debe elegir el metodo de pago",
     "campo-fecha-de-aporte-unico":"Fecha de aporte",
-    "campo-obligatorio-fecha-de-aporte-unico":"Debe elegir una fecha",
+    "campo-obligatorio-fecha-de-aporte-unico":"Debe elegir una fecha"
+  },
+  "constant-donation": {
     "title-aporte-constante":"APORTE CONSTANTE",
     "campo-monto-aporte-constante":"Monto de Aporte",
     "campo-obligatorio-monto-aporte-constante":"Debe ingresar el monto de aporte",
@@ -62,10 +65,9 @@
     "campo-obligatorio-metodo-de-recordatorio-aporte-constante":"Debe elegir un metodo para recibir recordatorios",
     "campo-metodo-envio-de-noticias-aporte-constante":"Metodo envio de noticias",
     "campo-desea-recibir-noticias":"¿Desea recibir noticias?",
+
     "boton-si":"SI",
-    "boton-no":"NO",
-    "boton-volver":"VOLVER",
-    "boton-siguiente":"SIGUIENTE"
+    "boton-no":"NO"
   },
 
   "enviar-datos":{

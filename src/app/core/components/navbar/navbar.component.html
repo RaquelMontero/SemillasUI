@@ -26,16 +26,19 @@
         <a class="nav-link" routerLink="actividades-organizacion">{{'navbar.activities' | translate}}</a>
       </li>
       <li class="nav-item" role="presentation" *ngIf="!loggedIn">
+        <span class="translate"> <mat-icon>g_translate</mat-icon>  {{'currentLen' | translate}} </span>
+      </li>
+      <li class="nav-item" role="presentation" *ngIf="!loggedIn">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button (click)="changeLen('en')" mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
+            <mat-icon>translate</mat-icon>
             <span>EN</span>
           </button>
           <button (click)="changeLen('es')" mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
+            <mat-icon>translate</mat-icon>
             <span>ES</span>
           </button>
         </mat-menu>

@@ -17,7 +17,7 @@
         </div>
       </mat-step>
       <mat-step [stepControl]="secondFormGroup" state="info">
-          <ng-template matStepLabel><span class="matStepLabel">TIPOS DE APORTE</span></ng-template>
+          <ng-template matStepLabel><span class="matStepLabel">{{'donation-types.title' | translate}}</span></ng-template>
           <app-donations-types
             (emitter)="move_tab($event)"
           ></app-donations-types>
