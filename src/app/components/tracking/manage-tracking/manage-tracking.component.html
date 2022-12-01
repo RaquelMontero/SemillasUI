@@ -10,11 +10,7 @@
             <img class="img" src="../../../../assets/logo.png" />
           </div>
           <hr>
-          <mat-chip-list aria-label="Fish selection">
-            <mat-chip color="accent" selected>ACTIVOS</mat-chip>
-          </mat-chip-list>
         </mat-card>
-
         <ng-container *ngIf="!loadingtable else loading">
          <mat-card>
            <app-generic-table
@@ -31,8 +27,8 @@
         </ng-template>
       </div>
     </mat-tab>
-    <mat-tab>
-      <app-list-tracking-volunter-seeds *ngIf="index === 1"
+    <mat-tab *ngIf="index === 1">
+      <app-list-tracking-volunter-seeds
         (emitter)="back($event)"
         (selectedSeed)="selectedSeed($event)"
         [volunterId]="idSelectedVolunter">

@@ -1,9 +1,10 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-  <mat-icon class="close-icon">close</mat-icon>
-</button>
-<div mat-dialog-title class="header">
-  <span class="title">DETALLES</span>
-  <img class="img" src="../../../../assets/logo.png" />
+<div mat-dialog-title>
+  <div class="dialog-header">
+    <span class="dialog-title">DETALLES</span>
+  </div>
+  <button mat-icon-button class="close-button2" [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
 </div>
 <mat-dialog-content>
   <div *ngIf="volunter else recuperando" class="row">
@@ -42,10 +43,10 @@
     <div class="col-md-6" >
       <h2 class="center">Roles del Voluntario</h2>
       <p *ngIf="messageRoles===''  else mensajeroles">
-        <mat-chip-list aria-label="Fish selection"
+        <mat-chip-listbox aria-label="Fish selection"
                        *ngFor="let role of volunter.roles">
-          <mat-chip color="primary" selected>{{role.role_name}}</mat-chip>
-        </mat-chip-list>
+          <mat-chip  [ngStyle]="{'background-color': '#4b597b'}"><span class="mat-chip">{{role.role_name |titlecase}}</span></mat-chip>
+        </mat-chip-listbox>
       </p>
       <ng-template #mensajeroles>
         {{messageRoles}}

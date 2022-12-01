@@ -3,36 +3,17 @@
 }
 mat-card{
   margin-bottom: 12px;
-}
-.header {
-  letter-spacing: 0.1rem;
-  font-size: 16px;
-  font-weight: 400;
+  padding: 16px;
 }
 
-.main{
-  padding-top: 40px;
-}
+
 .loading{
   margin: 0 auto;
   z-index: 100;
 }
-.mat-tab{
-  z-index: 1;
-}
-
-.add-button{
-  position: absolute;
-  margin-top: 20px;
-  right: 10px;
-}
-mat-tab-group{
-  padding-top: -50px;
-}
 
 .toolbar{
   width: 90%;
-  margin-top: 40px;
   background-color: #A5D6A700;
   color: #1b7549;
 }
@@ -42,6 +23,9 @@ mat-tab-group{
   justify-content: space-between;
   flex-wrap: wrap;
   padding-bottom: 8px;
+  letter-spacing: 0.1rem;
+  font-size: 16px;
+  font-weight: 400;
 }
 .title{
   float: left;
@@ -53,4 +37,20 @@ mat-tab-group{
 hr{
   width: 96%;
   margin: 12px auto;
+}
+
+.under-card{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.volunter-cont{
+  background-color: #8ba73a;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+.name-cont{
+  display: flex;
+  padding: 6px 0;
 }

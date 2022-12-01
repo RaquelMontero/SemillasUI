@@ -1,5 +1,78 @@
 <div class="container">
-  <mat-card>
+  <mat-card *ngIf="!justSentForm">
+    <mat-card-header class="card-head">
+      <span>{{'want-donate.title'|translate}}</span>
+    </mat-card-header>
+    <mat-stepper *ngIf="!sendingData else sending"  orientation="vertical"  #stepper>
+      <mat-step [stepControl]="firstFormGroup" state="info">
+        <ng-template matStepLabel><span class="matStepLabel">{{'personal-info.title' | translate}}</span></ng-template>
+        <app-personal-information
+          (emitter)="move_tab($event)"
+          (personalInfo)="getPersonalInfo($event)"
+        ></app-personal-information>
+        <div class="next-button">
+          <button color="warn"
+                  [disabled]="!applicantForm"
+                  mat-flat-button matStepperNext>{{'want-donate.next-button' | translate}}</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" state="info">
+          <ng-template matStepLabel><span class="matStepLabel">{{'donation-types.title' | translate}}</span></ng-template>
+          <app-donations-types
+            (emitter)="move_tab($event)"
+          ></app-donations-types>
+        <div>
+          <button mat-flat-button matStepperPrevious>VOLVER</button>
+          <button color="warn" mat-flat-button matStepperNext>{{'want-donate.next-button' | translate}}</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="donationType" state="info">
+        <ng-template matStepLabel><span class="matStepLabel">DETALLES DEL APORTE</span></ng-template>
+        <ng-container *ngIf="donationType==='CONSTANT'">
+          <app-constant-donation
+            (constantContribution)="emitConstantContribution($event)">
+          </app-constant-donation>
+        </ng-container>
+        <ng-container *ngIf="donationType==='UNIQUE'">
+          <app-unique-donation
+            (uniqueDonation)="emitUniqueContribution($event)"
+          ></app-unique-donation>
+        </ng-container>
+        <div>
+          <button mat-flat-button matStepperPrevious>VOLVER</button>
+          <button color="warn" [disabled]="!canSendForm" mat-flat-button matStepperNext>{{'want-donate.next-button' | translate}}</button>
+        </div>
+      </mat-step>
+      <mat-step  state="info">
+        <ng-template matStepLabel><span class="matStepLabel">ENVIAR DATOS</span></ng-template>
+        <div class="send-data">
+          <span>¿ Esta segur@ de enviar sus datos ?</span>
+
+          <section class="send-data-check">
+            <mat-checkbox class="example-margin" [(ngModel)]="confCheck">SÍ, ESTOY SEGUR@</mat-checkbox>
+          </section>
+
+          <button [disabled]="!canSendForm || !confCheck"
+                  mat-raised-button color="primary"
+                  (click)="sentData()">ENVIAR DATOS
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+      </mat-step>
+
+      <ng-template matStepperIcon="info">
+        <mat-icon>open_with</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="chat">
+        <mat-icon>forum</mat-icon>
+      </ng-template>
+    </mat-stepper>
+  </mat-card>
+  <ng-template #sending>
+    <mat-spinner class="spinn"></mat-spinner>
+  </ng-template>
+  <!--
+    <mat-card>
     <mat-tab-group
       [backgroundColor]="'warn'"
       [selectedIndex]="index" mat-align-tabs="center"
@@ -30,4 +103,5 @@
       </mat-tab>
     </mat-tab-group>
   </mat-card>
+   -->
 </div>

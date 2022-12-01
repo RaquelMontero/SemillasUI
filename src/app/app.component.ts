@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import {BreakpointObserver} from '@angular/cdk/layout';
-import {OauthService} from './services/auth/oauth.service';
+import {OauthService} from './core/services/auth/oauth.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'sml-root',
@@ -16,8 +17,15 @@ export class AppComponent implements OnInit, AfterViewInit{
   events: string[] = [];
   constructor(
     private oauthService: OauthService,
-    private observer: BreakpointObserver) {}
+    private  translateService: TranslateService,
+    private observer: BreakpointObserver) {
+    translateService.addLangs(['en','es']);
+    translateService.setDefaultLang('es');
+  }
 
+  switchLang(lang: string){
+    this.translateService.use(lang);
+  }
   ngAfterViewInit(): void {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {

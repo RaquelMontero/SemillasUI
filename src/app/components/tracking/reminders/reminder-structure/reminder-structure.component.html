@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="form" class="edit">
+    <ckeditor
+      formControlName="htmlContent"
+      (ready)="onReady($event)"></ckeditor>
+
+    <!--   <angular-editor
+        formControlName="htmlContent"
+        [config]="editorConfig">
+      </angular-editor>-->
+  </form>
+  <button mat-flat-button (click)="onSubmit()">enviar correo</button>
+</div>

@@ -1,0 +1,78 @@
+.mat-chip{
+  background-color: #102027;
+  span{
+    color: white!important;
+    display: flex;
+    padding: 6px 0;
+  }
+}
+
+mat-dialog-content{
+  padding: 24px !important;
+  font-size: 0.9em!important;
+}
+.mdc-dialog__title{
+  margin: 0 auto !important;
+  display: flex;
+  padding: 0!important;
+  justify-content: space-between;
+  border-bottom: 1px solid #2e7d32;
+  color: #FFFFFF;
+}
+.dialog-header{
+  width: 96% !important;
+  text-align: center;
+  padding-top: 8px;
+}
+.dialog-title{
+  font-size: 16px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin-right: -20px;
+  padding:  16px 12px;
+  margin-top: 8px;
+}
+
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.pending-chip.mat-primary.mat-mdc-chip-selected{
+  background-color:#fbb02d;
+}
+
+.sent-chip.mat-primary.mat-mdc-chip-selected{
+  background-color: #2f4550;
+}
+
+.delivered-chip.mat-primary.mat-mdc-chip-selected{
+  background-color: #99c2a2;
+}
+
+.remove-icon{
+  cursor: pointer !important;
+  color: #ad2831;
+}
+
+.label-chip{
+  font-weight: 500;
+}
+
+.add-button{
+  float: right;
+  margin-bottom: 12px;
+}

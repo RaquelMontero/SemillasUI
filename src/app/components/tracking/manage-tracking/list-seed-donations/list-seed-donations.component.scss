@@ -1,17 +1,57 @@
+.container{
+  width: 96%;
+}
+mat-card{
+  margin-bottom: 12px;
+  padding: 16px;
+}
+
+
+.loading{
+  margin: 0 auto;
+  z-index: 100;
+}
+
 .toolbar{
   width: 90%;
-  margin-top: 40px;
   background-color: #A5D6A700;
   color: #1b7549;
 }
-.container{
-  //margin-top: 20px;
-  width: 96%;
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+  letter-spacing: 0.1rem;
+  font-size: 16px;
+  font-weight: 400;
 }
-.loading{
-  margin: auto;
+.title{
+  float: left;
+  font-size: 18px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 14px 0;
+}
+hr{
+  width: 96%;
+  margin: 12px auto;
 }
 
-.mat-card{
-  margin-bottom: 12px;
+.under-card{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+.volunter-cont{
+  background-color: #8ba73a;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+.name-cont{
+  display: flex;
+  padding: 6px 0;
+}
+

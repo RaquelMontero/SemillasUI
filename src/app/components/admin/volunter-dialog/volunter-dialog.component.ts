@@ -1,10 +1,10 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {VolunterService} from '../../../services/volunter.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Role, Volunter} from '../../../models/volunter.model';
-import {DomainhelperService} from '../../../services/domainhelper.service';
-import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {VolunterService} from '../../../core/services/volunter.service';
+import {UntypedFormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Role, Volunter} from '../../../core/models/volunter.model';
+import {DomainhelperService} from '../../../core/services/domainhelper.service';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DialogData {
@@ -21,8 +21,8 @@ export class VolunterDialogComponent implements OnInit {
   volunterform = this.fb.group({
     userId: [null],
     name: ['', Validators.required],
-    username: [null, Validators.required],
-    password: [null, Validators.required],
+    username: [null],
+    password: [null],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', Validators.required],
@@ -30,6 +30,7 @@ export class VolunterDialogComponent implements OnInit {
     birthdate: ['', Validators.required],
     roles: null
   });
+  hide = true;
   roles: Role[] = [];
   allRoles: Role[] = [];
   volunter: Volunter = null;
@@ -39,7 +40,7 @@ export class VolunterDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<VolunterDialogComponent>,
               private volunterService: VolunterService,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private matSnackBar: MatSnackBar,
               private domainhelperService: DomainhelperService
   ) { }

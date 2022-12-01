@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {VolunterService} from '../../../services/volunter.service';
-import {Volunter} from '../../../models/volunter.model';
+import {VolunterService} from '../../../core/services/volunter.service';
+import {Volunter} from '../../../core/models/volunter.model';
 import {switchMap} from 'rxjs/operators';
 
 

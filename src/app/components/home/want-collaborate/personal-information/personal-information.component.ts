@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {ApplicantService} from '../../../../services/applicant.service';
-import {ComboElement} from '../../../../models/Utils.model';
-import {UtilService} from '../../../../services/util.service';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {ApplicantService} from '../../../../core/services/applicant.service';
+import {ComboElement} from '../../../../core/models/Utils.model';
+import {UtilService} from '../../../../core/services/util.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -19,18 +19,23 @@ export class PersonalInformationComponent implements OnInit {
     email: [null, [Validators.required, Validators.email]],
     phone: [null, Validators.required],
     dni: [null, Validators.required],
-    birthdate: [null, Validators.required],
+    birthdate: [new Date(new Date().setFullYear(new Date().getFullYear() - 16))
+      ,Validators.required],
     country: [null, Validators.required],
     city: [null, Validators.required],
     address: [null, Validators.required],
-
   });
-  constructor(private formBuilder: FormBuilder,
+  myFilter = (d: Date | null): boolean => {
+    const year = new Date().getFullYear();
+    return d?.getFullYear() < (year-15);
+  };
+  constructor(private formBuilder: UntypedFormBuilder,
               private applicantService: ApplicantService,
               private utilsService: UtilService) { }
 
   ngOnInit(): void {
     this.getCountries();
+    this.manageInfoFormChanges();
   }
   getErrorMessage(): any {
     if (this.applicantForm.get('name').hasError('required')) {
@@ -48,9 +53,6 @@ export class PersonalInformationComponent implements OnInit {
       return 'Debe ingresar el correo';
     }
     return this.email.hasError('email') ? 'Debe ingresar un correo valido' : '';
-    /*if (this.volunterform.get('email').hasError('email')){
-      return 'Debes Ingresar un Correo valido';
-    }*/
   }
 
   getErrorMessagePhone(): any {
@@ -85,14 +87,21 @@ export class PersonalInformationComponent implements OnInit {
   get dni(): any {
     return this.applicantForm.get('dni');
   }
-  next(): void {
-    this.personalInfo.emit(this.applicantForm.value);
-    this.emitter.emit({tabAction: {number: 1}}) ;
-  }
+
   getCountries(): void{
    this.utilsService.getCountries()
      .subscribe((data) => {
        this.countries = data.data;
      });
+  }
+
+  manageInfoFormChanges(){
+    this.applicantForm.valueChanges.subscribe(() => {
+      if (this.applicantForm.valid){
+        this.personalInfo.emit(this.applicantForm.value);
+      }else {
+        this.personalInfo.emit(null);
+      }
+    })
   }
 }

@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic' ;
+//import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { CKEditorModule } from 'ng2-ckeditor';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 /*MATERIAL */
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
@@ -38,26 +42,27 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
+
+//import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/utils/navbar/navbar.component';
-import { FooterComponent } from './components/utils/footer/footer.component';
-import { ButtonComponent } from './components/libs/button/button.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { FooterComponent } from './components/libs/footer/footer.component';
+import { ButtonComponent } from './shared/button/button.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { VolunterComponent } from './components/home/volunter/volunter.component';
-import { SidebarComponent } from './components/utils/sidebar/sidebar.component';
+import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { ActivitiesComponent } from './components/home/activities/activities.component';
 import { CaruselComponent } from './components/libs/carusel/carusel.component';
 import { WantCollaborateComponent } from './components/home/want-collaborate/want-collaborate.component';
 import { ListVoluntersComponent } from './components/admin/list-volunters/list-volunters.component';
-import { ListPendingApplicantsComponent } from './components/applicants/list-pending-applicants/list-pending-applicants.component';
-import { ListApprovedApplicantsComponent } from './components/applicants/list-approved-applicants/list-approved-applicants.component';
-import { ListRejectedApplicantsComponent } from './components/applicants/list-rejected-applicants/list-rejected-applicants.component';
-import { ListContributorsOfMomentComponent } from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
+import { ListPendingApplicantsComponent } from './components/seeds/list-pending-applicants/list-pending-applicants.component';
+import { ListApprovedApplicantsComponent } from './components/seeds/list-approved-applicants/list-approved-applicants.component';
+import { ListRejectedApplicantsComponent } from './components/seeds/list-rejected-applicants/list-rejected-applicants.component';
+import { ListContributorsOfMomentComponent } from './components/seeds/list-contributors-of-moment/list-contributors-of-moment.component';
 import { ViewVolunterDetailsComponent } from './components/admin/view-volunter-details/view-volunter-details.component';
 import { VolunterDialogComponent } from './components/admin/volunter-dialog/volunter-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -66,14 +71,14 @@ import { DonationsTypesComponent } from './components/home/want-collaborate/dona
 import { LogInComponent } from './components/admin/log-in/log-in.component';
 import { ConstantDonationComponent } from './components/home/want-collaborate/constant-donation/constant-donation.component';
 import { UniqueDonationComponent } from './components/home/want-collaborate/unique-donation/unique-donation.component';
-import { GenericTableComponent } from './components/libs/generic-table/generic-table.component';
-import { ExitElementComponent } from './components/libs/exit-element/exit-element.component';
-import { MessageSnackBarComponent } from './components/libs/message-snack-bar/message-snack-bar.component';
+import { GenericTableComponent } from './shared/generic-table/generic-table.component';
+import { ExitElementComponent } from './shared/exit-element/exit-element.component';
+import { MessageSnackBarComponent } from './shared/message-snack-bar/message-snack-bar.component';
 import { CreateSeedComponent } from './components/admin/create-seed/create-seed.component';
-import { ModalViewSeedComponent } from './components/applicants/modal-view-seed/modal-view-seed.component';
-import { ModalProcessSeedComponent } from './components/applicants/modal-process-seed/modal-process-seed.component';
-import { EditSeedInfoComponent } from './components/applicants/edit-seed-info/edit-seed-info.component';
-import { ModalDeactiveSeedComponent } from './components/applicants/modal-deactive-seed/modal-deactive-seed.component';
+import { ModalViewSeedComponent } from './components/seeds/modal-view-seed/modal-view-seed.component';
+import { ModalProcessSeedComponent } from './components/seeds/modal-process-seed/modal-process-seed.component';
+import { EditSeedInfoComponent } from './components/seeds/edit-seed-info/edit-seed-info.component';
+import { ModalDeactiveSeedComponent } from './components/seeds/modal-deactive-seed/modal-deactive-seed.component';
 import { ManageTrackingComponent } from './components/tracking/manage-tracking/manage-tracking.component';
 import { ListTrackingVoluntersComponent } from './components/tracking/manage-tracking/list-tracking-volunters/list-tracking-volunters.component';
 import { ListTrackingVolunterSeedsComponent } from './components/tracking/manage-tracking/list-tracking-volunter-seeds/list-tracking-volunter-seeds.component';
@@ -81,11 +86,28 @@ import { ListSeedDonationsComponent } from './components/tracking/manage-trackin
 import { AsignSeedToVolunterComponent } from './components/tracking/asign-seed-to-volunter/asign-seed-to-volunter.component';
 import { ListAllTrackingSeedsComponent } from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
 import { ModalNewDonationComponent } from './components/tracking/modal-new-donation/modal-new-donation.component';
-import {authInterceptorProviders} from './services/auth.interceptor';
+import {authInterceptorProviders} from './core/services/auth.interceptor';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
-import {EncodeHttpParamsInterceptor} from './interceptors/encoder.interceptor';
+import {EncodeHttpParamsInterceptor} from './core/interceptors/encoder.interceptor';
 import { UnactiveVolunteersComponent } from './components/admin/unactive-volunteers/unactive-volunteers.component';
-
+import { OrgActivitiesComponent } from './feature/org-activities/org-activities.component';
+import { SentDataMessageComponent } from './components/home/want-collaborate/sent-data-message/sent-data-message.component';
+import { ExportSheetComponent } from './components/libs/export-sheet/export-sheet.component';
+import { ExportPdfComponent } from './components/libs/export-pdf/export-pdf.component';
+import { ListAllDonationsComponent } from './components/tracking/list-all-donations/list-all-donations.component';
+import { BenefitedSeedsComponent } from './components/souvenirs/benefited-seeds/benefited-seeds.component';
+import { BenefitedSeedDialogComponent } from './components/souvenirs/benefited-seed-dialog/benefited-seed-dialog.component';
+import { ViewBenefitedSeedComponent } from './components/souvenirs/view-benefited-seed/view-benefited-seed.component';
+import { SouvenirTrackingHistoryComponent } from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
+import { SouvenirTrackindDialogComponent } from './components/souvenirs/souvenir-trackind-dialog/souvenir-trackind-dialog.component';
+import { SendReminderComponent } from './components/tracking/reminders/send-reminder/send-reminder.component';
+import { ReminderStructureComponent } from './components/tracking/reminders/reminder-structure/reminder-structure.component';
+import { SelectReminderSeedsComponent } from './components/tracking/reminders/select-reminder-seeds/select-reminder-seeds.component';
+import { NewActivityDialogComponent } from './components/activities/new-activity-dialog/new-activity-dialog.component';
+import { ManageActivitiesComponent } from './components/activities/manage-activities/manage-activities.component';
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,6 +149,21 @@ import { UnactiveVolunteersComponent } from './components/admin/unactive-volunte
     ModalNewDonationComponent,
     AdminDashboardComponent,
     UnactiveVolunteersComponent,
+    OrgActivitiesComponent,
+    SentDataMessageComponent,
+    ExportSheetComponent,
+    ExportPdfComponent,
+    ListAllDonationsComponent,
+    BenefitedSeedsComponent,
+    BenefitedSeedDialogComponent,
+    ViewBenefitedSeedComponent,
+    SouvenirTrackingHistoryComponent,
+    SouvenirTrackindDialogComponent,
+    SendReminderComponent,
+    ReminderStructureComponent,
+    SelectReminderSeedsComponent,
+    NewActivityDialogComponent,
+    ManageActivitiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -153,7 +190,7 @@ import { UnactiveVolunteersComponent } from './components/admin/unactive-volunte
     MatRadioModule,
     MatTreeModule,
     MatToolbarModule,
-    MatCarouselModule.forRoot(),
+  //  MatCarouselModule.forRoot(),
     CdkAccordionModule,
     HttpClientModule,
     MatAutocompleteModule,
@@ -170,7 +207,15 @@ import { UnactiveVolunteersComponent } from './components/admin/unactive-volunte
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+    CKEditorModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers:
     [authInterceptorProviders,

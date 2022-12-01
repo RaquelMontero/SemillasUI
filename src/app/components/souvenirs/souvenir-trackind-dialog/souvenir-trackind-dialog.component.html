@@ -1,0 +1,104 @@
+<div mat-dialog-title>
+  <div class="dialog-header">
+    <span class="dialog-title">{{getTitle}}</span>
+  </div>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <form [formGroup]="benefitedForm" class="row">
+    <div class="col-md-12">
+      <mat-form-field
+        floatLabel="always"
+        appearance="fill">
+        <mat-label>Buscar registro semilla beneficiada</mat-label>
+        <input type="text"
+               placeholder="Lucia...."
+               aria-label="Number"
+               matInput
+               required
+               formControlName="searchValue"
+               [matAutocomplete]="auto">
+        <mat-autocomplete
+          (optionSelected)="selected($event)"
+          autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option  (onSelectionChange)="updateMySelection($event)"
+                       *ngFor="let option of filteredBenefitedSeeds | async" [value]="option">
+            {{option.largename}}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="benefitedSeed.invalid">{{getErrorMessageSeed()}}</mat-error>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field floatLabel="always"
+                      appearance="fill">
+        <mat-label>Fecha de envío del souvenir</mat-label>
+        <input matInput formControlName="souvenir_send_date" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="col-md-6"
+                    floatLabel="always"
+                    appearance="fill">
+      <mat-label>Monto de gasto: </mat-label>
+      <input
+        autocomplete="off"
+        formControlName="spentAmount"
+        class="example-right-align"
+        placeholder="0"
+        max="101"
+        oninput="this.value = Math.abs(this.value)|| ''"
+        matInput
+      />
+      <span matTextPrefix>$&nbsp;</span>
+      <span matTextSuffix>.BOB</span>
+    </mat-form-field>
+   <div class="col-md-12">
+     <span class="label-chip">Estado de envío</span>
+     <mat-chip-listbox formControlName="trackingStatus">
+       <mat-chip-option [value]="'PENDING'" selected color="primary" class="pending-chip">PENDIENTE</mat-chip-option>
+       <mat-chip-option [value]="'SENT'" color="primary" class="sent-chip">ENVIADO</mat-chip-option>
+       <mat-chip-option [value]="'DELIVERED'" color="primary" class="delivered-chip">ENTREGADO</mat-chip-option>
+     </mat-chip-listbox>
+   </div>
+    <div class="col-md-12">
+      <button class="add-button" (click)="addTrackingComments()" mat-mini-fab>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="col-md-12" formArrayName="souvenirTrackingComments">
+      <div *ngFor="let skill of souvenirTrackingComments.controls; let i=index">
+        <div [formGroupName]="i">
+          <mat-form-field  floatLabel="always"
+                           appearance="fill">
+            <mat-label>Comentario de actualización del envío</mat-label>
+            <input matInput formControlName="comment">
+            <mat-hint>Escriba un comentario...</mat-hint>
+            <button matSuffix mat-icon-button
+                    (click)="removeTrackingComment(i)"
+                    color="accent">
+              <mat-icon
+                (click)="removeTrackingComment(i)"
+                class="remove-icon"
+                matSuffix
+              >close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-flat-button
+          (click)="onSubmit()"
+          class="accept-bt"
+          [disabled]="!benefitedForm.valid"
+          color="primary">{{confirmButton}}</button>
+</mat-dialog-actions>

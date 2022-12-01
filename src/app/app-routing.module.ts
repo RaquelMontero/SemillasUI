@@ -5,28 +5,35 @@ import { HomeComponent } from './components/home/home/home.component';
 import { VolunterComponent } from './components/home/volunter/volunter.component';
 import { WantCollaborateComponent } from './components/home/want-collaborate/want-collaborate.component';
 import {ListVoluntersComponent} from './components/admin/list-volunters/list-volunters.component';
-import {ListPendingApplicantsComponent} from './components/applicants/list-pending-applicants/list-pending-applicants.component';
-import {ListApprovedApplicantsComponent} from './components/applicants/list-approved-applicants/list-approved-applicants.component';
-import {ListRejectedApplicantsComponent} from './components/applicants/list-rejected-applicants/list-rejected-applicants.component';
+import {ListPendingApplicantsComponent} from './components/seeds/list-pending-applicants/list-pending-applicants.component';
+import {ListApprovedApplicantsComponent} from './components/seeds/list-approved-applicants/list-approved-applicants.component';
+import {ListRejectedApplicantsComponent} from './components/seeds/list-rejected-applicants/list-rejected-applicants.component';
 import {
   ListContributorsOfMomentComponent
-} from './components/contributors/list-contributors-of-moment/list-contributors-of-moment.component';
+} from './components/seeds/list-contributors-of-moment/list-contributors-of-moment.component';
 import {CreateSeedComponent} from './components/admin/create-seed/create-seed.component';
 import {ManageTrackingComponent} from './components/tracking/manage-tracking/manage-tracking.component';
 import {ListAllTrackingSeedsComponent} from './components/tracking/list-all-tracking-seeds/list-all-tracking-seeds.component';
-import {LoggedGuard} from './guards/logged.guard';
+import {LoggedGuard} from './core/guards/logged.guard';
 import {AdminDashboardComponent} from './components/admin/admin-dashboard/admin-dashboard.component';
 import {UnactiveVolunteersComponent} from './components/admin/unactive-volunteers/unactive-volunteers.component';
+import {OrgActivitiesComponent} from './feature/org-activities/org-activities.component';
+import {ExportPdfComponent} from './components/libs/export-pdf/export-pdf.component';
+import {ListAllDonationsComponent} from './components/tracking/list-all-donations/list-all-donations.component';
+import {BenefitedSeedsComponent} from './components/souvenirs/benefited-seeds/benefited-seeds.component';
+import {SouvenirTrackingHistoryComponent} from './components/souvenirs/souvenir-tracking-history/souvenir-tracking-history.component';
+import {SendReminderComponent} from './components/tracking/reminders/send-reminder/send-reminder.component';
+import {ManageActivitiesComponent} from './components/activities/manage-activities/manage-activities.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent
   },
   {
-    path: 'actividades-organizacion', component: ActivitiesComponent
+    path: 'actividades-organizacion', component: OrgActivitiesComponent
   },
   {
-    path: 'soy-voluntaria', component: VolunterComponent
+    path: 'login-volunteer', component: VolunterComponent
   },
   {
     path: 'admin', component: AdminDashboardComponent
@@ -54,9 +61,6 @@ const routes: Routes = [
     path: 'admin/semillas', component: ListApprovedApplicantsComponent
   },
   {
-    path: 'admin/semillas/semillas-pendientes', component: ListContributorsOfMomentComponent
-  },
-  {
     path: 'admin/tracking', component: ManageTrackingComponent
   },
   {
@@ -64,7 +68,25 @@ const routes: Routes = [
   },
   {
     path: 'admin/new-seed', component: CreateSeedComponent
-  }
+  },
+  {
+    path: 'admin/tracking/export-tracking', component: ExportPdfComponent
+  },
+  {
+    path: 'admin/tracking/donations', component: ListAllDonationsComponent
+  },
+  {
+    path: 'admin/tracking/reminder-emails', component: SendReminderComponent
+  },
+  {
+    path: 'admin/souvenirs/benefited-seeds', component: BenefitedSeedsComponent
+  },
+  {
+    path: 'admin/souvenirs/history', component: SouvenirTrackingHistoryComponent
+  },
+  {
+    path: 'admin/activities/manage-activities', component: ManageActivitiesComponent
+  },
 ];
 
 @NgModule({

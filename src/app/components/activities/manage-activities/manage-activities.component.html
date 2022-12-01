@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-card>
+    <div  class="header">
+      <span class="title">ACTIVIDADES ACTUALES</span>
+      <img class="img" src="../../../../assets/logo.png" />
+    </div>
+    <hr>
+    <form [formGroup]="val" class="volunteer-head">
+      <button mat-mini-fab color="accent"
+              (click)="onAdding()"
+              matTooltip="REGISTRAR NUEVO VOLUNTARIO">
+        <mat-icon>note_add</mat-icon>
+      </button>
+    </form>
+  </mat-card>
+  <div *ngFor="let act of activities">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>{{act.activity.title}}</mat-card-title>
+          <mat-card-subtitle>Small</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        {{act.activity.description}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
