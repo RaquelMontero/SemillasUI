@@ -1,0 +1,32 @@
+<div>
+    <div  class="header">
+      <span class="title">ENVIOS DE SOUVENIR REALIZADOS</span>
+      <img class="img" src="../../../../assets/logo.png" />
+    </div>
+    <hr>
+    <form [formGroup]="filterForm" class="volunteer-head">
+      <mat-form-field [hidden]="true" class="col-md-4 create-account-form" appearance="fill">
+        <mat-label>Elige un rando de fechas</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Inicio" formControlName="beginSelectedDate">
+          <input matEndDate placeholder="Fin" formControlName="endSelectedDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker touchUi #picker></mat-date-range-picker>
+      </mat-form-field>
+      <mat-chip-listbox>
+        <mat-chip class="date-range">
+          <span>{{beginDate(filterForm.get('beginSelectedDate').value)}}  ----  {{beginDate(filterForm.get('endSelectedDate').value)}}</span>
+        </mat-chip>
+        <button [matTooltip]="'Elegir rango de fechas'" mat-icon-button (click)="picker.open()">
+          <mat-icon>date_range</mat-icon>
+        </button>
+      </mat-chip-listbox>
+
+      <button mat-mini-fab color="accent"
+              (click)="onAdding()"
+              matTooltip="REGISTRAR NUEVO BENEFICIADO">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </form>
+</div>

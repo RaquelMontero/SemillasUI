@@ -1,12 +1,19 @@
 <div class="container">
   <mat-card class="example-card">
       <form [formGroup]="form" class="edit">
-        <angular-editor
+        <mat-form-field [hidden]="true">
+          <input matInput formControlName="currentLenguage" [value]="setCurrentLen('lenVal'| translate)">
+        </mat-form-field>
+        {{form.get('currentLenguage').value}}
+        <ckeditor
+                  formControlName="htmlContent"
+                  (ready)="onReady($event)"></ckeditor>
+
+      <!--   <angular-editor
           formControlName="htmlContent"
           [config]="editorConfig">
-        </angular-editor>
+        </angular-editor>-->
       </form>
-    {{form.get('htmlContent').value}}
 
   </mat-card>
 </div>

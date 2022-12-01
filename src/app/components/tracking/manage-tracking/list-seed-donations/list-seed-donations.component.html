@@ -5,17 +5,43 @@
 </mat-toolbar>
 <div class="container">
   <mat-card>
-    <h2 class="header">APORTES</h2>
+    <div  class="header">
+      <span class="title">SEMILLAS ASIGNADAS</span>
+      <img class="img" src="../../../../assets/logo.png" />
+    </div>
     <hr>
-    <mat-card-actions align="end">
-      <button (click)="newDonation()"
-              color="accent" mat-raised-button>
-        REGISTRAR APORTE</button>
-    </mat-card-actions>
+    <div class="under-card">
+      <ng-container *ngIf="!loadingSeed else loadingData">
+        <div class="volunter-cont">
+           <span class="name-cont"> <mat-icon>person_outline</mat-icon>
+            Semilla => {{seed.name}} {{seed.lastname}}</span>
+        </div>
+       <div>
+        <!-- <button (click)="openBottomSheet()"
+                 matTooltip="Exportar"
+                 mat-mini-fab color="primary">
+           <mat-icon>cloud_download</mat-icon>
+         </button>
+         <button (click)="openPDF()"
+                 matTooltip="Exportar Registros"
+                 mat-mini-fab color="primary">
+           <mat-icon>cloud_download</mat-icon>
+         </button> -->
+         <button (click)="newDonation()"
+                 matTooltip="Registrar nuevo aporte"
+                 mat-mini-fab color="accent">
+           <mat-icon>add_comment</mat-icon>
+         </button>
+       </div>
+      </ng-container>
+      <ng-template #loadingData>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </ng-template>
+    </div>
   </mat-card>
 
-  <ng-container *ngIf="!loadingtable else loading">
-     <mat-card>
+  <ng-container *ngIf="!loadingTable else loading">
+     <mat-card *ngIf="data.rows.length > 0" id="htmlData">
        <app-generic-table
          *ngIf="data"
          [inputTable]="data.rows"
@@ -30,3 +56,4 @@
     </mat-spinner>
   </ng-template>
 </div>
+

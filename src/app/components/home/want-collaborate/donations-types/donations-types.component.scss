@@ -1,6 +1,6 @@
 .positive{
-  background-color: #21ba45;
-  color: #fff;
+  background-color: #6db669;
+  color: white;
   width: 100%;
 }
 
@@ -8,28 +8,33 @@
   color: white;
   background-color: #1b7549;
 }
-
-.donations{
-  padding: 18px;
+.cont{
+  padding: 24px 16px;
   width: 100%;
 }
-.col-md-6{
+.donations{
+  width: 90%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
+
 mat-card{
-    justify-content: center;
-    width: 85%;
-    height: 400px;
+  width: 450px;
+  height: 450px;
+  padding: 15px;
+  margin: 15px auto;
 }
 
 .float-bottom{
   display: flex;
   position: absolute;
-  width: 80%;
+  width: 95%;
   bottom: 0;
   align-items: center;
   justify-content: center;
+  margin-bottom: 16px;
 }
 .float-bottom mat-icon{
   color: #00A846;
@@ -38,15 +43,14 @@ mat-card{
 
 .next-button{
   padding-top: 32px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   button{
     width: 200px;
   }
 }
 
-p{
+.content{
+  padding-top: 16px;
   color: #333333;
   font-size: 13px;
   justify-content: center;

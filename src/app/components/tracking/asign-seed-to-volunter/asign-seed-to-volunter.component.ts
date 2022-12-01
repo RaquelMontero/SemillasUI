@@ -1,14 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {TrackingService} from '../../../services/tracking.service';
-import {BoxSeed} from '../../../models/Seed.model';
-import {FormBuilder, Validators} from '@angular/forms';
+import {TrackingService} from '../../../core/services/tracking.service';
+import {BoxSeed} from '../../../core/models/Seed.model';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatOptionSelectionChange} from '@angular/material/core';
-import {Volunter} from '../../../models/volunter.model';
-import {VolunterService} from '../../../services/volunter.service';
+import {Volunter} from '../../../core/models/volunter.model';
+import {VolunterService} from '../../../core/services/volunter.service';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 export interface DialogData {
   volunterId: string;
 }
@@ -35,7 +37,8 @@ export class AsignSeedToVolunterComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private trackingService: TrackingService,
     private volunteerService: VolunterService,
-    private form: FormBuilder) { }
+    private matSnackBar: MatSnackBar,
+    private form: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.getActiveSeeds();
@@ -56,7 +59,6 @@ export class AsignSeedToVolunterComponent implements OnInit {
   }
   selected(evento: MatAutocompleteSelectedEvent){
     this.assignForm.get('contributor_id').setValue(evento.option.value.contributor_id);
-
     console.log('selected', evento);
   }
   updateMySelection(evento: MatOptionSelectionChange): void{
@@ -80,9 +82,11 @@ export class AsignSeedToVolunterComponent implements OnInit {
     const form = this.assignForm.value;
     this.trackingService.saveTrackingAssign(form)
       .subscribe((data) => {
-        this.dialogRef.close();
-        console.log('data');
-      });
+        this.showMessage(data);
+        this.dialogRef.close('success');
+      },(error => {
+        this.showMessage(error.error);
+      }));
   }
 
   getVolunterById(): void{
@@ -91,5 +95,16 @@ export class AsignSeedToVolunterComponent implements OnInit {
         this.volunter = data ;
         this.assignForm.get('volunter_id').setValue(this.data.volunterId);
       });
+  }
+
+  showMessage(data: any): void{
+    console.log('errormessage', data);
+    this.matSnackBar.openFromComponent(MessageSnackBarComponent, {
+      data: { data },
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snack-style'
+    });
   }
 }

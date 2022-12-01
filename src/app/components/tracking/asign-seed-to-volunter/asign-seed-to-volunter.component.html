@@ -1,10 +1,10 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-  <mat-icon class="close-icon">close</mat-icon>
-</button>
-
-<div mat-dialog-title class="header">
-  <span class="title">ASIGNAR SEMILLA A RESPONSABLE</span>
-  <img class="img" src="../../../../assets/logo.png" />
+<div mat-dialog-title>
+  <div class="dialog-header">
+    <span class="dialog-title">ASIGNAR SEMILLA A RESPONSABLE</span>
+  </div>
+  <button mat-icon-button class="close-button2" [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
 </div>
 <mat-dialog-content>
   <form [formGroup]="assignForm" class="row">
@@ -14,7 +14,7 @@
        <span>{{volunter.name}} {{volunter.lastname}}</span>
      </div>
     </div>
-    <mat-form-field appearance="standard"
+    <mat-form-field appearance="fill"
                     [floatLabel]="'always'"
                     class="col-md-12">
       <mat-label>Seleccionar la semilla</mat-label>
@@ -36,7 +36,8 @@
     </mat-form-field>
     <mat-form-field
       class="col-md-6"
-      appearance="standard">
+      floatLabel="always"
+      appearance="fill">
       <mat-label>Inicio de asignación</mat-label>
       <input formControlName="start_date"
              matInput
@@ -48,7 +49,8 @@
     </mat-form-field>
     <mat-form-field
       class="col-md-6"
-      appearance="standard">
+      floatLabel="always"
+      appearance="fill">
       <mat-label>Fin de asignación</mat-label>
       <input formControlName="end_date"
              matInput

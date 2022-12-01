@@ -1,0 +1,58 @@
+.container {
+  margin-top: 70px;
+  width: 94%;
+}
+mat-card{
+  margin-bottom: 12px;
+  padding: 16px;
+}
+mat-chip{
+  font-size: 10px;
+}
+
+.loading{
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+}
+.title{
+  float: left;
+  font-size: 18px;
+  letter-spacing: 0.08rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 14px 0;
+}
+
+hr{
+  width: 96%;
+  margin: 12px auto;
+}
+
+.volunteer-head{
+  width: 96%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: rgba(0, 255, 255, .5);
+}
+
+.date-range{
+  background-color: #8ba73a!important;
+  span{
+    font-size: 13px;
+    color: #FFFFFF;
+  }
+}
+.mat-mdc-icon-button.mat-mdc-button-base{
+  padding-top: 4px !important;
+}

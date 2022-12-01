@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {VolunterService} from '../../../services/volunter.service';
+import {VolunterService} from '../../../core/services/volunter.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {CellContent, CellParam, Table} from '../../../models/Table.model.';
+import {CellContent, CellParam, Table} from '../../../core/models/Table.model.';
 import {ViewVolunterDetailsComponent} from '../view-volunter-details/view-volunter-details.component';
-import {ExitElementComponent} from '../../libs/exit-element/exit-element.component';
-import {MessageSnackBarComponent} from '../../libs/message-snack-bar/message-snack-bar.component';
+import {ExitElementComponent} from '../../../shared/exit-element/exit-element.component';
+import {MessageSnackBarComponent} from '../../../shared/message-snack-bar/message-snack-bar.component';
 
 @Component({
   selector: 'app-unactive-volunteers',

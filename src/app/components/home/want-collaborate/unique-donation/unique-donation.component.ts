@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {ApplicantService} from '../../../../services/applicant.service';
-import {ComboElement} from '../../../../models/Utils.model';
-import {UtilService} from '../../../../services/util.service';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {ApplicantService} from '../../../../core/services/applicant.service';
+import {ComboElement} from '../../../../core/models/Utils.model';
+import {UtilService} from '../../../../core/services/util.service';
 
 @Component({
   selector: 'app-unique-donation',
@@ -11,7 +11,7 @@ import {UtilService} from '../../../../services/util.service';
 })
 export class UniqueDonationComponent implements OnInit, OnChanges {
   @Output() emitter: EventEmitter<{ tabAction }> = new EventEmitter();
-  @Input() personalInformation: any;
+  @Output() uniqueDonation: EventEmitter<{ uniqueDonation }> = new EventEmitter();
   donationForm = this.formBuilder.group({
     contribution_amount: ['', Validators.required],
     paymentMethod: ['', Validators.required],
@@ -24,30 +24,23 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
   newsTypes: ComboElement[] = [];
   contributor;
   myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
-    return day !== 0 && day !== 6;
+   /* const day = (d || new Date()).getDay();
+    return day !== 0 && day !== 6;*/
+    return d > new Date()
   };
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private applicantService: ApplicantService,
               private utilsService: UtilService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges', this.personalInformation);
-    const {country, city, address, ...user} = this.personalInformation;
-    this.contributor = {
-      country,
-      city,
-      address,
-      user
-    };
   }
 
   ngOnInit(): void {
     this.getPaymentMethods();
     this.getNewsTypes();
+    this.manageChanges();
   }
   get donationAmount(): any {
     return this.donationForm.get('contribution_amount');
@@ -106,27 +99,22 @@ export class UniqueDonationComponent implements OnInit, OnChanges {
     return amount + '$U$ ';
   }
 
-  sentData(): void{
-    this.sendingData = true;
-    const payload = this.donationForm.value;
-    payload.contributor = this.contributor;
-    console.log('response', payload, this.personalInformation);
-    this.applicantService.createUniqueApplicant(payload)
-      .subscribe((response) => {
-        console.log('response', response);
-        this.sendingData = false;
-
-      }, ( error ) => {
-        console.log('error', error);
-        this.sendingData = false;
-
-      });
-  }
-
   get canSendForm(): boolean{
     return this.donationForm.get('send_news').value ?
       this.donationForm.get('sendNewsType').value !== null &&
       this.donationForm.valid
       : this.donationForm.valid;
+  }
+
+  manageChanges(){
+    this.donationForm.valueChanges.subscribe(()=>{
+      if (this.donationForm.valid){
+        this.uniqueDonation.emit(
+          {uniqueDonation: this.donationForm.value});
+      } else {
+        this.uniqueDonation.emit(
+          {uniqueDonation: null});
+      }
+    })
   }
 }

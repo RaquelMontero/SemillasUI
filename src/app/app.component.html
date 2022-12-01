@@ -7,11 +7,12 @@
       close
     </mat-icon>
   </button> -->
-  <sml-navbar class="nav-container" [inputSideNav]="sidenav"></sml-navbar>
+  <sml-navbar class="nav-container" (emitLen)="switchLang($event)"
+              [inputSideNav]="sidenav"></sml-navbar>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav>
+  <mat-sidenav #sidenav *ngIf="logged">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>

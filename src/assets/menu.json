@@ -33,11 +33,6 @@
         "text": "Responsables",
         "icon": "group",
         "routerLink": "admin/ver-voluntarios"
-      },
-      {
-        "text": "Responsables inactivos",
-        "icon": "layers_clear",
-        "routerLink": "admin/ver-voluntarios/inactivos"
       }
     ]
   },
@@ -51,30 +46,35 @@
         "routerLink": "/admin/tracking"
       },
       {
-        "text": "Seguimiento diarío",
-        "icon": "layers",
-        "routerLink": "/admin/semillas/semillas-pendientes"
-      },
-      {
         "text": "Semillas",
         "icon": "layers",
         "routerLink": "/admin/tracking/all-seeds"
+      },
+      {
+        "text": "Aportes recibidos",
+        "icon": "layers",
+        "routerLink": "/admin/tracking/donations"
+      },
+      {
+        "text": "Recordatorios",
+        "icon": "send",
+        "routerLink": "/admin/tracking/reminder-emails"
       }
     ]
   },
   {
-    "text": "Envío Souvenirs",
+    "text": "Administración",
     "icon": "inventory_2",
     "children": [
       {
-        "text": "Seleccionar beneficiados",
-        "icon": "category",
-        "routerLink": "/product/category"
+        "text": "Souvenirs",
+        "icon": "card_giftcard",
+        "routerLink": "/admin/souvenirs/benefited-seeds"
       },
       {
-        "text": "Ver beneficiados",
-        "icon": "layers",
-        "routerLink": "/product/sub-category"
+        "text": "Actividades",
+        "icon": "local_activity",
+        "routerLink": "/admin/activities/manage-activities"
       }
     ]
   }
